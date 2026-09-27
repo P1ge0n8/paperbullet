@@ -53,3 +53,5 @@ User reverted the click perspective turn. Restore the original goggles pose and 
 Homepage corner logo resets the current homepage to the collapsed index state, restores centered goggles and PAPERBULLET, and shows the BANG entry again. Cancel any in-flight reveal or section-navigation animation before resetting; preserve modifier-click link behavior.
 
 Idle visor cycles PAPERBULLET → 隐姓不埋名， → 缴械不投降。 every 4.2 seconds. Preserve punctuation and Chinese red-dot rendering. Hover/focus BANG! and section-selection labels take priority and pause the idle timer. Logo reset restarts at PAPERBULLET. Reduced motion keeps the initial idle phrase static.
+
+Touch devices: festival marks automatically preview the red pixel scan for 2.2 seconds when at least 55% visible, replaying only after leaving and re-entering the viewport. Touch click still navigates immediately. Desktop hover/focus remains. Keep the original mark visible until the canvas is drawn; reduced-motion uses a static red preview.
