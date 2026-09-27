@@ -57,6 +57,7 @@ function PixelCode({ text, className = '' }) {
 function ArticleMeta({ article }) {
  return <span className="publication-meta">作者：{article.author || '待署名（样稿）'}<span>·</span>{article.publishedAt?<time dateTime={article.publishedAt}>{article.publishedAt.replace('T',' ')}</time>:'未正式刊发'}<span>·</span>约 {article.minutes} 分钟</span>;
 }
+const chineseVisorCache=new Map();
 function Visor({ boosted, label = 'PAPERBULLET' }) {
  const canvas = useRef(null);
  const boost = useRef(boosted);
@@ -65,17 +66,23 @@ function Visor({ boosted, label = 'PAPERBULLET' }) {
   const ctx = canvas.current.getContext('2d');
   let last = -1;
   const started=performance.now();
-  // Rasterize Chinese once per phrase, then render it as the same red display dots.
-  let chinese=null;
-  if(/[^\x00-\x7F]/.test(label)){
+  // Bake dense Chinese dots and their glow once, not thousands of blurred draws per frame.
+  let chinese=chineseVisorCache.get(label);
+  if(!chinese&&/[^\x00-\x7F]/.test(label)){
    const raster=document.createElement('canvas');
    const ink=raster.getContext('2d');
    const font='600 24px "PingFang SC", "Microsoft YaHei", sans-serif';
    ink.font=font;raster.width=Math.ceil(ink.measureText(label).width)+4;raster.height=32;
    ink.font=font;ink.textBaseline='top';ink.fillText(label,2,2);
    const pixels=ink.getImageData(0,0,raster.width,raster.height).data;
-   chinese={width:raster.width,height:raster.height,dots:[]};
-   for(let y=0;y<raster.height;y++)for(let x=0;x<raster.width;x++)if(pixels[(y*raster.width+x)*4+3]>70)chinese.dots.push([x,y]);
+   const dots=new Path2D();
+   for(let y=0;y<raster.height;y++)for(let x=0;x<raster.width;x++)if(pixels[(y*raster.width+x)*4+3]>70)dots.rect(x*2.5,y*2.5,1.9,1.9);
+   const layer=document.createElement('canvas');
+   layer.width=Math.ceil(raster.width*2.5)+48;layer.height=128;
+   const glow=layer.getContext('2d');
+   glow.translate(24,24);glow.fillStyle='#ff3545';glow.shadowColor='#ff092b';glow.shadowBlur=10;glow.fill(dots);
+   chinese={width:raster.width,height:raster.height,layer};
+   chineseVisorCache.set(label,chinese);
   }
   const mm = gsap.matchMedia();
   mm.add({ motion:'(prefers-reduced-motion: no-preference)', reduced:'(prefers-reduced-motion: reduce)' }, media => {
@@ -100,11 +107,9 @@ function Visor({ boosted, label = 'PAPERBULLET' }) {
     ctx.fillStyle='#ff3545';
     ctx.shadowColor='#ff092b';ctx.shadowBlur=boost.current?19:10;
     if(chinese){
-     for(const [x,y] of chinese.dots){
-      const shift=glitch&&y%9===frame%9?6:0;
-      ctx.globalAlpha=fade*(reduced?.95:.92);
-      ctx.fillRect(x*2.5+shift,y*2.5,1.9,1.9);
-     }
+     ctx.shadowBlur=0;
+     ctx.globalAlpha=fade*(reduced?.95:.92);
+     ctx.drawImage(chinese.layer,-24+(glitch?(frame%2?3:-3):0),-24);
     }else [...label].forEach((char,i) => glyphs[char].forEach((row,y) => [...row].forEach((pixel,x) => {
      if(pixel !== '1') return;
      const shift=glitch && y%3===frame%3 ? gsap.utils.random(-18,18,6) : 0;
