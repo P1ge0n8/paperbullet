@@ -6,3 +6,6 @@ dist/
 !.env.example
 qa/
 *.log
+
+.local-admin/
+work/
