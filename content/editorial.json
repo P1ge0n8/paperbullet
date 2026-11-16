@@ -380,6 +380,26 @@
       "url": "https://www.xiaoyuzhoufm.com/episode/697a51a316714a679cc5a3e0",
       "id": "episode-15",
       "cover": "/assets/podcast-cover.png"
+    },
+    {
+      "id": "6adb74a997726cd46756ba4b",
+      "title": "先导集：用过度解读，抵抗简单评判",
+      "url": "https://www.xiaoyuzhoufm.com/episode/6adb74a997726cd46756ba4b",
+      "cover": "/assets/overthink-pilot.jpg",
+      "duration": "14分钟",
+      "access": null,
+      "program": "overthink",
+      "publishedAt": ""
+    },
+    {
+      "id": "6adcc995c96c8942ec11a40e",
+      "title": "01.世界毁灭都没人怕了，恐怖片还拿什么吓人？",
+      "url": "https://www.xiaoyuzhoufm.com/episode/6adcc995c96c8942ec11a40e",
+      "cover": "/assets/overthink-horror.jpg",
+      "duration": "44分钟",
+      "access": null,
+      "program": "overthink",
+      "publishedAt": ""
     }
   ]
 }

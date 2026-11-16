@@ -1,0 +1,8 @@
+Paperbullet studio — local adaptation
+
+Studio staging, projection shader and film gate, quadrilateral mapping, and photographic grade are adapted from hitianqi/desk-portfolio:
+https://github.com/hitianqi/desk-portfolio
+The original MIT license is in LICENSE-desk-portfolio.txt.
+
+studio_small_08.hdr: Studio Small 08, Sergej Majboroda / Poly Haven (CC0 1.0).
+film-projector.glb: converted from the supplied SketchUp component 3d66.com_1535778.skp.

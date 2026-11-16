@@ -1,6 +1,6 @@
 import { FestivalMark } from './FestivalMark';
 import { ArrowLeft, ArrowRight, ArrowUpRight } from '@phosphor-icons/react';
-import { articles, sampleArticles } from './articles';
+import { articles } from './articles';
 import { columns, festivals } from './collections';
 
 export function Directory({ kind, navigate }) {
@@ -29,8 +29,7 @@ export function CollectionList({ collection, kind, navigate }) {
   <nav className="collection-breadcrumb" aria-label="面包屑"><a href={'#/'+kind} onClick={e=>navigate(e,'/'+kind)}><ArrowLeft size={15}/> 全部{parent}</a><span>/</span><span aria-current="page">{collection.name}</span></nav>
   <header className="collection-heading"><span className="micro red">{isColumn?'COLUMN':'FILM FESTIVAL'} / {collection.english}</span><h1>{collection.name}</h1><p>{collection.description}</p></header>
   <div className="directory-bar"><h2>所有文章</h2><span className="micro">{String(ownArticles.length).padStart(2,'0')} ARTICLES</span></div>
-  {ownArticles.length===0?<div className="collection-empty"><p>文章还在整理中。</p><span>{isColumn?'作者文章收录后，会在这里与你见面。':'影展报道收录后，会在这里与你见面。'}</span></div>:<ReadingCards items={ownArticles} base={base} navigate={navigate}/>}
-  <section className="reading-demo" aria-label="阅读体验示例"><div className="demo-intro"><h2>先试读一篇</h2><p>{isColumn?'以下为网站排版示例，不是'+collection.name+'的作品。':'以下为网站排版示例，不是本影展的报道。'}</p></div><ReadingCards items={sampleArticles} base={base} navigate={navigate} sample/></section>
+  {ownArticles.length===0?<div className="stay-tuned">stay tuned</div>:<ReadingCards items={ownArticles} base={base} navigate={navigate}/>}
  </>;
 }
 function ReadingCards({items,base,navigate,sample=false}) {

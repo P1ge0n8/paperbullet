@@ -32,7 +32,7 @@ export const sampleArticles = [
 export const articles = [...published.articles.map((a,i)=>({...a, sample:false, number:String(i+1).padStart(3,'0'),shortTitle:a.title.replaceAll('\n',''),minutes:Math.max(1,Math.ceil(a.blocks.reduce((n,b)=>n+(b.text?.length||0),0)/450)),sections:[]})),...sampleArticles.map(a=>({...a,sample:true}))];
 export function readRoute(hash) {
   const value = hash.replace(/^#/, '') || '/';
-  if (value === '/' || value === '/columns' || value === '/about' || ['/festivals','/podcast','/interviews'].includes(value)) return value;
+  if (value === '/' || value === '/screen' || value === '/columns' || value === '/about' || ['/festivals','/podcast','/interviews'].includes(value)) return value;
   if (articles.some(a => value === '/read/' + a.id)) return value;
   const collection=collectionForRoute(value);
   if(collection){
