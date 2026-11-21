@@ -78,10 +78,45 @@ Show the loaded film coils and the moving strip prominently on the projector. Le
 
 ## Index navigation — 2026-11-20
 
-Use the supplied BounceSidebar interaction for the projected index, with the five Chinese section labels and a 6px orange dot that travels along an arc. Restore all five original IndexCoin marks and the original Songti typeface with large labels. Arrange the page in upper, middle, and lower sections: the horizontal logo and wordmark combination is centered in the upper section, the menu is centered in the middle, and the lower section provides space above the footer. Hover and keyboard focus preview the dot position before the link opens its section. English menu labels are deferred to the user's later revision. The projection preview and full-screen index use the same menu.
+Use the supplied BounceSidebar interaction for the projected index, with the five Chinese section labels and a 6px orange dot that travels along an arc. Restore all five original IndexCoin marks and the original Songti typeface with large labels. The latest 2026-11-21 revision places a smaller horizontal logo and wordmark at the top left, and removes the old top rule, 栏目索引 caption, and visible 返回摄影棚 text. The brand links back to the studio. Keep the menu centered in the page. Hover and keyboard focus preview the dot position before the link opens its section. English menu labels are deferred to the user's later revision. The projection preview and full-screen index use the same menu.
+
+Keep PAPERBULLET@2026 horizontally centered at the bottom of the index, below the existing footer rule.
+Balance the top-left brand as one compact lockup: the red mark should be close to the visible height of the two-line wordmark, with a tighter gap. Keep the complete lockup closer to the top-left corner, with roughly 40px left / 29px top desktop insets and 20px phone insets, while preserving the menu and footer positions.
+Interior pages must use this exact same red mark and Chinese-over-English wordmark, with matching size, spacing, color, and corner coordinates at every viewport. Replace the previous English-over-slogan header branding; retain its link to the index and the separate return-to-studio control.
+Optically center PAPERBULLET beneath the Chinese name with a slight rightward correction (0.06 of the Chinese font size, about 2px), shared across the index and content pages.
 
 ## Article image scale — 2026-11-20
 
 The user finds full-column posters too tall and wants the next paragraph to appear sooner. Size article images in proportion to the viewport, preserve their complete aspect ratios, and center them within the text column.
 
 Collection article lists use small square cover cards like the podcast grid. Under each cover, show the category, publication year, and article number in red, then the black title without a repeated category prefix, then the original muted introduction. The Cannes article is number 006, displayed as 戛纳专栏2026 / 006 above 《希望》的另一面. Use a smaller title and visually align its leading book-title bracket with the text above and below. Omit reading time and the arrow from these cards.
+
+## Unified editorial workspace — 2026-11-21
+
+Merge the index and content pages into one ivory workspace. Enter directly into 关于锵稿, which is first in the navigation, followed by 专栏、影展专题、播客、深度访谈. Each section keeps its original icon. Clicking another section reveals its content, and clicking an article opens the reader in that pane. Keep the original five icons with their corresponding sections, Songti labels, orange bouncing marker, shared corner brand, and centered PAPERBULLET@2026 footer. Desktop navigation stays on the left; at phone widths it becomes a horizontal, scrollable top navigation and the marker bounces horizontally beneath the selected item.
+
+Keep the studio and the real workspace surface mounted together. Returning to the studio reverses the same projection/camera/shutter timeline used on entry, and re-entry restores the current page and reading position. Pause the 3D render loop while the full-screen workspace is active. Preserve direct article URLs, browser history, reduced motion, and the fallback link when WebGL is unavailable.
+
+
+## About editorial and page motion — 2026-11-21
+
+The About page includes the complete user-supplied 「锵稿新公号·发刊词」 in Simplified Chinese, retaining its nine paragraphs, historical name 「枪稿」, the original relative date wording, and signature 「（锵稿主笔 子戈）」. Rewrite the introduction from this source rather than generic brand claims. Do not include the user's editing instructions in the article.
+
+Content changes slide upward from below and ease firmly into place. Keep the shared brand and navigation stationary and disable this transition for reduced-motion users.
+
+
+About-page introduction, label, and founding editorial share the same left edge; the introduction and editorial use the same 760px maximum reading width. Section index labels follow the current navigation order: 01 关于锵稿, 02 专栏, 03 影展专题, 04 播客, 05 深度访谈. Article numbers, author-card numbers, and content counts retain their own numbering.
+
+Replace 电影与文字 / FILM & WORDS with 商业合作 / 联系我们 and standalone Xiaoyuzhou, Weibo, and WeChat marks, sized and colored for the ivory editorial design. Preserve the existing confirmed Xiaoyuzhou show URL; Weibo links to https://weibo.com/u/6358247616. WeChat opens the supplied QR code alone in a centered dialog over a translucent blurred page, with 扫描联系 beneath it. Preserve the QR source pixels and quiet zone. Support keyboard, backdrop dismissal, and phone screens. The user-supplied founding editorial date is 2023-09-05; display it below the title as 2023年9月5日.
+
+The 播客 page heading shares the same Songti font family, weight, size, line height, and spacing as the other directory headings. Retain only its pale fluorescent marker, sized proportionally to the shared heading on desktop and phone. Latest user override: center the top heading areas of all five sections and their collection pages, including section index labels and short heading descriptions. The About slogan also centers; its introduction, contacts, and founding editorial retain their reading layout.
+
+## Local editing and multilingual release — 2026-11-21
+
+Use the existing local Node/Vite backend, launched through PAPERBULLET.code-workspace or npm run admin. Support article title/subtitle styles, block bold/italic/alignment, cover and body image dimensions, article numbering, dynamic author/festival collections, podcast programme/status/order, media upload, and per-record translations. content/editorial.json is the single editable content source; published.json is generated and excludes drafts. Preserve all published IDs, assets and original content. Keep credentials in ignored .local-admin, and never put the admin service in the public build. The user's explicit request authorizes this release to the existing GitHub repository; subsequent publishing remains a deliberate VS Code commit and manual publish task.
+
+The corner logo returns to the studio through the existing reverse transition. Its former return-link position contains an animated language menu: 简体中文, 繁體中文, English. Retain zh-HK language semantics without showing （香港） in the option. Localize both the interface and supplied article/podcast text, including the studio button and projection slogan. Missing future translations fall back to original text; the CMS supports creating and editing translations rather than silently machine-translating them.
+
+Optically center Chinese About slogan lines by hanging the unused trailing portion of full-width punctuation; do not apply that correction to English punctuation. Episode cards open their destinations without a separate 在小宇宙收听 caption or arrow. Festival marks share exactly aligned original/pixel canvases; run a brief bounded scan for hover/focus and a staggered, finite visible-area preview on touch, while preserving one-tap navigation and reduced motion.
+
+English section headings display only their centered index number (01–05), omitting the slash and repeated uppercase English label. In English, the supplied festival logos stand alone without another translated festival name beneath them; keep their accessible link names. Chinese versions retain their section labels and festival names. Changing language fades the current text out before revealing the new language; preserve the current route and reading position, and respect reduced motion.

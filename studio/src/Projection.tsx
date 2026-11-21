@@ -3,15 +3,16 @@ import { useFrame, useThree } from '@react-three/fiber'
 import { useEffect, useMemo, useRef } from 'react'
 import { AdditiveBlending, BufferGeometry, CanvasTexture, DoubleSide, Float32BufferAttribute, MathUtils, Mesh, PerspectiveCamera, ShaderMaterial, SRGBColorSpace, Vector2, Vector3 } from 'three'
 import { BEAM, BEAM_VERT, DUST, DUST_VERT, VERT, WALL } from './shaders'
-import { LENS, SCREEN, type Controls } from './set'
+import { LENS, SCREEN, TRANSITION_DURATION, type Controls } from './set'
 import { studioAsset } from './assets'
 import { quad } from './projectedPage'
+import { studioLabels, useStudioLocale } from './locale'
 
 const smooth = (x: number) => MathUtils.smootherstep(MathUtils.clamp(x, 0, 1), 0, 1)
-const still = matchMedia('(prefers-reduced-motion: reduce)').matches
 const wallUVs = [[-0.5,-0.5],[0.5,-0.5],[0.5,0.5],[-0.5,0.5]] as const
 
 function useTitle() {
+  const locale = useStudioLocale()
   const portrait = useThree(({ size }) => size.width / size.height < 0.87)
   const seal = useTexture(studioAsset('../assets/logo.jpg'))
   const texture = useMemo(() => {
@@ -32,14 +33,16 @@ function useTitle() {
     ctx.font = '900 157px "Arial Narrow", "Helvetica Neue", Arial, sans-serif'
     ctx.letterSpacing = '-8px'
     ctx.fillText('PAPERBULLET', 764, 545, 1290)
-    ctx.font = `600 ${portrait ? 94 : 72}px "Songti SC", "STSong", serif`
-    ctx.letterSpacing = '3px'
-    ctx.fillText('隐姓不埋名，缴械不投降。', canvas.width / 2, 690)
+    ctx.font = `600 ${locale === 'en' ? 56 : portrait ? 94 : 72}px "Songti SC", "STSong", serif`
+    ctx.letterSpacing = locale === 'en' ? '1px' : '3px'
+    studioLabels[locale].slogan.forEach((line, index) => {
+      ctx.fillText(line, canvas.width / 2, locale === 'en' ? 653 + index * 76 : 690, 1320)
+    })
     const tex = new CanvasTexture(canvas)
     tex.colorSpace = SRGBColorSpace
     tex.anisotropy = 8
     return tex
-  }, [seal, portrait])
+  }, [seal, portrait, locale])
   useEffect(() => () => texture.dispose(), [texture])
   return texture
 }
@@ -91,8 +94,14 @@ export function Projection({control}:{control:Controls}) {
   useEffect(()=>()=>{cone.dispose();particles.dispose()},[cone,particles])
   useFrame(({clock})=>{
     const cam=camera as PerspectiveCamera, aspect=size.width/size.height, phone=aspect<0.87
-    const time=control.start ? (performance.now()-control.start)/1000 : 0
-    const fraction=control.start ? (still ? 1 : smooth((time-.05)/1.85)) : 0
+    const still=control.reducedMotion, now=performance.now()
+    if(control.direction){
+      const step=Math.min(.1,Math.max(0,(now-control.lastTick)/1000))
+      control.time=still ? (control.direction>0?TRANSITION_DURATION:0) : MathUtils.clamp(control.time+control.direction*step,0,TRANSITION_DURATION)
+    }
+    control.lastTick=now
+    const time=control.time
+    const fraction=smooth((time-.05)/1.85)
     const {pos,target,front,corners}=scratch
     if(phone) {
       const distance=Math.max(1,0.462/aspect)
@@ -113,10 +122,10 @@ export function Projection({control}:{control:Controls}) {
     cam.lookAt(target.lerp(SCREEN,fraction));cam.updateProjectionMatrix();cam.updateMatrixWorld()
     if(screen.current) screen.current.scale.set(width*1.25,height*1.25,1)
     const t=still?0:clock.elapsedTime
-    const shutter=control.start&&!still ? .04+.96*(time<.14?1-smooth(time/.14):smooth((time-.14)/.36)) : 1
+    const shutter=!still ? .04+.96*(time<.14?1-smooth(time/.14):smooth((time-.14)/.36)) : 1
     const page=control.screenElement
-    const revealPage=control.start && time>=.14
-    const open=control.start&&!still ? (time<.14?1:smooth((time-.14)/.3)) : 1
+    const revealPage=time>=.14
+    const open=!still ? (time<.14?1:smooth((time-.14)/.3)) : 1
     if(wall.current){
       const u=wall.current.uniforms
       u.uTime.value=t;u.uShutter.value=shutter;u.uOpen.value.set(1,Math.max(.015,open))
@@ -135,11 +144,17 @@ export function Projection({control}:{control:Controls}) {
       page.style.visibility='visible'
       page.style.opacity=String(smooth((time-.14)/.38))
       page.style.clipPath=open<1?`inset(${(1-open)*50}% 0)`:'none'
+    }else if(page){
+      page.style.visibility='hidden'
+      page.style.opacity='0'
+      page.style.clipPath='none'
     }
     if(!control.ready){control.ready=true;control.onReady()}
-    if(control.start&&!control.finished&&(still?time>.17:time>2.02)){
-      control.finished=true
-      control.onEnter()
+    if((control.direction<0 && time===0) || (control.direction>0 && time===TRANSITION_DURATION)){
+      const direction=control.direction
+      control.direction=0
+      if(direction>0)control.onEnter()
+      else control.onExit()
     }
   })
   return <>

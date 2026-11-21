@@ -1,12 +1,28 @@
-import { Component, Suspense, useEffect, useRef, useState, type ReactNode } from 'react'
+import { Component, Suspense, useState, useSyncExternalStore, type ReactNode } from 'react'
 import {createRoot} from 'react-dom/client'
 import { Canvas } from '@react-three/fiber'
 import { NeutralToneMapping } from 'three'
 import { Studio } from './Studio'
-import type { Controls } from './set'
+import { TRANSITION_DURATION, type Controls, type Direction } from './set'
+import { studioLabels, useStudioLocale } from './locale'
 import './studio.css'
 
-type Options={onEnter:()=>void; onReady?:()=>void; onError?:()=>void; screenElement?:HTMLElement}
+type Options={
+  onEnter:()=>void
+  onExit?:()=>void
+  onReady?:()=>void
+  onError?:()=>void
+  onTransitionStart?:(direction:'enter'|'exit')=>void
+  initialView?:'studio'|'screen'
+  screenElement?:HTMLElement
+}
+
+type Store={
+  control:Controls
+  subscribe:(listener:()=>void)=>()=>void
+  getSnapshot:()=>number
+  enter:()=>void
+}
 
 function gateSound(){
   try{
@@ -47,34 +63,71 @@ class StageBoundary extends Component<{children:ReactNode;onError:()=>void},{fai
   componentDidCatch(){this.props.onError()}
   render(){return this.state.failed?null:this.props.children}
 }
-function Fallback({onError}:{onError:()=>void}){
-  useEffect(onError,[onError])
-  return null
-}
-
-function StudioRoot({options}:{options:Options}){
-  const [entering,setEntering]=useState(false)
+function StudioRoot({store}:{store:Store}){
+  useSyncExternalStore(store.subscribe,store.getSnapshot)
+  const locale=useStudioLocale()
+  const {control}=store
   const [grain]=useState(stockGrain)
-  const [ready,setReady]=useState(false)
-  const control=useRef<Controls>({
-    start:0,finished:false,ready:false,screenElement:options.screenElement,
-    onReady:()=>{requestAnimationFrame(()=>{setReady(true);options.onReady?.()})},onEnter:options.onEnter,
-  })
-  const trigger=()=>{
-    if(!control.current.ready || control.current.start)return
-    control.current.start=performance.now()
-    setEntering(true);gateSound()
-  }
-  return <div className={'pb-stage'+(entering?' pb-entering':'')}>
-    <Canvas shadows="variance" dpr={[1,1.6]} camera={{position:[1.27,.91,1.99],fov:40,near:.025,far:45}} gl={{antialias:false,toneMapping:NeutralToneMapping,alpha:false,powerPreference:'high-performance'}} fallback={<Fallback onError={options.onError??(()=>{})}/>}>
-      <Suspense fallback={null}><Studio control={control.current} trigger={trigger}/></Suspense>
+  const inside=control.time>0 || control.direction!==0
+  const view=control.direction>0?'entering':control.direction<0?'exiting':control.time===TRANSITION_DURATION?'screen':'studio'
+  return <div className={'pb-stage'+(inside?' pb-entering':'')} data-studio-view={view} data-active={control.active} data-studio-locale={locale}>
+    <Canvas frameloop={control.active?'always':'never'} shadows="variance" dpr={[1,1.6]} camera={{position:[1.27,.91,1.99],fov:40,near:.025,far:45}} gl={{antialias:false,toneMapping:NeutralToneMapping,alpha:false,powerPreference:'high-performance'}}>
+      <Suspense fallback={null}><Studio control={control} trigger={store.enter}/></Suspense>
     </Canvas>
     <div aria-hidden="true" className="pb-grain" style={{backgroundImage:grain}}/>
-    {ready && <button type="button" className="pb-play" onClick={trigger} disabled={entering}><span aria-hidden="true" className="pb-play__mark"/>开始放映</button>}
+    {control.ready && <button type="button" className="pb-play" onClick={store.enter} disabled={inside}><span aria-hidden="true" className="pb-play__mark"/>{studioLabels[locale].play}</button>}
   </div>
 }
 export function mountStudio(element:HTMLElement,options:Options){
   const root=createRoot(element)
-  root.render(<StageBoundary onError={options.onError??(()=>{})}><StudioRoot options={options}/></StageBoundary>)
-  return {destroy:()=>{queueMicrotask(()=>root.unmount())}}
+  const listeners=new Set<()=>void>()
+  const media=matchMedia('(prefers-reduced-motion: reduce)')
+  let revision=0,disposed=false,readyFrame=0,pending:Direction=0
+  const emit=()=>{if(!disposed){revision++;listeners.forEach(listener=>listener())}}
+  const control:Controls={
+    time:options.initialView==='screen'?TRANSITION_DURATION:0,
+    lastTick:performance.now(),direction:0,active:true,reducedMotion:media.matches,ready:false,
+    screenElement:options.screenElement,
+    onReady:()=>{
+      readyFrame=requestAnimationFrame(()=>{
+        if(disposed)return
+        emit();options.onReady?.()
+        if(pending){const direction=pending;pending=0;request(direction)}
+      })
+    },
+    onEnter:()=>{if(!disposed){emit();options.onEnter()}},
+    onExit:()=>{if(!disposed){emit();options.onExit?.()}},
+  }
+  const setActive=(active:boolean)=>{
+    if(disposed || control.active===active)return
+    control.active=active;control.lastTick=performance.now();emit()
+  }
+  const request=(direction:Direction)=>{
+    if(disposed)return
+    setActive(true)
+    if(!control.ready){pending=direction;return}
+    if(control.direction===direction)return
+    if(!control.direction && control.time===(direction>0?TRANSITION_DURATION:0))return
+    control.direction=direction;control.lastTick=performance.now()
+    emit();options.onTransitionStart?.(direction>0?'enter':'exit');gateSound()
+  }
+  const onMotionChange=()=>{control.reducedMotion=media.matches}
+  media.addEventListener('change',onMotionChange)
+  const store:Store={
+    control,
+    subscribe:listener=>{listeners.add(listener);return()=>{listeners.delete(listener)}},
+    getSnapshot:()=>revision,
+    enter:()=>request(1),
+  }
+  root.render(<StageBoundary onError={options.onError??(()=>{})}><StudioRoot store={store}/></StageBoundary>)
+  return {
+    enter:store.enter,
+    exit:()=>request(-1),
+    setActive,
+    destroy:()=>{
+      if(disposed)return
+      disposed=true;cancelAnimationFrame(readyFrame);listeners.clear();media.removeEventListener('change',onMotionChange)
+      queueMicrotask(()=>root.unmount())
+    },
+  }
 }

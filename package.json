@@ -10,7 +10,10 @@
     "test:sites": "node --test tests/sites-worker.test.mjs",
     "admin": "node server/local-admin.mjs",
     "content:publish": "node scripts/publish-content.mjs",
-    "test:admin": "node --test tests/admin.test.mjs"
+    "test:admin": "node --test tests/admin.test.mjs",
+    "test:content": "node --test tests/content.test.mjs",
+    "check": "npm run content:publish && node --test tests/admin.test.mjs tests/content.test.mjs tests/sites-worker.test.mjs && npm run build",
+    "publish:github": "node scripts/publish-github.mjs"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",

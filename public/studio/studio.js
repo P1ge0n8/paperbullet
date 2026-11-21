@@ -20753,7 +20753,7 @@ var Zf = class {
 	}
 };
 typeof __THREE_DEVTOOLS__ < "u" && __THREE_DEVTOOLS__.dispatchEvent(new CustomEvent("register", { detail: { revision: "186" } })), typeof window < "u" && (window.__THREE__ ? V("WARNING: Multiple instances of Three.js being imported.") : window.__THREE__ = "186");
-// ../../desk-portfolio/node_modules/three/build/three.module.js
+// ../../../../../2026-11-16/github-com-hitianqi-desk-portfolio-tianqiz/work/desk-portfolio/node_modules/three/build/three.module.js
 var Qf = /* @__PURE__ */ s({
 	ACESFilmicToneMapping: () => 4,
 	AddEquation: () => 100,
@@ -27398,7 +27398,7 @@ function Jg() {
 		t.connected = !1, t.sync(!0);
 	}), [t]), t.Bridge;
 }
-// ../../desk-portfolio/node_modules/@react-three/fiber/dist/events-e51d7528.esm.js
+// ../../../../../2026-11-16/github-com-hitianqi-desk-portfolio-tianqiz/work/desk-portfolio/node_modules/@react-three/fiber/dist/events-e51d7528.esm.js
 var Yg = /* @__PURE__ */ l(p()), Xg = /* @__PURE__ */ ((e, t) => typeof window < "u" && ((e = window.document)?.createElement || (t = window.navigator)?.product === "ReactNative"))() ? v.useLayoutEffect : v.useEffect;
 function Zg(e) {
 	let t = v.useRef(e);
@@ -34249,7 +34249,7 @@ function by(e) {
 		}
 	};
 }
-// ../../desk-portfolio/node_modules/react-use-measure/dist/index.js
+// ../../../../../2026-11-16/github-com-hitianqi-desk-portfolio-tianqiz/work/desk-portfolio/node_modules/react-use-measure/dist/index.js
 function xy(e, t) {
 	let n;
 	return (...r) => {
@@ -34368,7 +34368,7 @@ var Ey = [
 	"width",
 	"height"
 ], Dy = (e, t) => Ey.every((n) => e[n] === t[n]);
-// ../../desk-portfolio/node_modules/@react-three/fiber/dist/react-three-fiber.esm.js
+// ../../../../../2026-11-16/github-com-hitianqi-desk-portfolio-tianqiz/work/desk-portfolio/node_modules/@react-three/fiber/dist/react-three-fiber.esm.js
 function Oy({ ref: e, children: t, fallback: n, resize: r, style: i, gl: a, events: o = by, eventSource: s, eventPrefix: c, shadows: l, linear: u, flat: d, legacy: f, orthographic: p, frameloop: m, dpr: h, performance: g, raycaster: _, camera: y, scene: b, onPointerMissed: x, onCreated: S, ...C }) {
 	v.useMemo(() => wv(Qf), []);
 	let w = t_(), [T, E] = Sy({
@@ -34455,7 +34455,7 @@ function Oy({ ref: e, children: t, fallback: n, resize: r, style: i, gl: a, even
 function ky(e) {
 	return /*#__PURE__*/ (0, $.jsx)(Vg, { children: /*#__PURE__*/ (0, $.jsx)(Oy, { ...e }) });
 }
-// ../../desk-portfolio/node_modules/@babel/runtime/helpers/esm/extends.js
+// ../../../../../2026-11-16/github-com-hitianqi-desk-portfolio-tianqiz/work/desk-portfolio/node_modules/@babel/runtime/helpers/esm/extends.js
 function Ay() {
 	return Ay = Object.assign ? Object.assign.bind() : function(e) {
 		for (var t = 1; t < arguments.length; t++) {
@@ -34465,7 +34465,7 @@ function Ay() {
 		return e;
 	}, Ay.apply(null, arguments);
 }
-// ../../desk-portfolio/node_modules/maath/dist/objectSpread2-284232a6.esm.js
+// ../../../../../2026-11-16/github-com-hitianqi-desk-portfolio-tianqiz/work/desk-portfolio/node_modules/maath/dist/objectSpread2-284232a6.esm.js
 function jy(e, t, n) {
 	return t in e ? Object.defineProperty(e, t, {
 		value: n,
@@ -34475,11 +34475,11 @@ function jy(e, t, n) {
 	}) : e[t] = n, e;
 }
 new U(), new U();
-// ../../desk-portfolio/node_modules/maath/dist/classCallCheck-9098b006.esm.js
+// ../../../../../2026-11-16/github-com-hitianqi-desk-portfolio-tianqiz/work/desk-portfolio/node_modules/maath/dist/classCallCheck-9098b006.esm.js
 function My(e, t) {
 	if (!(e instanceof t)) throw TypeError("Cannot call a class as a function");
 }
-// ../../desk-portfolio/node_modules/maath/dist/index-0332b2ed.esm.js
+// ../../../../../2026-11-16/github-com-hitianqi-desk-portfolio-tianqiz/work/desk-portfolio/node_modules/maath/dist/index-0332b2ed.esm.js
 var Ny = function e(t, n, r) {
 	var i = this;
 	My(this, e), jy(this, "dot2", function(e, t) {
@@ -34787,9 +34787,9 @@ new function e(t) {
 		n.seed = e, n.value = zy(e);
 	}), jy(this, "value", zy(this.seed)), this.init(t);
 }(Math.random());
-// ../../desk-portfolio/node_modules/three-stdlib/_polyfill/constants.js
+// ../../../../../2026-11-16/github-com-hitianqi-desk-portfolio-tianqiz/work/desk-portfolio/node_modules/three-stdlib/_polyfill/constants.js
 var By = /* @__PURE__ */ parseInt("186".replace(/\D+/g, ""));
-// ../../desk-portfolio/node_modules/three-stdlib/utils/BufferGeometryUtils.js
+// ../../../../../2026-11-16/github-com-hitianqi-desk-portfolio-tianqiz/work/desk-portfolio/node_modules/three-stdlib/utils/BufferGeometryUtils.js
 function Vy(e, t) {
 	if (t === 0) return console.warn("THREE.BufferGeometryUtils.toTrianglesDrawMode(): Geometry already defined as triangles."), e;
 	if (t === 2 || t === 1) {
@@ -34812,7 +34812,7 @@ function Vy(e, t) {
 	}
 	return console.error("THREE.BufferGeometryUtils.toTrianglesDrawMode(): Unknown draw mode:", t), e;
 }
-// ../../desk-portfolio/node_modules/three-stdlib/node_modules/fflate/esm/browser.js
+// ../../../../../2026-11-16/github-com-hitianqi-desk-portfolio-tianqiz/work/desk-portfolio/node_modules/three-stdlib/node_modules/fflate/esm/browser.js
 var Hy = Uint8Array, Uy = Uint16Array, Wy = Uint32Array, Gy = new Hy([
 	0,
 	0,
@@ -35040,7 +35040,7 @@ var _b = typeof TextDecoder < "u" && /*#__PURE__*/ new TextDecoder();
 try {
 	_b.decode(mb, { stream: !0 });
 } catch {}
-// ../../desk-portfolio/node_modules/three-stdlib/objects/GroundProjectedEnv.js
+// ../../../../../2026-11-16/github-com-hitianqi-desk-portfolio-tianqiz/work/desk-portfolio/node_modules/three-stdlib/objects/GroundProjectedEnv.js
 var vb = (e) => e && e.isCubeTexture, yb = class extends Va {
 	constructor(e, t) {
 		let n = vb(e), r = ((n ? e.image[0]?.width : e.image.width) ?? 1024) / 4, i = Math.floor(Math.log2(r)), a = 2 ** i, o = 3 * Math.max(a, 112), s = 4 * a, c = [
@@ -35144,7 +35144,7 @@ var vb = (e) => e && e.isCubeTexture, yb = class extends Va {
 		return this.material.uniforms.height.value;
 	}
 };
-// ../../desk-portfolio/node_modules/three-stdlib/_polyfill/LoaderUtils.js
+// ../../../../../2026-11-16/github-com-hitianqi-desk-portfolio-tianqiz/work/desk-portfolio/node_modules/three-stdlib/_polyfill/LoaderUtils.js
 function bb(e) {
 	if (typeof TextDecoder < "u") return new TextDecoder().decode(e);
 	let t = "";
@@ -35155,7 +35155,7 @@ function bb(e) {
 		return t;
 	}
 }
-// ../../desk-portfolio/node_modules/three-stdlib/loaders/GLTFLoader.js
+// ../../../../../2026-11-16/github-com-hitianqi-desk-portfolio-tianqiz/work/desk-portfolio/node_modules/three-stdlib/loaders/GLTFLoader.js
 var xb = "srgb", Sb = "srgb-linear", Cb = 3001, wb = 3e3, Tb = class extends ou {
 	constructor(e) {
 		super(e), this.dracoLoader = null, this.ktx2Loader = null, this.meshoptDecoder = null, this.pluginCallbacks = [], this.register(function(e) {
@@ -36509,7 +36509,7 @@ function Cx(e, t, n) {
 		return t.targets === void 0 ? e : mx(e, t.targets, n);
 	});
 }
-// ../../desk-portfolio/node_modules/three-stdlib/shaders/HorizontalBlurShader.js
+// ../../../../../2026-11-16/github-com-hitianqi-desk-portfolio-tianqiz/work/desk-portfolio/node_modules/three-stdlib/shaders/HorizontalBlurShader.js
 var wx = {
 	uniforms: {
 		tDiffuse: { value: null },
@@ -37551,7 +37551,7 @@ function jx() {
 		}
 	}
 }
-// ../../desk-portfolio/node_modules/three-stdlib/libs/MeshoptDecoder.js
+// ../../../../../2026-11-16/github-com-hitianqi-desk-portfolio-tianqiz/work/desk-portfolio/node_modules/three-stdlib/libs/MeshoptDecoder.js
 var Mx, Nx = () => {
 	if (Mx) return Mx;
 	let e = new Uint8Array([
@@ -37745,7 +37745,7 @@ function Fx(e, t) {
 	}, [e, r]);
 }
 Fx.preload = (e) => ev.preload(gu, e), Fx.clear = (e) => ev.clear(gu, e);
-// ../../desk-portfolio/node_modules/@react-three/drei/core/Gltf.js
+// ../../../../../2026-11-16/github-com-hitianqi-desk-portfolio-tianqiz/work/desk-portfolio/node_modules/@react-three/drei/core/Gltf.js
 var Ix = null, Lx = "https://www.gstatic.com/draco/versioned/decoders/1.5.5/";
 function Rx(e = !0, t = !0, n) {
 	return (r) => {
@@ -37756,7 +37756,7 @@ var zx = (e, t, n, r) => ev(Tb, e, Rx(t, n, r));
 zx.preload = (e, t, n, r) => ev.preload(Tb, e, Rx(t, n, r)), zx.clear = (e) => ev.clear(Tb, e), zx.setDecoderPath = (e) => {
 	Lx = e;
 };
-// ../../desk-portfolio/node_modules/@monogrid/gainmap-js/dist/QuadRenderer-BoVhsTnD.js
+// ../../../../../2026-11-16/github-com-hitianqi-desk-portfolio-tianqiz/work/desk-portfolio/node_modules/@monogrid/gainmap-js/dist/QuadRenderer-BoVhsTnD.js
 var Bx = (e, t, n) => {
 	let r;
 	switch (e) {
@@ -38483,7 +38483,7 @@ function xS(e) {
 function SS(e) {
 	return e === "cube" ? mu : e === "hdr" ? Ex : e === "exr" ? Ox : e === "jpg" || e === "jpeg" ? fS : e === "webp" ? dS : null;
 }
-// ../../desk-portfolio/node_modules/@react-three/drei/core/Environment.js
+// ../../../../../2026-11-16/github-com-hitianqi-desk-portfolio-tianqiz/work/desk-portfolio/node_modules/@react-three/drei/core/Environment.js
 var CS = (e) => e.current && e.current.isScene, wS = (e) => CS(e) ? e.current : e;
 function TS(e, t, n, r, i = {}) {
 	var a, o;
@@ -38610,7 +38610,7 @@ function kS(e) {
 function AS(e) {
 	return e.ground ? /*#__PURE__*/ v.createElement(kS, e) : e.map ? /*#__PURE__*/ v.createElement(ES, e) : e.children ? /*#__PURE__*/ v.createElement(OS, e) : /*#__PURE__*/ v.createElement(DS, e);
 }
-// ../../desk-portfolio/node_modules/@react-three/drei/core/ContactShadows.js
+// ../../../../../2026-11-16/github-com-hitianqi-desk-portfolio-tianqiz/work/desk-portfolio/node_modules/@react-three/drei/core/ContactShadows.js
 var jS = /* @__PURE__ */ v.forwardRef(({ scale: e = 10, frames: t = Infinity, opacity: n = 1, width: r = 1, height: i = 1, blur: a = 1, near: o = 0, far: s = 10, resolution: c = 512, smooth: l = !0, color: u = "#000000", depthWrite: d = !1, renderOrder: f, ...p }, m) => {
 	let h = v.useRef(null), g = Y_((e) => e.scene), _ = Y_((e) => e.gl), y = v.useRef(null);
 	r *= Array.isArray(e) ? e[0] : e || 1, i *= Array.isArray(e) ? e[1] : e || 1;
@@ -39468,7 +39468,7 @@ function lC({ position: e, rotationY: t = 0, scale: n = 1, onClick: r, running: 
 		]
 	});
 }
-// ../../desk-portfolio/node_modules/postprocessing/build/index.js
+// ../../../../../2026-11-16/github-com-hitianqi-desk-portfolio-tianqiz/work/desk-portfolio/node_modules/postprocessing/build/index.js
 var uC = /* @__PURE__ */ (() => {
 	let e = new Float32Array([
 		-1,
@@ -41990,7 +41990,7 @@ function Lw(e, t, n) {
 function Rw(e, t, n, r) {
 	return Lw(Lw(e, t, .75), Lw(n, r, .75), .875);
 }
-// ../../desk-portfolio/node_modules/n8ao/dist/N8AO.js
+// ../../../../../2026-11-16/github-com-hitianqi-desk-portfolio-tianqiz/work/desk-portfolio/node_modules/n8ao/dist/N8AO.js
 function zw(e) {
 	return e && e.__esModule ? e.default : e;
 }
@@ -43228,9 +43228,9 @@ function lE() {
 	});
 }
 // src/shaders.ts
-var uE = "varying vec2 vUv; void main(){ vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0); }", dE = "\nuniform sampler2D uSlide; uniform float uOn; uniform float uShutter; uniform float uTime;\nuniform vec2 uOpen; uniform float uBoost;\nvarying vec2 vUv;\nconst float PAD = 1.250;\nconst float KEY = 0.0;\nvoid main(){\n  // plane uv -> frame uv, undoing the keystone so the slide fills the trapezoid\n  vec2 p = (vUv - 0.5) * PAD;\n  p.x /= 1.0 + KEY * p.y;\n  vec2 f = p + 0.5;\n  vec2 c = f - 0.5;\n  float r = length(c * vec2(1.6, 1.0));\n  // soft frame edge: the gate is out of focus\n  vec2 e = smoothstep(vec2(0.0), vec2(0.006), f) * smoothstep(vec2(0.0), vec2(0.006), 1.0 - f);\n  float inFrame = e.x * e.y;\n  // defocus and colour fringing, both growing towards the edges\n  float blur = 0.0009 + 0.0016 * r;\n  vec2 ca = c * 0.0035;\n  vec3 col = vec3(0.0);\n  for (int i = 0; i < 6; i++) {\n    float a = float(i) * 1.0472;\n    vec2 o = vec2(cos(a), sin(a)) * blur;\n    col.r += texture2D(uSlide, f + o + ca).r;\n    col.g += texture2D(uSlide, f + o).g;\n    col.b += texture2D(uSlide, f + o - ca).b;\n  }\n  col /= 6.0;\n  // powering on, the frame is a white line first, the slide only as it opens\n  col = mix(vec3(1.0), col, smoothstep(0.02, 0.4, uOpen.y));\n  vec2 gap = abs(c) - uOpen * 0.5;\n  float opened = (1.0 - smoothstep(-0.004, 0.004, gap.x)) * (1.0 - smoothstep(-0.004, 0.004, gap.y));\n  // the lamp: hot in the middle, falling off to the corners, warm\n  float hot = 1.0 - 0.45 * smoothstep(0.0, 0.85, r);\n  float flicker = 1.0 + 0.012 * sin(uTime * 7.3) * sin(uTime * 2.1);\n  vec3 lamp = vec3(1.0, 0.93, 0.8) * 0.75 * hot * flicker;\n  vec3 light = lamp * col * inFrame * opened * uBoost;\n  // a faint halo of stray light around the frame\n  vec2 d = max(abs(c) - 0.5, 0.0);\n  vec2 edge = smoothstep(vec2(0.0), vec2(0.12), vUv) * smoothstep(vec2(0.0), vec2(0.12), 1.0 - vUv);\n  float halo = exp(-length(d) * 9.0) * (1.0 - inFrame) * 0.07 * edge.x * edge.y * uOpen.y;\n  gl_FragColor = vec4((light + vec3(1.0, 0.92, 0.8) * halo) * uOn * uShutter, 1.0);\n}", fE = "varying vec2 vUv; varying vec3 vPos; void main(){ vUv = uv; vPos = position; gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0); }", pE = "\nuniform float uOn; uniform float uTime;\nvarying vec2 vUv; varying vec3 vPos;\nfloat hash(vec2 p){ return fract(sin(dot(p, vec2(41.3, 289.1))) * 43758.5); }\nfloat noise(vec2 p){ vec2 i = floor(p), f = fract(p); f = f*f*(3.0-2.0*f);\n  return mix(mix(hash(i), hash(i+vec2(1,0)), f.x), mix(hash(i+vec2(0,1)), hash(i+vec2(1,1)), f.x), f.y); }\nvoid main(){\n  // brightest near the lens, with slow drifting haze through it\n  float t = vUv.y;\n  float haze = 0.6 + 0.4 * noise(vPos.xy * 3.0 + vec2(uTime * 0.05, uTime * 0.03));\n  float a = uOn * (0.006 + 0.05 * pow(1.0 - t, 3.0)) * haze;\n  gl_FragColor = vec4(vec3(1.0, 0.95, 0.85) * a, 1.0);\n}", mE = "\nuniform float uTime; attribute float aAlong; attribute float aSeed; varying float vA;\nvoid main(){\n  vec3 p = position;\n  p += vec3(sin(uTime * 0.11 + aSeed), sin(uTime * 0.07 + aSeed * 1.7) - 0.0, cos(uTime * 0.09 + aSeed * 2.3)) * 0.03 * (0.5 + aAlong);\n  vec4 mv = modelViewMatrix * vec4(p, 1.0);\n  gl_Position = projectionMatrix * mv;\n  gl_PointSize = min((1.2 + fract(aSeed) * 2.0) * (6.0 / -mv.z), 3.5);\n  // motes catch the light, more near the lens and some twinkle as they turn\n  vA = (0.25 + 0.75 * (1.0 - aAlong)) * (0.4 + 0.6 * abs(sin(uTime * 0.6 + aSeed)));\n}", hE = "\nuniform float uOn; varying float vA;\nvoid main(){\n  float d = length(gl_PointCoord - 0.5);\n  float a = smoothstep(0.5, 0.0, d) * vA * uOn * 0.35;\n  gl_FragColor = vec4(vec3(1.0, 0.95, 0.85) * a, 1.0);\n}", gE = new W(-.49, .009, .03), _E = 1.68, vE = .18, yE = -3.22, bE = new In().setFromEuler(new vr(vE, 0, 0)), xE = new G().compose(gE, bE, new W(_E, _E, _E)), SE = new W(...qS).applyMatrix4(xE), CE = new W(0, 0, -1).applyQuaternion(bE), wE = SE.clone().addScaledVector(CE, (yE - SE.z) / CE.z);
+var uE = "varying vec2 vUv; void main(){ vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0); }", dE = "\nuniform sampler2D uSlide; uniform float uOn; uniform float uShutter; uniform float uTime;\nuniform vec2 uOpen; uniform float uBoost;\nvarying vec2 vUv;\nconst float PAD = 1.250;\nconst float KEY = 0.0;\nvoid main(){\n  // plane uv -> frame uv, undoing the keystone so the slide fills the trapezoid\n  vec2 p = (vUv - 0.5) * PAD;\n  p.x /= 1.0 + KEY * p.y;\n  vec2 f = p + 0.5;\n  vec2 c = f - 0.5;\n  float r = length(c * vec2(1.6, 1.0));\n  // soft frame edge: the gate is out of focus\n  vec2 e = smoothstep(vec2(0.0), vec2(0.006), f) * smoothstep(vec2(0.0), vec2(0.006), 1.0 - f);\n  float inFrame = e.x * e.y;\n  // defocus and colour fringing, both growing towards the edges\n  float blur = 0.0009 + 0.0016 * r;\n  vec2 ca = c * 0.0035;\n  vec3 col = vec3(0.0);\n  for (int i = 0; i < 6; i++) {\n    float a = float(i) * 1.0472;\n    vec2 o = vec2(cos(a), sin(a)) * blur;\n    col.r += texture2D(uSlide, f + o + ca).r;\n    col.g += texture2D(uSlide, f + o).g;\n    col.b += texture2D(uSlide, f + o - ca).b;\n  }\n  col /= 6.0;\n  // powering on, the frame is a white line first, the slide only as it opens\n  col = mix(vec3(1.0), col, smoothstep(0.02, 0.4, uOpen.y));\n  vec2 gap = abs(c) - uOpen * 0.5;\n  float opened = (1.0 - smoothstep(-0.004, 0.004, gap.x)) * (1.0 - smoothstep(-0.004, 0.004, gap.y));\n  // the lamp: hot in the middle, falling off to the corners, warm\n  float hot = 1.0 - 0.45 * smoothstep(0.0, 0.85, r);\n  float flicker = 1.0 + 0.012 * sin(uTime * 7.3) * sin(uTime * 2.1);\n  vec3 lamp = vec3(1.0, 0.93, 0.8) * 0.75 * hot * flicker;\n  vec3 light = lamp * col * inFrame * opened * uBoost;\n  // a faint halo of stray light around the frame\n  vec2 d = max(abs(c) - 0.5, 0.0);\n  vec2 edge = smoothstep(vec2(0.0), vec2(0.12), vUv) * smoothstep(vec2(0.0), vec2(0.12), 1.0 - vUv);\n  float halo = exp(-length(d) * 9.0) * (1.0 - inFrame) * 0.07 * edge.x * edge.y * uOpen.y;\n  gl_FragColor = vec4((light + vec3(1.0, 0.92, 0.8) * halo) * uOn * uShutter, 1.0);\n}", fE = "varying vec2 vUv; varying vec3 vPos; void main(){ vUv = uv; vPos = position; gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0); }", pE = "\nuniform float uOn; uniform float uTime;\nvarying vec2 vUv; varying vec3 vPos;\nfloat hash(vec2 p){ return fract(sin(dot(p, vec2(41.3, 289.1))) * 43758.5); }\nfloat noise(vec2 p){ vec2 i = floor(p), f = fract(p); f = f*f*(3.0-2.0*f);\n  return mix(mix(hash(i), hash(i+vec2(1,0)), f.x), mix(hash(i+vec2(0,1)), hash(i+vec2(1,1)), f.x), f.y); }\nvoid main(){\n  // brightest near the lens, with slow drifting haze through it\n  float t = vUv.y;\n  float haze = 0.6 + 0.4 * noise(vPos.xy * 3.0 + vec2(uTime * 0.05, uTime * 0.03));\n  float a = uOn * (0.006 + 0.05 * pow(1.0 - t, 3.0)) * haze;\n  gl_FragColor = vec4(vec3(1.0, 0.95, 0.85) * a, 1.0);\n}", mE = "\nuniform float uTime; attribute float aAlong; attribute float aSeed; varying float vA;\nvoid main(){\n  vec3 p = position;\n  p += vec3(sin(uTime * 0.11 + aSeed), sin(uTime * 0.07 + aSeed * 1.7) - 0.0, cos(uTime * 0.09 + aSeed * 2.3)) * 0.03 * (0.5 + aAlong);\n  vec4 mv = modelViewMatrix * vec4(p, 1.0);\n  gl_Position = projectionMatrix * mv;\n  gl_PointSize = min((1.2 + fract(aSeed) * 2.0) * (6.0 / -mv.z), 3.5);\n  // motes catch the light, more near the lens and some twinkle as they turn\n  vA = (0.25 + 0.75 * (1.0 - aAlong)) * (0.4 + 0.6 * abs(sin(uTime * 0.6 + aSeed)));\n}", hE = "\nuniform float uOn; varying float vA;\nvoid main(){\n  float d = length(gl_PointCoord - 0.5);\n  float a = smoothstep(0.5, 0.0, d) * vA * uOn * 0.35;\n  gl_FragColor = vec4(vec3(1.0, 0.95, 0.85) * a, 1.0);\n}", gE = new W(-.49, .009, .03), _E = 1.68, vE = .18, yE = -3.22, bE = new In().setFromEuler(new vr(vE, 0, 0)), xE = new G().compose(gE, bE, new W(_E, _E, _E)), SE = new W(...qS).applyMatrix4(xE), CE = new W(0, 0, -1).applyQuaternion(bE), wE = SE.clone().addScaledVector(CE, (yE - SE.z) / CE.z), TE = 2.02;
 // src/projectedPage.ts
-function TE(e, t, [n, r], [i, a], [o, s], [c, l]) {
+function EE(e, t, [n, r], [i, a], [o, s], [c, l]) {
 	let u = i - o, d = c - o, f = a - s, p = l - s, m = n - i + o - c, h = r - a + s - l, g = u * p - d * f, _ = (m * p - d * h) / g, v = (u * h - m * f) / g, y = i - n + _ * i, b = c - n + v * c, x = a - r + _ * a, S = l - r + v * l;
 	return `matrix3d(${[
 		y / e,
@@ -43251,27 +43251,60 @@ function TE(e, t, [n, r], [i, a], [o, s], [c, l]) {
 		1
 	].map((e) => +e.toFixed(10)).join(",")})`;
 }
-// src/Projection.tsx
-var EE = (e) => Fn.smootherstep(Fn.clamp(e, 0, 1), 0, 1), DE = matchMedia("(prefers-reduced-motion: reduce)").matches, OE = [
+// src/locale.ts
+var DE = () => {
+	let e = document.documentElement.lang;
+	return e === "zh-HK" || e === "en" ? e : "zh-CN";
+};
+function OE() {
+	let [e, t] = (0, v.useState)(DE);
+	return (0, v.useEffect)(() => {
+		let e = new MutationObserver(() => t(DE()));
+		return e.observe(document.documentElement, {
+			attributes: !0,
+			attributeFilter: ["lang"]
+		}), () => e.disconnect();
+	}, []), e;
+}
+var kE = {
+	"zh-CN": {
+		play: "开始放映",
+		slogan: ["隐姓不埋名，缴械不投降。"]
+	},
+	"zh-HK": {
+		play: "開始放映",
+		slogan: ["隱姓不埋名，繳械不投降。"]
+	},
+	en: {
+		play: "Start screening",
+		slogan: ["Anonymous, not forgotten.", "Disarmed, never surrendered."]
+	}
+}, AE = (e) => Fn.smootherstep(Fn.clamp(e, 0, 1), 0, 1), jE = [
 	[-.5, -.5],
 	[.5, -.5],
 	[.5, .5],
 	[-.5, .5]
 ];
-function kE() {
-	let e = Y_(({ size: e }) => e.width / e.height < .87), t = Fx(GS("../assets/logo.jpg")), n = (0, v.useMemo)(() => {
-		let n = document.createElement("canvas");
-		n.width = 1536, n.height = 864;
-		let r = n.getContext("2d");
-		r.fillStyle = "#fcf3da", r.fillRect(0, 0, 1536, 864), r.save(), r.beginPath(), r.arc(768, 262, 88, 0, 2 * Math.PI), r.clip(), r.drawImage(t.image, 20, 20, 559, 559, 680, 174, 176, 176), r.restore(), r.textAlign = "center", r.fillStyle = "#1b1815", r.font = "900 157px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif", r.letterSpacing = "-8px", r.fillText("PAPERBULLET", 764, 545, 1290), r.font = `600 ${e ? 94 : 72}px "Songti SC", "STSong", serif`, r.letterSpacing = "3px", r.fillText("隐姓不埋名，缴械不投降。", n.width / 2, 690);
-		let i = new fs(n);
-		return i.colorSpace = vt, i.anisotropy = 8, i;
-	}, [t, e]);
-	return (0, v.useEffect)(() => () => n.dispose(), [n]), n;
+function ME() {
+	let e = OE(), t = Y_(({ size: e }) => e.width / e.height < .87), n = Fx(GS("../assets/logo.jpg")), r = (0, v.useMemo)(() => {
+		let r = document.createElement("canvas");
+		r.width = 1536, r.height = 864;
+		let i = r.getContext("2d");
+		i.fillStyle = "#fcf3da", i.fillRect(0, 0, 1536, 864), i.save(), i.beginPath(), i.arc(768, 262, 88, 0, 2 * Math.PI), i.clip(), i.drawImage(n.image, 20, 20, 559, 559, 680, 174, 176, 176), i.restore(), i.textAlign = "center", i.fillStyle = "#1b1815", i.font = "900 157px \"Arial Narrow\", \"Helvetica Neue\", Arial, sans-serif", i.letterSpacing = "-8px", i.fillText("PAPERBULLET", 764, 545, 1290), i.font = `600 ${e === "en" ? 56 : t ? 94 : 72}px "Songti SC", "STSong", serif`, i.letterSpacing = e === "en" ? "1px" : "3px", kE[e].slogan.forEach((t, n) => {
+			i.fillText(t, r.width / 2, e === "en" ? 653 + n * 76 : 690, 1320);
+		});
+		let a = new fs(r);
+		return a.colorSpace = vt, a.anisotropy = 8, a;
+	}, [
+		n,
+		t,
+		e
+	]);
+	return (0, v.useEffect)(() => () => r.dispose(), [r]), r;
 }
-function AE() {
+function NE() {
 	let e = [], t = [], n = [];
-	for (let r = 0; r < 4; r++) e.push(...SE.toArray(), ...wE.toArray(), ...wE.toArray()), t.push(.5, 0, 0, 1, 1, 1), n.push(0, 0, ...OE[r], ...OE[(r + 1) % 4]);
+	for (let r = 0; r < 4; r++) e.push(...SE.toArray(), ...wE.toArray(), ...wE.toArray()), t.push(.5, 0, 0, 1, 1, 1), n.push(0, 0, ...jE[r], ...jE[(r + 1) % 4]);
 	let r = new J();
 	r.setAttribute("position", new q(e, 3)), r.setAttribute("uv", new q(t, 2)), r.setAttribute("frameXY", new q(n, 2));
 	let i = [], a = [], o = [], s = [], c = 17, l = () => (c = Math.imul(c, 1664525) + 1013904223 >>> 0, c / 4294967296), u = new W();
@@ -43285,9 +43318,9 @@ function AE() {
 		dust: d
 	};
 }
-var jE = "uniform vec2 uFrame;attribute vec2 frameXY;\n" + fE.replace("vPos = position;", "vPos = position + vec3(frameXY*uFrame,0.);").replace("vec4(position, 1.0)", "vec4(vPos, 1.0)"), ME = "uniform vec2 uFrame;attribute vec2 frameXY;\n" + mE.replace("vec3 p = position;", "vec3 p = position + vec3(frameXY*uFrame,0.);");
-function NE({ control: e }) {
-	let { camera: t, size: n } = Y_(), r = kE(), i = (0, v.useRef)(null), a = (0, v.useRef)(null), o = (0, v.useRef)(null), s = (0, v.useRef)(null), { cone: c, dust: l } = (0, v.useMemo)(AE, []), u = (0, v.useMemo)(() => ({
+var PE = "uniform vec2 uFrame;attribute vec2 frameXY;\n" + fE.replace("vPos = position;", "vPos = position + vec3(frameXY*uFrame,0.);").replace("vec4(position, 1.0)", "vec4(vPos, 1.0)"), FE = "uniform vec2 uFrame;attribute vec2 frameXY;\n" + mE.replace("vec3 p = position;", "vec3 p = position + vec3(frameXY*uFrame,0.);");
+function IE({ control: e }) {
+	let { camera: t, size: n } = Y_(), r = ME(), i = (0, v.useRef)(null), a = (0, v.useRef)(null), o = (0, v.useRef)(null), s = (0, v.useRef)(null), { cone: c, dust: l } = (0, v.useMemo)(NE, []), u = (0, v.useMemo)(() => ({
 		pos: new W(),
 		target: new W(),
 		front: new W(),
@@ -43315,32 +43348,41 @@ function NE({ control: e }) {
 	return (0, v.useEffect)(() => () => {
 		c.dispose(), l.dispose();
 	}, [c, l]), X_(({ clock: r }) => {
-		let c = t, l = n.width / n.height, d = l < .87, f = e.start ? (performance.now() - e.start) / 1e3 : 0, p = e.start ? DE ? 1 : EE((f - .05) / 1.85) : 0, { pos: m, target: h, front: g, corners: _ } = u;
+		let c = t, l = n.width / n.height, d = l < .87, f = e.reducedMotion, p = performance.now();
+		if (e.direction) {
+			let t = Math.min(.1, Math.max(0, (p - e.lastTick) / 1e3));
+			e.time = f ? e.direction > 0 ? TE : 0 : Fn.clamp(e.time + e.direction * t, 0, TE);
+		}
+		e.lastTick = p;
+		let m = e.time, h = AE((m - .05) / 1.85), { pos: g, target: _, front: v, corners: y } = u;
 		if (d) {
 			let e = Math.max(1, .462 / l);
-			m.set(1.1 * e, 1.92, 3.05 * e), h.set(-.1, .36, -.3);
+			g.set(1.1 * e, 1.92, 3.05 * e), _.set(-.1, .36, -.3);
 		} else {
 			let e = Math.max(1, 1.5 / l);
-			m.set(1.27 * e, .91, 1.99 * e), h.set(-.008, .41, -.48);
+			g.set(1.27 * e, .91, 1.99 * e), _.set(-.008, .41, -.48);
 		}
-		let v = d ? 1.3 : 2.18, y = v / 1.78, b = Math.min(1.25, 2.7 / l), x = b * l, S = Fn.lerp(v, x, p), C = Fn.lerp(y, b, p), w = b / (2 * Math.tan(Fn.degToRad(15)));
-		c.fov = Fn.lerp(d ? 55 : 40, 30, p), g.copy(wE), g.z += w, c.position.copy(m.lerp(g, p)), c.lookAt(h.lerp(wE, p)), c.updateProjectionMatrix(), c.updateMatrixWorld(), i.current && i.current.scale.set(S * 1.25, C * 1.25, 1);
-		let T = DE ? 0 : r.elapsedTime, E = e.start && !DE ? .04 + .96 * (f < .14 ? 1 - EE(f / .14) : EE((f - .14) / .36)) : 1, D = e.screenElement, O = e.start && f >= .14, k = e.start && !DE ? f < .14 ? 1 : EE((f - .14) / .3) : 1;
+		let b = d ? 1.3 : 2.18, x = b / 1.78, S = Math.min(1.25, 2.7 / l), C = S * l, w = Fn.lerp(b, C, h), T = Fn.lerp(x, S, h), E = S / (2 * Math.tan(Fn.degToRad(15)));
+		c.fov = Fn.lerp(d ? 55 : 40, 30, h), v.copy(wE), v.z += E, c.position.copy(g.lerp(v, h)), c.lookAt(_.lerp(wE, h)), c.updateProjectionMatrix(), c.updateMatrixWorld(), i.current && i.current.scale.set(w * 1.25, T * 1.25, 1);
+		let D = f ? 0 : r.elapsedTime, O = f ? 1 : .04 + .96 * (m < .14 ? 1 - AE(m / .14) : AE((m - .14) / .36)), k = e.screenElement, A = m >= .14, j = f || m < .14 ? 1 : AE((m - .14) / .3);
 		if (a.current) {
 			let e = a.current.uniforms;
-			e.uTime.value = T, e.uShutter.value = E, e.uOpen.value.set(1, Math.max(.015, k)), e.uBoost.value = 1 + .22 * Math.max(0, 1 - Math.abs(f - .42) / .17);
+			e.uTime.value = D, e.uShutter.value = O, e.uOpen.value.set(1, Math.max(.015, j)), e.uBoost.value = 1 + .22 * Math.max(0, 1 - Math.abs(m - .42) / .17);
 		}
-		for (let e of [o.current, s.current]) e && (e.uniforms.uFrame.value.set(S, C), e.uniforms.uTime.value = T, e.uniforms.uOn.value = E * (1 - .95 * p));
-		if (D && O) {
+		for (let e of [o.current, s.current]) e && (e.uniforms.uFrame.value.set(w, T), e.uniforms.uTime.value = D, e.uniforms.uOn.value = O * (1 - .95 * h));
+		if (k && A) {
 			let e = [
 				[-.5, .5],
 				[.5, .5],
 				[.5, -.5],
 				[-.5, -.5]
-			], t = _.map((t, r) => (t.set(wE.x + e[r][0] * S, wE.y + e[r][1] * C, wE.z).project(c), [(1 + t.x) * n.width / 2, (1 - t.y) * n.height / 2]));
-			D.style.transform = TE(n.width, n.height, t[0], t[1], t[2], t[3]), D.style.visibility = "visible", D.style.opacity = String(EE((f - .14) / .38)), D.style.clipPath = k < 1 ? `inset(${(1 - k) * 50}% 0)` : "none";
+			], t = y.map((t, r) => (t.set(wE.x + e[r][0] * w, wE.y + e[r][1] * T, wE.z).project(c), [(1 + t.x) * n.width / 2, (1 - t.y) * n.height / 2]));
+			k.style.transform = EE(n.width, n.height, t[0], t[1], t[2], t[3]), k.style.visibility = "visible", k.style.opacity = String(AE((m - .14) / .38)), k.style.clipPath = j < 1 ? `inset(${(1 - j) * 50}% 0)` : "none";
+		} else k && (k.style.visibility = "hidden", k.style.opacity = "0", k.style.clipPath = "none");
+		if (e.ready || (e.ready = !0, e.onReady()), e.direction < 0 && m === 0 || e.direction > 0 && m === 2.02) {
+			let t = e.direction;
+			e.direction = 0, t > 0 ? e.onEnter() : e.onExit();
 		}
-		e.ready || (e.ready = !0, e.onReady()), e.start && !e.finished && (DE ? f > .17 : f > 2.02) && (e.finished = !0, e.onEnter());
 	}), /* @__PURE__ */ (0, $.jsxs)($.Fragment, { children: [
 		/* @__PURE__ */ (0, $.jsxs)("mesh", {
 			ref: i,
@@ -43362,7 +43404,7 @@ function NE({ control: e }) {
 			children: /* @__PURE__ */ (0, $.jsx)("shaderMaterial", {
 				ref: o,
 				uniforms: d.beam,
-				vertexShader: jE,
+				vertexShader: PE,
 				fragmentShader: pE,
 				transparent: !0,
 				side: 2,
@@ -43376,7 +43418,7 @@ function NE({ control: e }) {
 			children: /* @__PURE__ */ (0, $.jsx)("shaderMaterial", {
 				ref: s,
 				uniforms: d.dust,
-				vertexShader: ME,
+				vertexShader: FE,
 				fragmentShader: hE,
 				transparent: !0,
 				depthWrite: !1,
@@ -43386,7 +43428,7 @@ function NE({ control: e }) {
 	] });
 }
 // src/Studio.tsx
-function PE() {
+function LE() {
 	let e = .16, t = yE - .014;
 	return /* @__PURE__ */ (0, $.jsxs)("group", { children: [
 		/* @__PURE__ */ (0, $.jsxs)("mesh", {
@@ -43442,7 +43484,7 @@ function PE() {
 		})
 	] });
 }
-function FE({ control: e, trigger: t }) {
+function RE({ control: e, trigger: t }) {
 	let { size: n } = Y_(), r = n.width / n.height < .87;
 	return /* @__PURE__ */ (0, $.jsxs)($.Fragment, { children: [
 		/* @__PURE__ */ (0, $.jsx)("color", {
@@ -43534,7 +43576,7 @@ function FE({ control: e, trigger: t }) {
 				})
 			]
 		}),
-		/* @__PURE__ */ (0, $.jsx)(PE, {}),
+		/* @__PURE__ */ (0, $.jsx)(LE, {}),
 		/* @__PURE__ */ (0, $.jsx)(jS, {
 			position: [
 				0,
@@ -43611,12 +43653,12 @@ function FE({ control: e, trigger: t }) {
 			],
 			children: /* @__PURE__ */ (0, $.jsx)(WS, {})
 		}),
-		/* @__PURE__ */ (0, $.jsx)(NE, { control: e }),
+		/* @__PURE__ */ (0, $.jsx)(IE, { control: e }),
 		/* @__PURE__ */ (0, $.jsx)(lE, {})
 	] });
 }
 // src/index.tsx
-function IE() {
+function zE() {
 	try {
 		let e = new AudioContext(), t = Math.round(.12 * e.sampleRate), n = e.createBuffer(1, t, e.sampleRate), r = n.getChannelData(0);
 		for (let e = 0; e < t; e++) r[e] = Math.random() * 2 - 1;
@@ -43632,7 +43674,7 @@ function IE() {
 		}, 680);
 	} catch {}
 }
-function LE() {
+function BE() {
 	let e = document.createElement("canvas");
 	e.width = e.height = 128;
 	let t = e.getContext("2d"), n = t.createImageData(128, 128), r = 17;
@@ -43648,7 +43690,7 @@ function LE() {
 	}
 	return t.putImageData(n, 0, 0), `url(${e.toDataURL()})`;
 }
-var RE = class extends v.Component {
+var VE = class extends v.Component {
 	state = { failed: !1 };
 	static getDerivedStateFromError() {
 		return { failed: !0 };
@@ -43660,28 +43702,17 @@ var RE = class extends v.Component {
 		return this.state.failed ? null : this.props.children;
 	}
 };
-function zE({ onError: e }) {
-	return (0, v.useEffect)(e, [e]), null;
-}
-function BE({ options: e }) {
-	let [t, n] = (0, v.useState)(!1), [r] = (0, v.useState)(LE), [i, a] = (0, v.useState)(!1), o = (0, v.useRef)({
-		start: 0,
-		finished: !1,
-		ready: !1,
-		screenElement: e.screenElement,
-		onReady: () => {
-			requestAnimationFrame(() => {
-				a(!0), e.onReady?.();
-			});
-		},
-		onEnter: e.onEnter
-	}), s = () => {
-		o.current.ready && !o.current.start && (o.current.start = performance.now(), n(!0), IE());
-	};
+function HE({ store: e }) {
+	(0, v.useSyncExternalStore)(e.subscribe, e.getSnapshot);
+	let t = OE(), { control: n } = e, [r] = (0, v.useState)(BE), i = n.time > 0 || n.direction !== 0, a = n.direction > 0 ? "entering" : n.direction < 0 ? "exiting" : n.time === 2.02 ? "screen" : "studio";
 	return /* @__PURE__ */ (0, $.jsxs)("div", {
-		className: "pb-stage" + (t ? " pb-entering" : ""),
+		className: "pb-stage" + (i ? " pb-entering" : ""),
+		"data-studio-view": a,
+		"data-active": n.active,
+		"data-studio-locale": t,
 		children: [
 			/* @__PURE__ */ (0, $.jsx)(ky, {
+				frameloop: n.active ? "always" : "never",
 				shadows: "variance",
 				dpr: [1, 1.6],
 				camera: {
@@ -43700,12 +43731,11 @@ function BE({ options: e }) {
 					alpha: !1,
 					powerPreference: "high-performance"
 				},
-				fallback: /* @__PURE__ */ (0, $.jsx)(zE, { onError: e.onError ?? (() => {}) }),
 				children: /* @__PURE__ */ (0, $.jsx)(v.Suspense, {
 					fallback: null,
-					children: /* @__PURE__ */ (0, $.jsx)(FE, {
-						control: o.current,
-						trigger: s
+					children: /* @__PURE__ */ (0, $.jsx)(RE, {
+						control: n,
+						trigger: e.enter
 					})
 				})
 			}),
@@ -43714,26 +43744,70 @@ function BE({ options: e }) {
 				className: "pb-grain",
 				style: { backgroundImage: r }
 			}),
-			i && /* @__PURE__ */ (0, $.jsxs)("button", {
+			n.ready && /* @__PURE__ */ (0, $.jsxs)("button", {
 				type: "button",
 				className: "pb-play",
-				onClick: s,
-				disabled: t,
+				onClick: e.enter,
+				disabled: i,
 				children: [/* @__PURE__ */ (0, $.jsx)("span", {
 					"aria-hidden": "true",
 					className: "pb-play__mark"
-				}), "开始放映"]
+				}), kE[t].play]
 			})
 		]
 	});
 }
-function VE(e, t) {
-	let n = (0, y.createRoot)(e);
-	return n.render(/* @__PURE__ */ (0, $.jsx)(RE, {
+function UE(e, t) {
+	let n = (0, y.createRoot)(e), r = /* @__PURE__ */ new Set(), i = matchMedia("(prefers-reduced-motion: reduce)"), a = 0, o = !1, s = 0, c = 0, l = () => {
+		o || (a++, r.forEach((e) => e()));
+	}, u = {
+		time: t.initialView === "screen" ? TE : 0,
+		lastTick: performance.now(),
+		direction: 0,
+		active: !0,
+		reducedMotion: i.matches,
+		ready: !1,
+		screenElement: t.screenElement,
+		onReady: () => {
+			s = requestAnimationFrame(() => {
+				if (!o && (l(), t.onReady?.(), c)) {
+					let e = c;
+					c = 0, f(e);
+				}
+			});
+		},
+		onEnter: () => {
+			o || (l(), t.onEnter());
+		},
+		onExit: () => {
+			o || (l(), t.onExit?.());
+		}
+	}, d = (e) => {
+		o || u.active === e || (u.active = e, u.lastTick = performance.now(), l());
+	}, f = (e) => {
+		o || (d(!0), u.ready ? u.direction !== e && (u.direction || u.time !== (e > 0 ? 2.02 : 0)) && (u.direction = e, u.lastTick = performance.now(), l(), t.onTransitionStart?.(e > 0 ? "enter" : "exit"), zE()) : c = e);
+	}, p = () => {
+		u.reducedMotion = i.matches;
+	};
+	i.addEventListener("change", p);
+	let m = {
+		control: u,
+		subscribe: (e) => (r.add(e), () => {
+			r.delete(e);
+		}),
+		getSnapshot: () => a,
+		enter: () => f(1)
+	};
+	return n.render(/* @__PURE__ */ (0, $.jsx)(VE, {
 		onError: t.onError ?? (() => {}),
-		children: /* @__PURE__ */ (0, $.jsx)(BE, { options: t })
-	})), { destroy: () => {
-		queueMicrotask(() => n.unmount());
-	} };
+		children: /* @__PURE__ */ (0, $.jsx)(HE, { store: m })
+	})), {
+		enter: m.enter,
+		exit: () => f(-1),
+		setActive: d,
+		destroy: () => {
+			o || (o = !0, cancelAnimationFrame(s), r.clear(), i.removeEventListener("change", p), queueMicrotask(() => n.unmount()));
+		}
+	};
 }
-export { VE as mountStudio };
+export { UE as mountStudio };

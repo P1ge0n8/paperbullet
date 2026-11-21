@@ -1,5 +1,124 @@
 {
   "version": 1,
+  "collections": [
+    {
+      "id": "zige",
+      "kind": "columns",
+      "name": "子戈",
+      "english": "ZI GE",
+      "description": "子戈的专栏文章，汇集于此。",
+      "translations": {
+        "en": {
+          "name": "Zi Ge",
+          "english": "ZI GE",
+          "description": "Collected columns by Zi Ge."
+        },
+        "zh-HK": {
+          "name": "子戈",
+          "english": "ZI GE",
+          "description": "子戈的專欄文章，匯集於此。"
+        }
+      }
+    },
+    {
+      "id": "xuyuan",
+      "kind": "columns",
+      "name": "徐元",
+      "english": "XU YUAN",
+      "description": "徐元的专栏文章，汇集于此。",
+      "translations": {
+        "en": {
+          "name": "Xu Yuan",
+          "english": "XU YUAN",
+          "description": "Collected columns by Xu Yuan."
+        },
+        "zh-HK": {
+          "name": "徐元",
+          "english": "XU YUAN",
+          "description": "徐元的專欄文章，匯集於此。"
+        }
+      }
+    },
+    {
+      "id": "meixuefeng",
+      "kind": "columns",
+      "name": "梅雪峰",
+      "english": "MEI XUE FENG",
+      "description": "梅雪峰的专栏文章，汇集于此。",
+      "translations": {
+        "en": {
+          "name": "Mei Xuefeng",
+          "english": "MEI XUE FENG",
+          "description": "Collected columns by Mei Xuefeng."
+        },
+        "zh-HK": {
+          "name": "梅雪峰",
+          "english": "MEI XUE FENG",
+          "description": "梅雪峰的專欄文章，匯集於此。"
+        }
+      }
+    },
+    {
+      "id": "cannes",
+      "kind": "festivals",
+      "name": "戛纳电影节",
+      "english": "CANNES",
+      "logo": "cannes",
+      "description": "在这里，汇集戛纳电影节的观影笔记、评论与访谈。",
+      "translations": {
+        "en": {
+          "name": "Cannes Film Festival",
+          "english": "CANNES",
+          "description": "Viewing notes, criticism and conversations from the Cannes Film Festival."
+        },
+        "zh-HK": {
+          "name": "康城電影節",
+          "english": "CANNES",
+          "description": "在這裏，匯集康城電影節的觀影筆記、評論與訪談。"
+        }
+      }
+    },
+    {
+      "id": "venice",
+      "kind": "festivals",
+      "name": "威尼斯电影节",
+      "english": "VENICE",
+      "logo": "venice",
+      "description": "在这里，汇集威尼斯电影节的观影笔记、评论与访谈。",
+      "translations": {
+        "en": {
+          "name": "Venice Film Festival",
+          "english": "VENICE",
+          "description": "Viewing notes, criticism and conversations from the Venice Film Festival."
+        },
+        "zh-HK": {
+          "name": "威尼斯電影節",
+          "english": "VENICE",
+          "description": "在這裏，匯集威尼斯電影節的觀影筆記、評論與訪談。"
+        }
+      }
+    },
+    {
+      "id": "berlin",
+      "kind": "festivals",
+      "name": "柏林电影节",
+      "english": "BERLIN",
+      "logo": "berlin",
+      "description": "在这里，汇集柏林电影节的观影笔记、评论与访谈。",
+      "translations": {
+        "en": {
+          "name": "Berlin International Film Festival",
+          "english": "BERLIN",
+          "description": "Viewing notes, criticism and conversations from the Berlin International Film Festival."
+        },
+        "zh-HK": {
+          "name": "柏林電影節",
+          "english": "BERLIN",
+          "description": "在這裏，匯集柏林電影節的觀影筆記、評論與訪談。"
+        }
+      }
+    }
+  ],
   "articles": [
     {
       "id": "cannes-2026-hope-other-side",
@@ -33,7 +152,7 @@
           "type": "image",
           "text": "",
           "fontSize": 18,
-          "align": "left",
+          "align": "center",
           "bold": false,
           "italic": false,
           "src": "/uploads/cannes-2026-gradiva-poster.webp",
@@ -68,7 +187,7 @@
           "type": "image",
           "text": "",
           "fontSize": 18,
-          "align": "left",
+          "align": "center",
           "bold": false,
           "italic": false,
           "src": "/uploads/cannes-2026-gradiva-still.webp",
@@ -111,7 +230,7 @@
           "type": "image",
           "text": "",
           "fontSize": 18,
-          "align": "left",
+          "align": "center",
           "bold": false,
           "italic": false,
           "src": "/uploads/cannes-2026-moulin-poster.webp",
@@ -146,7 +265,7 @@
           "type": "image",
           "text": "",
           "fontSize": 18,
-          "align": "left",
+          "align": "center",
           "bold": false,
           "italic": false,
           "src": "/uploads/cannes-2026-moulin-still.webp",
@@ -173,7 +292,7 @@
           "type": "image",
           "text": "",
           "fontSize": 18,
-          "align": "left",
+          "align": "center",
           "bold": false,
           "italic": false,
           "src": "/uploads/cannes-2026-garance-poster.webp",
@@ -208,7 +327,7 @@
           "type": "image",
           "text": "",
           "fontSize": 18,
-          "align": "left",
+          "align": "center",
           "bold": false,
           "italic": false,
           "src": "/uploads/cannes-2026-hope-poster.webp",
@@ -235,7 +354,7 @@
           "type": "image",
           "text": "",
           "fontSize": 18,
-          "align": "left",
+          "align": "center",
           "bold": false,
           "italic": false,
           "src": "/uploads/cannes-2026-hope-still.webp",
@@ -252,13 +371,521 @@
         },
         {
           "type": "paragraph",
-          "text": "在戛纳首映数月后重新审视此片，再结合与「視差之见」的专家们录制播客时的讨论，过度的隐喻赋义或对技术完成度的纠缠，或许都偏离了罗导本片的意图。影片更接近一次对好莱坞爆米花类型片的戏仿与提纯：外星怪物的形象大多能在既有类型作品中找到相似原型，即便粗糙突兀的视效饱受诟病，也恰好消解了工业奇观的权威。大量重复的韩语粗口，则替代了同类电影中程式化的惊叹、争执与解释性对白。罗导并非拒绝类型技法，而是不断删减其中的冗余，以验证类型机制在提纯后依然有效。直至结尾留下的巨大悬念，也未尝不是对当下续集文化的戏谑。其作者性正在于对类型的挪用与简化：模仿好莱坞，却不必复制好莱坞。",
+          "text": "在戛纳首映数月后重新审视此片，再结合与「視差之見」的专家们录制播客时的讨论，过度的隐喻赋义或对技术完成度的纠缠，或许都偏离了罗导本片的意图。影片更接近一次对好莱坞爆米花类型片的戏仿与提纯：外星怪物的形象大多能在既有类型作品中找到相似原型，即便粗糙突兀的视效饱受诟病，也恰好消解了工业奇观的权威。大量重复的韩语粗口，则替代了同类电影中程式化的惊叹、争执与解释性对白。罗导并非拒绝类型技法，而是不断删减其中的冗余，以验证类型机制在提纯后依然有效。直至结尾留下的巨大悬念，也未尝不是对当下续集文化的戏谑。其作者性正在于对类型的挪用与简化：模仿好莱坞，却不必复制好莱坞。",
           "fontSize": 18,
           "align": "left",
           "bold": false,
           "italic": false
         }
-      ]
+      ],
+      "translations": {
+        "en": {
+          "title": "Cannes Dispatch | The Other Side of Hope",
+          "subtitle": "From adolescent desire in La Gradiva and the historical impasse of Moulin to the formulas of Garance and the genre experiment of Hope.",
+          "author": "8",
+          "category": "Cannes Dispatch",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "From adolescent desire among the ruins of Pompeii to a historical account of a resistance fighter's suffering, and from familiar commercial formulas to a genre experiment spinning out of control, these screenings left vastly different impressions. Together, they brought a question into focus: how does cinema organise the way we look, and when does it trap its audience inside its own methods?",
+              "fontSize": 18,
+              "align": "left",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "type": "paragraph",
+              "text": "The director of Daniel, a short-to-medium-length film selected for the Generation section of the 69th Berlin International Film Festival, has brought her first feature, La Gradiva, to this year's Critics' Week. It follows a group of French high-school students on a school trip to Naples in southern Italy, where they explore the ruins of Pompeii and the petrified remains left by the eruption of Mount Vesuvius. There, they are drawn into a dizzying descent. One by one, desire and anger consume them, until they surrender completely.",
+              "fontSize": 18,
+              "align": "left",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "type": "image",
+              "text": "",
+              "fontSize": 18,
+              "align": "center",
+              "bold": false,
+              "italic": false,
+              "src": "/uploads/cannes-2026-gradiva-poster.webp",
+              "alt": "La Gradiva | Poster",
+              "caption": "La Gradiva | Poster"
+            },
+            {
+              "type": "paragraph",
+              "text": "In an unconventional yet finely observed and tender way, this film moves through the elusive emotional world of adolescence. The echoes of that age are always difficult to put into words. Where does one begin with such lingering knots of feeling?",
+              "fontSize": 18,
+              "align": "left",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "type": "paragraph",
+              "text": "The film's original title, La Gradiva, offers a precise point of entry. With its Latin resonance, the title echoes the graduation trip to southern Italy led by the students' Latin teacher. It also suggests that the film is about more than walking or travelling: it is about how its characters are propelled between history, the body, desire and identity. Pompeii is not simply an exotic backdrop but a model for the narrative. A city sealed away by volcanic disaster exposes latent fractures in relationships that still appear orderly on the surface. Differences of class, ethnicity, gender and sexual orientation among the students are not treated as labels designed to manufacture conflict. They lie within everyday conversation, jokes, alliances, tentative approaches and silences. It is through these seemingly loose exchanges that intimacy, exclusion, jealousy and misrecognition gradually accumulate, eventually redirecting the entire journey.",
+              "fontSize": 18,
+              "align": "left",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "type": "paragraph",
+              "text": "The film's account of adolescence does not rely on impassioned declarations. It attends instead to the emergence of feelings the characters have yet to understand fully. Revelations about family histories mean that individual identity is no longer simply a matter of present-day self-definition: it is tied to bloodlines, local memory and the silences of the previous generation. The ambiguous tension between heterosexual masculinity and queer desire entangles friendship, rivalry and attraction in ways that resist easy categorisation. The passages involving images of Dionysus reinforce this. Ancient frescoes cease to be mere extensions of classroom knowledge and become a refracting mirror through which to understand the ordering of gender, the body and desire. Through the historical space of Pompeii, the film places the turmoil of adolescence alongside older experiences of myth, ritual and catastrophe. A school trip gradually becomes a process in which an understanding of the self collapses and is reassembled.",
+              "fontSize": 18,
+              "align": "left",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "type": "image",
+              "text": "",
+              "fontSize": 18,
+              "align": "center",
+              "bold": false,
+              "italic": false,
+              "src": "/uploads/cannes-2026-gradiva-still.webp",
+              "alt": "La Gradiva | Film still",
+              "caption": "La Gradiva | Film still"
+            },
+            {
+              "type": "paragraph",
+              "text": "The Latin teacher is not positioned as a stable adult point of view. She guides the students towards knowledge, but she is also caught up in the journey. She tries to organise their experiences through language, history and the structures of teaching. Yet Pompeii awakens not only a past that can be explained, but also emotional impulses that cannot be absorbed into a lesson. A subtle mirroring develops between her and the students: youthful desire is searching for an outlet, while the loneliness, exhaustion and instability of adulthood have never truly disappeared. La Gradiva thus acquires a more complex meaning. It belongs not only to a particular female figure, but to everyone who keeps moving through ruins, memory and emotional pressure.",
+              "fontSize": 18,
+              "align": "left",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "type": "paragraph",
+              "text": "The direction is restrained and precise. Rather than rushing to conclusions about its characters, the camera moves among faces, gestures and spatial relationships, catching the first signs of emotional change. The film's strength lies precisely in this equality of attention. No one is reduced to a single symbol in a fable about youth; each briefly exposes, during the trip, something within themselves that is difficult to place. By the end, Pompeii's volcanic imagery is no longer merely a background metaphor. It becomes the film's structural logic: emotions long held in check do not unfold in a rational sequence. At a certain moment they abruptly change form, leaving relationships, identities and memories unable to return to their previous positions. La Gradiva is therefore a film about youth, but it does not romanticise youth as pure freedom or pain. It is more interested in how, before growing up has found a clear language, a person has already been profoundly rewritten by desire, history and other people.",
+              "fontSize": 18,
+              "align": "left",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "type": "paragraph",
+              "text": "If Pompeii's history opens a fissure through which the characters of the previous film can understand themselves, the relationship between history and the body in Moulin feels closed and constricted. It is also difficult to discuss this new film by László Nemes without addressing what he has said away from the screen.",
+              "fontSize": 18,
+              "align": "left",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "type": "paragraph",
+              "text": "The Zone of Interest competed at the 76th Cannes Film Festival in 2023 and won that year's Grand Prix. When accepting the 2024 Academy Award for Best International Feature Film, director Jonathan Glazer said that he and producer James Wilson, as Jewish men, rejected having their Jewish identity and the Holocaust held hostage by an occupation. He placed the Israeli victims of 7 October alongside the victims of the ongoing attacks on Gaza as consequences of dehumanisation.",
+              "fontSize": 18,
+              "align": "left",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "type": "image",
+              "text": "",
+              "fontSize": 18,
+              "align": "center",
+              "bold": false,
+              "italic": false,
+              "src": "/uploads/cannes-2026-moulin-poster.webp",
+              "alt": "Moulin | Poster",
+              "caption": "Moulin | Poster"
+            },
+            {
+              "type": "paragraph",
+              "text": "Those remarks prompted a forceful response from Son of Saul director László Nemes. He said Glazer should have kept silent, accused him of failing to understand history and the forces destroying civilisation, and described his speech as using propaganda intended ultimately to eliminate all Jewish existence on Earth. Nemes went on to say that antisemitic hatred was approaching pre-Holocaust levels, now appearing in a fashionable, progressive guise. In an interview in 2026, he again described it as a shameless orgy of antisemitism sweeping across the West.",
+              "fontSize": 18,
+              "align": "left",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "type": "paragraph",
+              "text": "Nemes's remarks, with their pronounced features of Zionist rhetoric, place the politics and content of his films, as well as audience responses to them, on complicated ground. His new work focuses on Jean Moulin, the leader of the French Resistance during the Second World War. After his underground operation is exposed, he is arrested by the Gestapo and tortured for almost a month. Even then, he refuses to speak. He is eventually sent to Frankfurt, Germany, where he dies.",
+              "fontSize": 18,
+              "align": "left",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "type": "paragraph",
+              "text": "Moulin premiered in the Grand Théâtre Lumière on 35 mm film. Orphan, which took Nemes to the main competition at last year's Venice Film Festival, was also shown on the same medium at selected screenings; the other screenings used digital copies.",
+              "fontSize": 18,
+              "align": "left",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "type": "image",
+              "text": "",
+              "fontSize": 18,
+              "align": "center",
+              "bold": false,
+              "italic": false,
+              "src": "/uploads/cannes-2026-moulin-still.webp",
+              "alt": "Moulin | Film still",
+              "caption": "Moulin | Film still"
+            },
+            {
+              "type": "paragraph",
+              "text": "The film is not, in fact, principally concerned with the underlying forces of historical development. Nemes uses Moulin, played by Gilles Lellouche, as a conduit for his own political views, an annotation on a partially shared historical fate. This is another extension of a narrative of the slaughter of Jews. The film's awkward, claustrophobic camerawork becomes an instrument of torture aimed at the audience, while its many scenes of interrogation and abuse feel like the director revisiting his own predilections. Everyone in the cinema is merely part of the game.",
+              "fontSize": 18,
+              "align": "left",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "type": "paragraph",
+              "text": "After the suffocating experience of Moulin, Garance brings a different disappointment: a familiar formula does not become more necessary simply by entering a film festival. This is a stale, formulaic film that should have stayed on the commercial circuit, rather than taking up a festival slot.",
+              "fontSize": 18,
+              "align": "left",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "type": "image",
+              "text": "",
+              "fontSize": 18,
+              "align": "center",
+              "bold": false,
+              "italic": false,
+              "src": "/uploads/cannes-2026-garance-poster.webp",
+              "alt": "Garance | Poster",
+              "caption": "Garance | Poster"
+            },
+            {
+              "type": "paragraph",
+              "text": "Turning from these films to Hope makes it even harder to lower expectations for Na Hong-jin's long-awaited return after ten years. Unlike the earlier disappointments, the divisions provoked by Hope cannot easily be reduced to a verdict of good or bad.",
+              "fontSize": 18,
+              "align": "left",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "type": "paragraph",
+              "text": "Ten years have passed since South Korean director Na Hong-jin's previous film, The Wailing, which screened out of competition in 2016. Even now, remembering that horror film sends a shiver through me. I have been waiting for his next work ever since, and in the meantime watched his two earlier films as well.",
+              "fontSize": 18,
+              "align": "left",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "type": "paragraph",
+              "text": "Now that Hope has entered this year's Cannes competition, expectations are exceptionally high. Set in the 1970s and 1980s, the story takes place in the quiet coastal village of Hope Harbour. Police chief Beom-seok, played by Hwang Jung-min, and officer Seong-ae, played by Jung Ho-yeon, are sent to investigate a series of bizarre animal killings, only to discover that the culprit is an enormous, unidentified creature. Meanwhile, the hot-tempered hunter Seong-gi, played by Zo In-sung, leads a group into the mountains to hunt the beast, but they become its prey instead. As the monster's true form emerges, fear spreads among the villagers. The struggle to survive gradually becomes a brutal trial exposing the human impulse to reject outsiders.",
+              "fontSize": 18,
+              "align": "left",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "type": "image",
+              "text": "",
+              "fontSize": 18,
+              "align": "center",
+              "bold": false,
+              "italic": false,
+              "src": "/uploads/cannes-2026-hope-poster.webp",
+              "alt": "Hope | Poster",
+              "caption": "Hope | Poster"
+            },
+            {
+              "type": "paragraph",
+              "text": "This is an almost pure genre film, yet one whose tone keeps shifting. I would rather avoid excessive spoilers or interpretation. It is a film that can, quite literally, accommodate every positive and negative assessment. As a friend put it, the people who praise it and those who criticise it have not necessarily misunderstood it; they are simply attending to different things.",
+              "fontSize": 18,
+              "align": "left",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "type": "paragraph",
+              "text": "The film is due to reach South Korean cinemas this autumn. At the press conference, the director said that parts would be re-edited and that the visual effects still needed improvement.",
+              "fontSize": 18,
+              "align": "left",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "type": "image",
+              "text": "",
+              "fontSize": 18,
+              "align": "center",
+              "bold": false,
+              "italic": false,
+              "src": "/uploads/cannes-2026-hope-still.webp",
+              "alt": "Hope | Film still",
+              "caption": "Hope | Film still"
+            },
+            {
+              "type": "h2",
+              "text": "Afterword | Revisiting the Film Months After Its Premiere",
+              "fontSize": 24,
+              "align": "left",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "type": "paragraph",
+              "text": "Reconsidering the film several months after its Cannes premiere, alongside the discussion recorded for a podcast with the experts at 視差之見, I wonder whether overloading it with metaphorical meaning or dwelling on its technical finish misses Na's intention. The film comes closer to a parody and distillation of the Hollywood popcorn genre movie. Most of its alien monsters have recognisable counterparts in existing genre films. Even the much-criticised, rough and jarring visual effects happen to undermine the authority of industrial spectacle. Repeated Korean profanity takes the place of the stock exclamations, arguments and explanatory dialogue found in comparable films. Na is not rejecting genre techniques. He continually strips away their redundancy to test whether the genre mechanism still works in a distilled form. Even the enormous unresolved question at the end might be a joke at the expense of today's sequel culture. His authorship lies in appropriating and simplifying genre: imitating Hollywood without having to reproduce it.",
+              "fontSize": 18,
+              "align": "left",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        },
+        "zh-HK": {
+          "title": "康城專欄｜《希望》的另一面",
+          "subtitle": "從《行走之人》的青春慾望、《穆蘭》的歷史困局，到《嘉朗斯》的模板與《希望》的類型實驗。",
+          "author": "8",
+          "category": "康城專欄",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "從龐貝廢墟裏的青春慾望，到抵抗者受難的歷史敍事，再到熟悉的院線模板與失控的類型實驗，這幾場放映帶來的感受相去甚遠。它們也讓一個問題逐漸清晰：電影如何組織我們的觀看，又在甚麼時候，把觀眾困在自己的方法裏。",
+              "fontSize": 18,
+              "align": "left",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "type": "paragraph",
+              "text": "曾入圍第69屆柏林電影節新生代單元的中短片《丹尼爾的臉》，其導演的長片首作《行走之人》入圍了今年的影評人週。這部新作是關於一群法國高中生參加學校組織的旅行前往意大利南部的那不勒斯，探尋龐貝古城的遺址和維蘇威火山噴發後留下的石化遺骸。在那裏，他們陷入了令人眩暈的墮落之中。他們一個接一個地被慾望和憤怒所吞噬，最終徹底臣服於它們。",
+              "fontSize": 18,
+              "align": "left",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "type": "image",
+              "text": "",
+              "fontSize": 18,
+              "align": "center",
+              "bold": false,
+              "italic": false,
+              "src": "/uploads/cannes-2026-gradiva-poster.webp",
+              "alt": "《行走之人》｜海報",
+              "caption": "《行走之人》｜海報"
+            },
+            {
+              "type": "paragraph",
+              "text": "這是一部以另類卻細膩溫柔的方式遊走於青少年難以捉摸的心境的電影。那個年齡的迴響永遠是難以述說的，心結縈繞的狀態從何說起。",
+              "fontSize": 18,
+              "align": "left",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "type": "paragraph",
+              "text": "《行走之人》的原名 La Gradiva 為影片提供了一個精確的入口。這個帶有拉丁詞源色彩的題名，一方面呼應片中拉丁語教師帶領學生前往意大利南部的畢業旅行，另一方面也暗示着影片並非只是關於「行走」或「旅行」，而是關於人物如何在歷史、身體、慾望與身份之間被推動。龐貝在片中並不是單純的異國景觀，而是一種敍事模型：被火山災難封存的古城，讓所有表面上尚能維持秩序的關係都顯露出潛在裂縫。學生們之間的階級、族裔、性別與性取向差異，並沒有被影片處理成刻意製造衝突的標籤，而是隱藏在日常對話、玩笑、結伴、試探和沉默之中。正是在這些看似鬆散的互動裏，人物之間的親密、排斥、嫉妒與誤認逐漸累積，最終改變了整段旅程的方向。",
+              "fontSize": 18,
+              "align": "left",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "type": "paragraph",
+              "text": "影片對青春期的描寫並不依賴激烈宣言，而是更關注那些尚未被人物完全理解的情緒如何發生。家族過往的揭露，使個體身份不再只是當下的自我選擇，也與血緣、地方記憶和上一代人的沉默相連；異性戀男性氣質與酷兒慾望之間的曖昧張力，則讓友情、競爭和吸引彼此纏繞，無法被簡單歸類。片中關於酒神圖像的段落也強化了這一點：古代壁畫不再只是課堂知識的延伸，而成為理解性別、身體和慾望秩序的一面折射鏡。影片藉由龐貝這一歷史空間，把青春期內部的混亂與更古老的神話、儀式和災難經驗並置起來，使一次學校旅行逐漸變成一場關於自我認知崩塌與重組的過程。",
+              "fontSize": 18,
+              "align": "left",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "type": "image",
+              "text": "",
+              "fontSize": 18,
+              "align": "center",
+              "bold": false,
+              "italic": false,
+              "src": "/uploads/cannes-2026-gradiva-still.webp",
+              "alt": "《行走之人》｜劇照",
+              "caption": "《行走之人》｜劇照"
+            },
+            {
+              "type": "paragraph",
+              "text": "值得注意的是，影片沒有把拉丁語教師設置為穩定的成人視角。她既是知識的引導者，也是這場旅程中被捲入的人。她試圖用語言、歷史和教學秩序組織學生的經驗，但龐貝所喚起的並不只是可以被講解的過去，也包括那些無法被課堂吸收的情感衝動。她與學生之間因此形成一種微妙的鏡像關係：少年人的慾望正在尋找出口，而成人世界中的孤獨、疲憊和失衡也並未真正消失。片名中的 La Gradiva 由此獲得更複雜的指向，它不只屬於某個女性形象，也指向所有在廢墟、記憶和情感壓力中繼續前行的人。",
+              "fontSize": 18,
+              "align": "left",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "type": "paragraph",
+              "text": "導演的處理克制而準確。攝影機並不急於給人物下結論，而是在不同面孔、姿態和空間關係之間保持流動，捕捉情緒轉變剛剛出現的瞬間。影片的力量恰恰來自這種觀察的平等性：每個人都不是青春寓言中的單一符號，而是在旅行中短暫暴露出自身難以安放的一部分。到最後，龐貝的火山意象不再只是背景隱喻，而成為整部電影的結構邏輯：長期壓抑的情感並不會按理性順序展開，它們會在某個時刻突然改變形態，令關係、身份和記憶都無法回到原位。《行走之人》因此是一部關於青春的電影，但它並不把青春美化為純粹的自由或傷痛；它更關心的是，在成長尚未獲得清晰語言之前，人如何已經被慾望、歷史和他人深刻改寫。",
+              "fontSize": 18,
+              "align": "left",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "type": "paragraph",
+              "text": "如果說龐貝的歷史在前一部電影裏為人物打開了理解自身的縫隙，那麼轉到《穆蘭》，歷史與身體的關係便顯得封閉而逼仄。要談拉斯洛·奈邁施這部新作，也很難繞開他在銀幕之外的發言。",
+              "fontSize": 18,
+              "align": "left",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "type": "paragraph",
+              "text": "《利益區域》曾入圍2023年第76屆康城電影節主競賽並斬獲當年的評審團大獎。導演喬納森·格雷澤在2024年奧斯卡獲最佳國際影片時說，他和製片人詹姆斯·威爾遜「作為猶太人，拒絕讓自己的猶太身份和大屠殺被一種佔領所挾持」，並把這與「10月7日以色列受害者」和「加沙持續襲擊中的受害者」並列為「去人性化」的後果。",
+              "fontSize": 18,
+              "align": "left",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "type": "image",
+              "text": "",
+              "fontSize": 18,
+              "align": "center",
+              "bold": false,
+              "italic": false,
+              "src": "/uploads/cannes-2026-moulin-poster.webp",
+              "alt": "《穆蘭》｜海報",
+              "caption": "《穆蘭》｜海報"
+            },
+            {
+              "type": "paragraph",
+              "text": "這番話引發《索爾之子》導演拉斯洛·奈邁施的強烈反擊。他說格雷澤「本該保持沉默」，稱其「不了解歷史和正在摧毀文明的力量」，還指責他的發言使用了「旨在最終消除地球上一切猶太存在的宣傳話術」。奈邁施進一步說，當今「反猶仇恨正在接近大屠殺前的水平」，而且是以「時髦、進步」的方式出現；到2026年的訪問中，他又把這種現象稱為「席捲西方的、無恥的反猶主義狂歡」。",
+              "fontSize": 18,
+              "align": "left",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "type": "paragraph",
+              "text": "奈邁施這番夾帶顯著錫安主義話語特徵的言論促使他影片中的政治觀點、內容以及觀眾評價走向一個成分繁雜的境地。其新作聚焦於二戰時期法國抵抗領袖讓·穆蘭在地下任務敗露後慘遭蓋世太保逮捕並遭受近一個月的折磨，即使如此他最終仍守口如瓶，最終被送往德國法蘭克福並死在了那裏。",
+              "fontSize": 18,
+              "align": "left",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "type": "paragraph",
+              "text": "《穆蘭》在盧米埃爾大廳首映放映的媒介是35毫米菲林版，導演奈邁施去年入圍威尼斯電影節主競賽的《孤兒》也曾在特定的場次以相同媒介放映，其餘影廳放映均為數碼版。",
+              "fontSize": 18,
+              "align": "left",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "type": "image",
+              "text": "",
+              "fontSize": 18,
+              "align": "center",
+              "bold": false,
+              "italic": false,
+              "src": "/uploads/cannes-2026-moulin-still.webp",
+              "alt": "《穆蘭》｜劇照",
+              "caption": "《穆蘭》｜劇照"
+            },
+            {
+              "type": "paragraph",
+              "text": "影片的核心實際上並非聚焦歷史發展的本源，奈邁施將吉爾·勒盧什飾演的穆蘭作為他個人政見的出入口，一種局部歷史命運共享的註解。這是又一次「屠猶」敍事的擴建工程，片中各種刁鑽、逼仄的攝影是針對觀眾的刑具，影片裏各類的審訊拷打則是導演個人癖好的自我回味，影廳的各位只是play的一環。",
+              "fontSize": 18,
+              "align": "left",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "type": "paragraph",
+              "text": "離開《穆蘭》令人窒息的觀看經驗，《嘉朗斯》帶來的卻是另一種失望：熟悉的模板沒有因為進入影展而變得更有必要。一部應該留在院線的老套模板片，而不是來影展佔坑。",
+              "fontSize": 18,
+              "align": "left",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "type": "image",
+              "text": "",
+              "fontSize": 18,
+              "align": "center",
+              "bold": false,
+              "italic": false,
+              "src": "/uploads/cannes-2026-garance-poster.webp",
+              "alt": "《嘉朗斯》｜海報",
+              "caption": "《嘉朗斯》｜海報"
+            },
+            {
+              "type": "paragraph",
+              "text": "從這些作品轉向《希望》，等待十年的羅泓軫新作更讓人難以放低期待。與前面的失望不同，《希望》引出的分歧，很難用一句好或壞來收束。",
+              "fontSize": 18,
+              "align": "left",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "type": "paragraph",
+              "text": "距離韓國導演羅泓軫上一部作品已經過去了10年，那部曾選入2016年非競賽單元的恐怖片《哭聲》，現在回想起心裏都會翻起陣陣毛意。也是從那時起一直期待着羅導的新作，同時也把他的早期的兩部片子看了。",
+              "fontSize": 18,
+              "align": "left",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "type": "paragraph",
+              "text": "如今《希望》入圍了今年的康城主競賽，大家都是抱着極高的期待。故事發生在20世紀70至80年代，寧靜的沿海村莊「霍普港」。警察局長范錫（黃政民 飾）與警員成愛（鄭好娟 飾）被派往調查離奇的動物虐殺案，卻發現作案者是某種體型龐大的未知生物。同時，暴躁的獵人成基（趙寅成 飾）帶隊進山試圖獵殺猛獸，反淪為獵物。隨着怪物真容浮現，恐懼在村民間蔓延，這場生存殺戮逐漸演變為揭露人性排外心理的殘酷試煉。",
+              "fontSize": 18,
+              "align": "left",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "type": "image",
+              "text": "",
+              "fontSize": 18,
+              "align": "center",
+              "bold": false,
+              "italic": false,
+              "src": "/uploads/cannes-2026-hope-poster.webp",
+              "alt": "《希望》｜海報",
+              "caption": "《希望》｜海報"
+            },
+            {
+              "type": "paragraph",
+              "text": "這是一部近乎純粹的類型卻調性善變的作品，我更傾向於不做過多的劇透與解讀。這是一部在字面意義上能夠包容一切好評與差評的影片。正如朋友所說：「給這部片差評和好評的觀眾，不是他們對於影片認知出現了偏差，而是各有側重。」",
+              "fontSize": 18,
+              "align": "left",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "type": "paragraph",
+              "text": "影片將於今年秋季登陸韓國院線，導演在新聞發佈會上提到影片會部分重新剪輯，視效仍需優化。",
+              "fontSize": 18,
+              "align": "left",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "type": "image",
+              "text": "",
+              "fontSize": 18,
+              "align": "center",
+              "bold": false,
+              "italic": false,
+              "src": "/uploads/cannes-2026-hope-still.webp",
+              "alt": "《希望》｜劇照",
+              "caption": "《希望》｜劇照"
+            },
+            {
+              "type": "h2",
+              "text": "後記｜在首映數月後重看",
+              "fontSize": 24,
+              "align": "left",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "type": "paragraph",
+              "text": "在康城首映數月後重新審視此片，再結合與「視差之見」的專家們錄製播客時的討論，過度的隱喻賦義或對技術完成度的糾纏，或許都偏離了羅導本片的意圖。影片更接近一次對荷里活爆谷類型片的戲仿與提純：外星怪物的形象大多能在既有類型作品中找到相似原型，即便粗糙突兀的視效飽受詬病，也恰好消解了工業奇觀的權威。大量重複的韓語粗口，則替代了同類電影中程式化的驚歎、爭執與解釋性對白。羅導並非拒絕類型技法，而是不斷刪減其中的冗餘，以驗證類型機制在提純後依然有效。直至結尾留下的巨大懸念，也未嘗不是對當下續集文化的戲謔。其作者性正在於對類型的挪用與簡化：模仿荷里活，卻不必複製荷里活。",
+              "fontSize": 18,
+              "align": "left",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        }
+      }
     }
   ],
   "episodes": [
@@ -268,7 +895,21 @@
       "title": "答案：平遥｜先导集：平遥第十年，咋不从山西出发了？",
       "url": "https://www.xiaoyuzhoufm.com/episode/6ab52d03e742e36efcbae56b",
       "id": "episode-1",
-      "cover": "/assets/podcast-cover.png"
+      "cover": "/assets/podcast-cover.png",
+      "program": "reserved",
+      "status": "published",
+      "translations": {
+        "en": {
+          "title": "Answer: Pingyao | Pilot: Pingyao Turns Ten—Why Not Start from Shanxi?",
+          "access": null,
+          "duration": "57 min"
+        },
+        "zh-HK": {
+          "title": "答案：平遙｜先導集：平遙第十年，怎麼不從山西出發了？",
+          "access": null,
+          "duration": "57分鐘"
+        }
+      }
     },
     {
       "access": null,
@@ -276,7 +917,21 @@
       "title": "vol.11 2026暑期档：牛鬼蛇神全来了",
       "url": "https://www.xiaoyuzhoufm.com/episode/6aa76c5c492687f6aad97f4c",
       "id": "episode-2",
-      "cover": "/assets/podcast-cover.png"
+      "cover": "/assets/podcast-cover.png",
+      "program": "reserved",
+      "status": "published",
+      "translations": {
+        "en": {
+          "title": "Vol. 11 | Summer 2026 at the Movies: Every Kind of Monster Is Here",
+          "access": null,
+          "duration": "204 min"
+        },
+        "zh-HK": {
+          "title": "vol.11 2026暑期檔：牛鬼蛇神全來了",
+          "access": null,
+          "duration": "204分鐘"
+        }
+      }
     },
     {
       "access": "试听",
@@ -284,7 +939,21 @@
       "title": "会诊FIRST｜04【体检B】那些起飞/转会/消失的导演们（上）",
       "url": "https://www.xiaoyuzhoufm.com/episode/6a96d523f03e74ee6b036a52",
       "id": "episode-3",
-      "cover": "/assets/podcast-cover.png"
+      "cover": "/assets/podcast-cover.png",
+      "program": "reserved",
+      "status": "published",
+      "translations": {
+        "en": {
+          "title": "Diagnosing FIRST | 04 [Check-up B] Directors Who Took Off, Switched Teams or Disappeared (Part 1)",
+          "access": "Preview",
+          "duration": null
+        },
+        "zh-HK": {
+          "title": "會診FIRST｜04【體檢B】那些起飛／轉會／消失的導演們（上）",
+          "access": "試聽",
+          "duration": null
+        }
+      }
     },
     {
       "access": "试听",
@@ -292,7 +961,21 @@
       "title": "会诊FIRST｜03【体检A】FIRST嫡系导演与那些错过的天才",
       "url": "https://www.xiaoyuzhoufm.com/episode/6a81fc8417676351c572d317",
       "id": "episode-4",
-      "cover": "/assets/podcast-cover.png"
+      "cover": "/assets/podcast-cover.png",
+      "program": "reserved",
+      "status": "published",
+      "translations": {
+        "en": {
+          "title": "Diagnosing FIRST | 03 [Check-up A] FIRST’s Homegrown Directors and the Talents It Missed",
+          "access": "Preview",
+          "duration": null
+        },
+        "zh-HK": {
+          "title": "會診FIRST｜03【體檢A】FIRST嫡系導演與那些錯過的天才",
+          "access": "試聽",
+          "duration": null
+        }
+      }
     },
     {
       "access": null,
@@ -300,7 +983,21 @@
       "title": "vol.10 FIRST 20年大变局：音乐节越办越好，电影还重要吗？",
       "url": "https://www.xiaoyuzhoufm.com/episode/6a72cfadab3a91c24a1017fd",
       "id": "episode-5",
-      "cover": "/assets/podcast-cover.png"
+      "cover": "/assets/podcast-cover.png",
+      "program": "reserved",
+      "status": "published",
+      "translations": {
+        "en": {
+          "title": "Vol. 10 | FIRST at Twenty: The Music Festival Keeps Getting Better—Does Cinema Still Matter?",
+          "access": null,
+          "duration": "168 min"
+        },
+        "zh-HK": {
+          "title": "vol.10 FIRST 20年大變局：音樂節越辦越好，電影還重要嗎？",
+          "access": null,
+          "duration": "168分鐘"
+        }
+      }
     },
     {
       "access": "试听",
@@ -308,7 +1005,21 @@
       "title": "会诊FIRST｜02【病史】细说20年，十大生死存亡时刻",
       "url": "https://www.xiaoyuzhoufm.com/episode/6a676583b581962ce2bc5084",
       "id": "episode-6",
-      "cover": "/assets/podcast-cover.png"
+      "cover": "/assets/podcast-cover.png",
+      "program": "reserved",
+      "status": "published",
+      "translations": {
+        "en": {
+          "title": "Diagnosing FIRST | 02 [Case History] Twenty Years, Ten Make-or-Break Moments",
+          "access": "Preview",
+          "duration": null
+        },
+        "zh-HK": {
+          "title": "會診FIRST｜02【病史】細說20年，十大生死存亡時刻",
+          "access": "試聽",
+          "duration": null
+        }
+      }
     },
     {
       "access": "试听",
@@ -316,7 +1027,21 @@
       "title": "会诊FIRST｜01【问诊】五大争议事件——FIRST到底怎么了？",
       "url": "https://www.xiaoyuzhoufm.com/episode/6a5cb634a3fec224d59fee41",
       "id": "episode-7",
-      "cover": "/assets/podcast-cover.png"
+      "cover": "/assets/podcast-cover.png",
+      "program": "reserved",
+      "status": "published",
+      "translations": {
+        "en": {
+          "title": "Diagnosing FIRST | 01 [Consultation] Five Major Controversies—What Happened to FIRST?",
+          "access": "Preview",
+          "duration": null
+        },
+        "zh-HK": {
+          "title": "會診FIRST｜01【問診】五大爭議事件——FIRST到底怎麼了？",
+          "access": "試聽",
+          "duration": null
+        }
+      }
     },
     {
       "access": null,
@@ -324,7 +1049,21 @@
       "title": "会诊FIRST｜先导集：迷影一病20年，半本中国电影史",
       "url": "https://www.xiaoyuzhoufm.com/episode/6a5cb3fe6356eb2d9be4f6ab",
       "id": "episode-8",
-      "cover": "/assets/podcast-cover.png"
+      "cover": "/assets/podcast-cover.png",
+      "program": "reserved",
+      "status": "published",
+      "translations": {
+        "en": {
+          "title": "Diagnosing FIRST | Pilot: Twenty Years of Cinephilia, Half a History of Chinese Cinema",
+          "access": null,
+          "duration": "16 min"
+        },
+        "zh-HK": {
+          "title": "會診FIRST｜先導集：迷影一病20年，半本中國電影史",
+          "access": null,
+          "duration": "16分鐘"
+        }
+      }
     },
     {
       "access": null,
@@ -332,7 +1071,21 @@
       "title": "vol.9 当影迷聊世界杯时，都在聊什么？",
       "url": "https://www.xiaoyuzhoufm.com/episode/6a350ac54233e62bc54c5fdb",
       "id": "episode-9",
-      "cover": "/assets/podcast-cover.png"
+      "cover": "/assets/podcast-cover.png",
+      "program": "reserved",
+      "status": "published",
+      "translations": {
+        "en": {
+          "title": "Vol. 9 | What Do Film Fans Talk About When They Talk About the World Cup?",
+          "access": null,
+          "duration": "247 min"
+        },
+        "zh-HK": {
+          "title": "vol.9 當影迷聊世界盃時，都在聊甚麼？",
+          "access": null,
+          "duration": "247分鐘"
+        }
+      }
     },
     {
       "access": null,
@@ -340,7 +1093,21 @@
       "title": "vol.8 从《世界的主人》开始，重新看性侵电影",
       "url": "https://www.xiaoyuzhoufm.com/episode/6a2e0b3e43a22a69558352a8",
       "id": "episode-10",
-      "cover": "/assets/podcast-cover.png"
+      "cover": "/assets/podcast-cover.png",
+      "program": "reserved",
+      "status": "published",
+      "translations": {
+        "en": {
+          "title": "Vol. 8 | Starting with The World of Love: Rethinking Films About Sexual Assault",
+          "access": null,
+          "duration": "141 min"
+        },
+        "zh-HK": {
+          "title": "vol.8 從《世界的主人》開始，重新看性侵電影",
+          "access": null,
+          "duration": "141分鐘"
+        }
+      }
     },
     {
       "access": null,
@@ -348,7 +1115,21 @@
       "title": "上影节抢票攻略：我们豁出去了，抢不到也要推荐｜加更",
       "url": "https://www.xiaoyuzhoufm.com/episode/6a219121b30e1571aea0c39d",
       "id": "episode-11",
-      "cover": "/assets/podcast-cover.png"
+      "cover": "/assets/podcast-cover.png",
+      "program": "reserved",
+      "status": "published",
+      "translations": {
+        "en": {
+          "title": "Shanghai Film Festival Ticket Guide: We’re Going All In—Recommendations Even If We Can’t Get Tickets | Bonus",
+          "access": null,
+          "duration": "122 min"
+        },
+        "zh-HK": {
+          "title": "上海電影節搶票攻略：我們豁出去了，搶不到也要推薦｜加更",
+          "access": null,
+          "duration": "122分鐘"
+        }
+      }
     },
     {
       "access": null,
@@ -356,7 +1137,21 @@
       "title": "vol.7 中国电影，从潮汕出发",
       "url": "https://www.xiaoyuzhoufm.com/episode/6a1971817460cabdeb57e5a1",
       "id": "episode-12",
-      "cover": "/assets/podcast-cover.png"
+      "cover": "/assets/podcast-cover.png",
+      "program": "reserved",
+      "status": "published",
+      "translations": {
+        "en": {
+          "title": "Vol. 7 | Chinese Cinema, Starting from Chaoshan",
+          "access": null,
+          "duration": "205 min"
+        },
+        "zh-HK": {
+          "title": "vol.7 中國電影，從潮汕出發",
+          "access": null,
+          "duration": "205分鐘"
+        }
+      }
     },
     {
       "access": null,
@@ -364,7 +1159,21 @@
       "title": "北影节胤祥沙丹极限推荐！连广告都好看｜加更",
       "url": "https://www.xiaoyuzhoufm.com/episode/69d75c06b977fb2c477e239c",
       "id": "episode-13",
-      "cover": "/assets/podcast-cover.png"
+      "cover": "/assets/podcast-cover.png",
+      "program": "reserved",
+      "status": "published",
+      "translations": {
+        "en": {
+          "title": "Yin Xiang and Sha Dan’s All-Out Beijing Film Festival Picks: Even the Ads Are Good | Bonus",
+          "access": null,
+          "duration": "70 min"
+        },
+        "zh-HK": {
+          "title": "北京電影節胤祥沙丹極限推薦！連廣告都好看｜加更",
+          "access": null,
+          "duration": "70分鐘"
+        }
+      }
     },
     {
       "access": null,
@@ -372,7 +1181,21 @@
       "title": "柏林复盘：聊聊文德斯争议与选片困局｜加更",
       "url": "https://www.xiaoyuzhoufm.com/episode/69c6b894e2c8be3155ac7fa9",
       "id": "episode-14",
-      "cover": "/assets/podcast-cover.png"
+      "cover": "/assets/podcast-cover.png",
+      "program": "reserved",
+      "status": "published",
+      "translations": {
+        "en": {
+          "title": "Berlin Debrief: The Wenders Controversy and the Selection Dilemma | Bonus",
+          "access": null,
+          "duration": "160 min"
+        },
+        "zh-HK": {
+          "title": "柏林覆盤：聊聊文德斯爭議與選片困局｜加更",
+          "access": null,
+          "duration": "160分鐘"
+        }
+      }
     },
     {
       "access": null,
@@ -380,7 +1203,21 @@
       "title": "vol.6 2025年度盘点：十大事件&十佳片单",
       "url": "https://www.xiaoyuzhoufm.com/episode/697a51a316714a679cc5a3e0",
       "id": "episode-15",
-      "cover": "/assets/podcast-cover.png"
+      "cover": "/assets/podcast-cover.png",
+      "program": "reserved",
+      "status": "published",
+      "translations": {
+        "en": {
+          "title": "Vol. 6 | Looking Back at 2025: Ten Defining Events and Our Top Ten Films",
+          "access": null,
+          "duration": "245 min"
+        },
+        "zh-HK": {
+          "title": "vol.6 2025年度盤點：十大事件與十佳片單",
+          "access": null,
+          "duration": "245分鐘"
+        }
+      }
     },
     {
       "id": "6adb74a997726cd46756ba4b",
@@ -390,7 +1227,20 @@
       "duration": "14分钟",
       "access": null,
       "program": "overthink",
-      "publishedAt": ""
+      "publishedAt": "",
+      "status": "published",
+      "translations": {
+        "en": {
+          "title": "Pilot: Resisting Snap Judgments Through Overinterpretation",
+          "access": null,
+          "duration": "14 min"
+        },
+        "zh-HK": {
+          "title": "先導集：用過度解讀，抵抗簡單評判",
+          "access": null,
+          "duration": "14分鐘"
+        }
+      }
     },
     {
       "id": "6adcc995c96c8942ec11a40e",
@@ -400,7 +1250,20 @@
       "duration": "44分钟",
       "access": null,
       "program": "overthink",
-      "publishedAt": ""
+      "publishedAt": "",
+      "status": "published",
+      "translations": {
+        "en": {
+          "title": "01. If No One Fears the End of the World Anymore, How Can Horror Films Still Scare Us?",
+          "access": null,
+          "duration": "44 min"
+        },
+        "zh-HK": {
+          "title": "01.世界毀滅都沒人怕了，恐怖片還拿甚麼嚇人？",
+          "access": null,
+          "duration": "44分鐘"
+        }
+      }
     }
   ]
 }

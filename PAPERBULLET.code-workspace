@@ -1,0 +1,8 @@
+{
+  "folders": [{ "name": "锵稿 · PAPERBULLET", "path": "." }],
+  "settings": {
+    "files.exclude": { "**/.local-admin": true },
+    "search.exclude": { "**/node_modules": true, "**/dist": true, "**/.local-admin": true },
+    "files.associations": { "*.code-workspace": "jsonc" }
+  }
+}

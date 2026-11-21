@@ -115,8 +115,6 @@ dialog{padding:0;border:1px solid #514b50;background:#f8f5e9;color:inherit;max-w
 /* Compact episode cards; local Noto Serif TC matches the reference title face. */
 @font-face{font-family:'Podcast Noto Serif TC';font-style:normal;font-weight:600;font-display:swap;src:url('/assets/podcast-title-serif.ttf') format('truetype')}
 .episode-page{width:min(980px,88%)}
-.episode-page .directory-heading{padding:40px 0 34px}
-.episode-page .directory-heading h1{font-family:'Podcast Noto Serif TC','Songti TC',serif;font-size:46px;font-weight:600;line-height:1.3;margin:18px 0}
 .episode-page .directory-heading p{font-size:14px}
 .episode-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:38px 28px;padding-top:24px}
 .episode-card{display:flex;flex-direction:column;min-width:0}
@@ -128,25 +126,25 @@ dialog{padding:0;border:1px solid #514b50;background:#f8f5e9;color:inherit;max-w
 .episode-card:hover h2,.episode-card:focus-visible h2,.episode-card:hover .episode-listen{color:var(--red)}
 .podcast-all{display:flex;align-items:center;justify-content:center;gap:15px;border-top:1px solid #d9d3c9;padding:28px 0;margin-top:50px;font-size:13px;color:#817772}.podcast-all:hover{color:var(--red)}
 @media(max-width:900px){.episode-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:32px 24px}}
-@media(max-width:650px){.episode-page{width:88%}.episode-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 20px}.episode-card h2{font-size:16px;line-height:1.65}.episode-meta{font-size:10px;flex-wrap:wrap;margin-top:12px;gap:3px 8px}.episode-meta small{font-size:9px}.episode-page .directory-heading h1{font-size:38px}.episode-page .directory-heading p{font-size:12px}.episode-page .directory-heading{padding:30px 0}.podcast-all{font-size:12px;gap:8px}}
+@media(max-width:650px){.episode-page{width:88%}.episode-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 20px}.episode-card h2{font-size:16px;line-height:1.65}.episode-meta{font-size:10px;flex-wrap:wrap;margin-top:12px;gap:3px 8px}.episode-meta small{font-size:9px}.episode-page .directory-heading p{font-size:12px}.podcast-all{font-size:12px;gap:8px}}
 
 /* Festival marks act as the complete folder entrances. */
 .festival-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:42px;padding:36px 0}
 .festival-logo-card{display:flex;flex-direction:column;align-items:center;padding:18px 12px 28px;min-width:0}
 .festival-logo-stage{height:180px;width:100%;display:flex;align-items:center;justify-content:center}
-.festival-logo{display:block;width:100%;max-width:290px;max-height:165px;object-fit:contain;mix-blend-mode:multiply}
+.festival-logo-frame{display:block;position:relative;width:100%;max-width:290px;height:165px}
+.festival-logo{display:block;width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply}
 .festival-logo-venice{filter:brightness(0)}
 .festival-logo-card h2{font-size:23px;font-weight:400;letter-spacing:2px;margin:26px 0 0;transition:color .2s}
 .festival-logo-card:hover h2,.festival-logo-card:focus-visible h2{color:var(--red)}
-@media(max-width:700px){.festival-grid{grid-template-columns:1fr;gap:22px;padding-top:20px}.festival-logo-stage{height:150px}.festival-logo{max-width:260px;max-height:145px}.festival-logo-card h2{font-size:22px;margin-top:18px}}
+@media(max-width:700px){.festival-grid{grid-template-columns:1fr;gap:22px;padding-top:20px}.festival-logo-stage{height:150px}.festival-logo-frame{max-width:260px;height:145px}.festival-logo-card h2{font-size:22px;margin-top:18px}}
 
 .festival-logo-stage{position:relative}
 .festival-logo{transition:opacity .22s}
-.festival-signal{position:absolute;width:100%;max-width:300px;height:auto;max-height:170px;object-fit:contain;opacity:0;pointer-events:none;transition:opacity .22s}
+.festival-signal{position:absolute;inset:0;width:100%;height:100%;opacity:0;pointer-events:none;transition:opacity .22s}
 .signal-active .festival-logo{opacity:0}
 .signal-active .festival-signal{opacity:1}
 .signal-active h2{color:var(--red)}
-@media(max-width:700px){.festival-signal{max-width:269px;max-height:150px}}
 
 .article-body figure { margin: 24px 0; }
 .article-body figure img, .article-cover {
@@ -198,10 +196,8 @@ dialog{padding:0;border:1px solid #514b50;background:#f8f5e9;color:inherit;max-w
 
 /* Approved podcast concept: quiet editorial layout with a cut-paper accent. */
 .episode-page{width:min(1356px,94%)}
-.episode-page .directory-heading{text-align:center;padding:30px 0 0}
-.episode-page .directory-heading h1{display:inline-block;position:relative;isolation:isolate;font-size:64px;line-height:1.25;margin:20px 0 0;letter-spacing:.08em}
-.episode-page .directory-heading h1::before{content:'';position:absolute;z-index:-1;left:-24px;right:-20px;bottom:3px;height:34px;background:#edf389;transform:skewY(-7deg)}
-.episode-page .directory-heading .micro{display:block}
+.episode-page .directory-heading h1{width:fit-content;margin-inline:auto;position:relative;isolation:isolate}
+.episode-page .directory-heading h1::before{content:'';position:absolute;z-index:-1;left:-.15em;right:-.08em;bottom:.08em;height:.55em;background:#edf389;transform:skewY(-7deg)}
 .episode-page .podcast-programs{width:min(460px,100%);gap:100px;margin:56px auto 36px}
 .episode-page .program-art{width:130px;height:130px;border-radius:0}
 .episode-page .program-title{font-size:13px}
@@ -217,11 +213,38 @@ dialog{padding:0;border:1px solid #514b50;background:#f8f5e9;color:inherit;max-w
 .episode-page .editorial-footer{margin-top:24px;padding:24px 0}
 @media(max-width:700px){
  .episode-page{width:88%}
- .episode-page .directory-heading{padding-top:30px}
- .episode-page .directory-heading h1{font-size:42px}
- .episode-page .directory-heading h1::before{height:25px;left:-16px;right:-12px}
  .episode-page .podcast-programs{gap:40px;width:min(320px,100%);margin:42px auto 32px}
  .episode-page .program-art{width:88px;height:88px}
  .episode-page .episode-grid-wide{grid-template-columns:1fr;gap:32px}
  .episode-page .episode-meta{margin-bottom:16px}
 }
+
+/* The supplied founding editorial, kept as a complete reading section. */
+.about-preface { max-width: 760px; margin-top: 56px; padding-top: 32px; border-top: 1px solid #c4bfb4; }
+.about-preface h2 { margin: 0 0 12px; font-size: 28px; font-weight: 400; line-height: 1.5; }
+.about-preface__date { display: block; margin-bottom: 28px; color: #817772; font-size: 13px; line-height: 1.7; }
+.about-preface__text { font-size: 18px; line-height: 1.95; }
+.about-preface__text p { margin: 0 0 22px; }
+.about-preface__text .about-preface__motto { color: var(--red); font-size: 20px; margin-block: 28px; }
+.about-preface__byline { margin-top: 32px; color: #817772; font-size: 14px; line-height: 1.8; }
+@media (max-width: 800px) {
+ .about-preface { margin-top: 40px; padding-top: 28px; }
+ .about-preface h2 { font-size: 24px; }
+ .about-preface__text { font-size: 17px; }
+}
+
+/* Unframed platform marks share the page's ink and red interaction color. */
+.about-contact h2 { margin: 0 0 10px; color: #817772; font-size: 13px; font-weight: 400; line-height: 1.8; letter-spacing: 1px; }
+.about-contact__links { display: flex; align-items: center; gap: 14px; margin-left: -7px; width: fit-content; }
+.about-contact__links > * { display: grid; place-items: center; width: 44px; height: 44px; padding: 0; color: #51494a; transition: color .2s; }
+.about-contact__links > *:hover, .about-contact__links > *:focus-visible { color: var(--red); }
+.about-contact__mark { display: block; width: 29px; height: 29px; background: currentColor; -webkit-mask: var(--contact-mark) center / contain no-repeat; mask: var(--contact-mark) center / contain no-repeat; }
+.about-contact__mark--xiaoyuzhou { width: 32px; height: 32px; }
+.wechat-dialog { position: fixed; inset: 0; margin: auto; width: min(360px, calc(100vw - 32px)); max-width: none; max-height: calc(100svh - 24px); padding: 52px 16px 22px; border: 0; background: transparent; text-align: center; overflow: auto; }
+.wechat-dialog::backdrop { background: rgb(248 245 233 / .6); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }
+.wechat-dialog[open] { animation: contact-reveal .25s ease-out; }
+.wechat-dialog__close { display: grid; place-items: center; position: absolute; top: 0; right: 8px; width: 44px; height: 44px; padding: 0; }
+.wechat-dialog__close:hover { color: var(--red); }
+.wechat-dialog__code { display: block; width: min(308px, calc(100svh - 180px)); max-width: 100%; height: auto; margin: 0 auto; background: white; }
+.wechat-dialog p { margin: 18px 0 0; font-size: 18px; line-height: 1.6; letter-spacing: 2px; }
+@keyframes contact-reveal { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }

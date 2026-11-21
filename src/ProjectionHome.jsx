@@ -1,14 +1,13 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
-import { ArrowLeft } from '@phosphor-icons/react';
-import { BounceSidebar } from './BounceSidebar';
-import { IndexCoin } from './IndexCoin';
 import './projection-home.css';
+import { useI18n } from './i18n';
 
 const base = import.meta.env.BASE_URL;
 
-function IndexBrand() {
+export function IndexBrand({ href = '#/', label = '返回摄影棚', onClick, heading = true }) {
   const chinese = useRef(null);
   const english = useRef(null);
+  const Title = heading ? 'h1' : 'span';
 
   useLayoutEffect(() => {
     const ctx = document.createElement('canvas').getContext('2d');
@@ -36,86 +35,103 @@ function IndexBrand() {
   }, []);
 
   return (
-    <div className="projection-index__brand">
+    <a href={href} className="projection-index__brand" aria-label={label} onClick={onClick}>
       <img src={base + 'assets/logo.jpg'} width="112" height="112" alt=""/>
       <div className="projection-index__wordmark">
-        <h1 ref={chinese}>锵稿</h1>
-        <span lang="en" ref={english}>PAPERBULLET</span>
+        <Title className="projection-index__title" ref={chinese}>锵稿</Title>
+        <span className="projection-index__subtitle" lang="en" ref={english}>PAPERBULLET</span>
       </div>
-    </div>
+    </a>
   );
 }
 
-export function ProjectionIndex({ sections, routes, preview = false }) {
-  return (
-    <div className="projection-index">
-      <header className="projection-index__top">
-        <span>栏目索引</span>
-        <a href="#/" className="projection-return"><ArrowLeft size={16}/> 返回摄影棚</a>
-      </header>
-      <main id={preview ? undefined : 'content'} tabIndex={preview ? undefined : -1} className="projection-index__body">
-        <IndexBrand/>
-        <nav className="projection-index__links" aria-label="栏目索引">
-          <BounceSidebar items={sections.map((section, index) => ({
-            icon: <IndexCoin index={index}/>,
-            label: section.title,
-            href: '#' + routes[index],
-          }))}/>
-        </nav>
-      </main>
-      <footer className="projection-index__foot">PAPERBULLET@2026</footer>
-    </div>
-  );
-}
-
-export function StudioLanding({ sections, routes }) {
+export function StudioLanding({ view, onEnter, children }) {
+  const { t } = useI18n();
   const mount = useRef(null);
   const screen = useRef(null);
+  const scene = useRef(null);
+  const initialView = useRef(view);
+  const enterCallback = useRef(onEnter);
+  const phaseRef = useRef(view);
+  const [phase, setPhase] = useState(view);
   const [state, setState] = useState('loading');
+  enterCallback.current = onEnter;
+
+  const updatePhase = next => {
+    phaseRef.current = next;
+    setPhase(next);
+  };
 
   useEffect(() => {
     let active = true;
-    let instance;
     const sheet = document.createElement('link');
     sheet.rel = 'stylesheet';
     sheet.href = base + 'studio/studio.css';
     document.head.append(sheet);
-
-    const moduleUrl = base + 'studio/studio.js';
-    import(/* @vite-ignore */ moduleUrl)
-      .then(async ({ mountStudio }) => {
+    import(/* @vite-ignore */ new URL(base + 'studio/studio.js', window.location.origin).href)
+      .then(({ mountStudio }) => {
         if (!active) return;
-        const studio = await mountStudio(mount.current, {
+        scene.current = mountStudio(mount.current, {
           screenElement: screen.current,
-          onEnter: () => { if (active) location.hash = '/screen'; },
+          initialView: initialView.current,
+          onTransitionStart: direction => {
+            if (active) updatePhase(direction === 'enter' ? 'entering' : 'exiting');
+          },
+          onEnter: () => {
+            if (!active) return;
+            updatePhase('screen');
+            scene.current?.setActive(false);
+            enterCallback.current();
+            requestAnimationFrame(() => document.getElementById('content')?.focus({ preventScroll: true }));
+          },
+          onExit: () => {
+            if (!active) return;
+            updatePhase('studio');
+            requestAnimationFrame(() => mount.current?.querySelector('.pb-play')?.focus({ preventScroll: true }));
+          },
           onReady: () => { if (active) setState('ready'); },
-          onError: () => { if (active) setState('failed'); }
+          onError: () => { if (active) setState('failed'); },
         });
-        if (active) instance = studio;
-        else studio?.destroy();
       })
       .catch(() => { if (active) setState('failed'); });
     return () => {
       active = false;
-      instance?.destroy();
+      scene.current?.destroy();
+      scene.current = null;
       sheet.remove();
     };
   }, []);
 
+  useEffect(() => {
+    if (state === 'failed') {
+      updatePhase(view);
+      return;
+    }
+    if (state !== 'ready' || !scene.current) return;
+    if (view === 'screen') {
+      if (phaseRef.current === 'studio' || phaseRef.current === 'exiting') scene.current.enter();
+      else if (phaseRef.current === 'screen') scene.current.setActive(false);
+    } else {
+      if (phaseRef.current === 'screen' || phaseRef.current === 'entering') scene.current.exit();
+      else if (phaseRef.current === 'studio') scene.current.setActive(true);
+    }
+  }, [view, state]);
+
+  const interactive = phase === 'screen';
   return (
-    <div className="studio-landing" data-studio-state={state}>
-      <div className="studio-landing__mount" ref={mount}/>
+    <div className="studio-landing" data-studio-state={state} data-view={phase}>
+      <div className="studio-landing__mount" ref={mount} aria-hidden={interactive} inert={interactive}/>
       <picture className="studio-landing__cover" aria-hidden="true">
         <source media="(orientation: portrait)" srcSet={base + 'studio/cover-phone.jpg'}/>
         <img src={base + 'studio/cover-wide.jpg'} alt=""/>
       </picture>
-      <div className="studio-landing__screen" ref={screen} aria-hidden="true" inert>
-        <ProjectionIndex sections={sections} routes={routes} preview/>
+      <div className="studio-landing__screen" ref={screen} aria-hidden={!interactive} inert={!interactive}>
+        {children}
       </div>
-      {state !== 'ready' && (
+      {state !== 'ready' && phase === 'studio' && (
         <div className={'studio-landing__fallback' + (state === 'failed' ? ' is-unavailable' : '')}>
-          <span role="status">{state === 'failed' ? '摄影棚未能载入' : '正在装片…'}</span>
-          <a href="#/screen">直接进入栏目</a>
+          <span role="status">{state === 'failed' ? t('studioFailed') : t('studioLoading')}</span>
+          <a href="#/screen">{t('enterSections')}</a>
         </div>
       )}
     </div>

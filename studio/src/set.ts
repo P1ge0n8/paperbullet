@@ -11,11 +11,18 @@ export const LENS = new Vector3(...PROJECTOR_LENS).applyMatrix4(transform)
 const axis = new Vector3(0, 0, -1).applyQuaternion(rotation)
 export const SCREEN = LENS.clone().addScaledVector(axis, (WALL_Z - LENS.z) / axis.z)
 
+export const TRANSITION_DURATION = 2.02
+export type Direction = -1 | 0 | 1
+
 export type Controls = {
-  start: number
-  finished: boolean
+  time: number
+  lastTick: number
+  direction: Direction
+  active: boolean
+  reducedMotion: boolean
   ready: boolean
   onReady: () => void
   onEnter: () => void
+  onExit: () => void
   screenElement?: HTMLElement
 }
