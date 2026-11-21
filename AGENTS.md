@@ -55,3 +55,33 @@ Homepage corner logo resets the current homepage to the collapsed index state, r
 Idle visor cycles PAPERBULLET → 隐姓不埋名， → 缴械不投降。 every 4.2 seconds. Preserve punctuation and Chinese red-dot rendering. Hover/focus BANG! and section-selection labels take priority and pause the idle timer. Logo reset restarts at PAPERBULLET. Reduced motion keeps the initial idle phrase static.
 
 Touch devices: festival marks automatically preview the red pixel scan for 2.2 seconds when at least 55% visible, replaying only after leaving and re-entering the viewport. Touch click still navigates immediately. Desktop hover/focus remains. Keep the original mark visible until the canvas is drawn; reduced-motion uses a static red preview.
+
+## Page cleanup — 2026-10-27
+Remove the homepage index slogan. Festival collection pages omit reading demos and use centered lowercase stay tuned when empty. Interviews use the same empty state. About removes the values, reading CTA and contact content beneath its introduction. Podcast opens with centered side-by-side program choices: 过度解读 left, 保留意见 right; labels match the Parallax terminal font stack. Use the supplied screenshot artwork via a CSS crop for 过度解读; no episodes or destination supplied yet, so show stay tuned. Keep existing 保留意见 episodes reachable via its choice. Local preview until publication is requested.
+
+Red brand mark: hide the white outer margin with a circular CSS clip on both homepage and interior headers; preserve the supplied logo artwork.
+
+Latest cleanup: remove column reading demos too; every empty collection says stay tuned. Overthink now has the two user-provided Xiaoyuzhou episodes; keep program separation in editorial data. Episode titles use the Parallax terminal font stack at 12px desktop and 11px mobile. Homepage idle visor displays the supplied bullet/shattered-glass artwork with bottom caption cropped out; hover and navigation retain red text overrides.
+
+User clarification: the supplied bullet/glass motif must be rendered in the existing red glowing pixel/glitch visor style, never as a flat blue-white image. Sample its contours from the source and keep motion confined to the lens.
+
+User reverted the bullet motif in the goggles. Restore the prior red text visor including idle phrase cycle, BANG hover, and section labels. Explore the new graphic style only in a separate concept image.
+
+## Approved podcast concept — 2026-11-06
+Implement outputs/podcast-concept.png from the current chat: ivory editorial page, red brand and active states, pale yellow angled title highlight, centered program choices, two wide original Overthink episode banners side by side on desktop and stacked on mobile. Default to Overthink, keep Reserved Opinions reachable with its existing square covers. Keep previously approved compact 12px/11px titles rather than enlarged generated concept text. Preserve actual source artworks and existing header wording; do not reproduce generated asset/text errors. Homepage stays on the restored red text visor.
+
+## Studio homepage — 2026-11-16
+
+The new homepage shows a forward-projecting film projector and physical props in a studio cove. After the shutter opens and the screen reaches the viewport, the five editorial sections are read directly on the level, full-screen projection. The projected preview and the interactive directory share a component. Keep existing article and collection URLs reachable directly and retain the return to the studio.
+
+Show the loaded film coils and the moving strip prominently on the projector. Leave its housing unbranded. The set dressing is the cartridge prop, the 35 mm canister, and the loose 16 mm spool. On the full-screen directory, align the visible left and right edges of PAPERBULLET with 锵稿 above it.
+
+## Index navigation — 2026-11-20
+
+Use the supplied BounceSidebar interaction for the projected index, with the five Chinese section labels and a 6px orange dot that travels along an arc. Restore all five original IndexCoin marks and the original Songti typeface with large labels. Arrange the page in upper, middle, and lower sections: the horizontal logo and wordmark combination is centered in the upper section, the menu is centered in the middle, and the lower section provides space above the footer. Hover and keyboard focus preview the dot position before the link opens its section. English menu labels are deferred to the user's later revision. The projection preview and full-screen index use the same menu.
+
+## Article image scale — 2026-11-20
+
+The user finds full-column posters too tall and wants the next paragraph to appear sooner. Size article images in proportion to the viewport, preserve their complete aspect ratios, and center them within the text column.
+
+Collection article lists use small square cover cards like the podcast grid. Under each cover, show the category, publication year, and article number in red, then the black title without a repeated category prefix, then the original muted introduction. The Cannes article is number 006, displayed as 戛纳专栏2026 / 006 above 《希望》的另一面. Use a smaller title and visually align its leading book-title bracket with the text above and below. Omit reading time and the arrow from these cards.

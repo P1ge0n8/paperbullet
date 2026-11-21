@@ -29,7 +29,7 @@ export const sampleArticles = [
     ],quote:'允许不同的感受，在同一个房间里存在。',
   },
 ];
-export const articles = [...published.articles.map((a,i)=>({...a, sample:false, number:String(i+1).padStart(3,'0'),shortTitle:a.title.replaceAll('\n',''),minutes:Math.max(1,Math.ceil(a.blocks.reduce((n,b)=>n+(b.text?.length||0),0)/450)),sections:[]})),...sampleArticles.map(a=>({...a,sample:true}))];
+export const articles = [...published.articles.map((a,i)=>({...a, sample:false, number:a.number || String(i+1).padStart(3,'0'),shortTitle:a.title.replaceAll('\n',''),minutes:Math.max(1,Math.ceil(a.blocks.reduce((n,b)=>n+(b.text?.length||0),0)/450)),sections:[]})),...sampleArticles.map(a=>({...a,sample:true}))];
 export function readRoute(hash) {
   const value = hash.replace(/^#/, '') || '/';
   if (value === '/' || value === '/screen' || value === '/columns' || value === '/about' || ['/festivals','/podcast','/interviews'].includes(value)) return value;

@@ -1,5 +1,6 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { ArrowLeft } from '@phosphor-icons/react';
+import { BounceSidebar } from './BounceSidebar';
 import { IndexCoin } from './IndexCoin';
 import './projection-home.css';
 
@@ -37,8 +38,10 @@ function IndexBrand() {
   return (
     <div className="projection-index__brand">
       <img src={base + 'assets/logo.jpg'} width="112" height="112" alt=""/>
-      <h1 ref={chinese}>锵稿</h1>
-      <span lang="en" ref={english}>PAPERBULLET</span>
+      <div className="projection-index__wordmark">
+        <h1 ref={chinese}>锵稿</h1>
+        <span lang="en" ref={english}>PAPERBULLET</span>
+      </div>
     </div>
   );
 }
@@ -47,19 +50,17 @@ export function ProjectionIndex({ sections, routes, preview = false }) {
   return (
     <div className="projection-index">
       <header className="projection-index__top">
-        <span>栏目索引 <i aria-hidden="true">/</i> <span lang="en">INDEX</span></span>
+        <span>栏目索引</span>
         <a href="#/" className="projection-return"><ArrowLeft size={16}/> 返回摄影棚</a>
       </header>
       <main id={preview ? undefined : 'content'} tabIndex={preview ? undefined : -1} className="projection-index__body">
         <IndexBrand/>
         <nav className="projection-index__links" aria-label="栏目索引">
-          {sections.map((section, index) => (
-            <a key={routes[index]} href={'#' + routes[index]}>
-              <IndexCoin index={index}/>
-              <span className="projection-index__name">{section.title}</span>
-              <span className="projection-index__english" lang="en">{section.english}</span>
-            </a>
-          ))}
+          <BounceSidebar items={sections.map((section, index) => ({
+            icon: <IndexCoin index={index}/>,
+            label: section.title,
+            href: '#' + routes[index],
+          }))}/>
         </nav>
       </main>
       <footer className="projection-index__foot">PAPERBULLET@2026</footer>

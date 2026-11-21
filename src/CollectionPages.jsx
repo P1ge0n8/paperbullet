@@ -1,6 +1,7 @@
 import { FestivalMark } from './FestivalMark';
 import { ArrowLeft, ArrowRight, ArrowUpRight } from '@phosphor-icons/react';
 import { articles } from './articles';
+import { contentAsset } from './ContentBlocks';
 import { columns, festivals } from './collections';
 
 export function Directory({ kind, navigate }) {
@@ -33,5 +34,28 @@ export function CollectionList({ collection, kind, navigate }) {
  </>;
 }
 function ReadingCards({items,base,navigate,sample=false}) {
- return <div className="reading-card-grid">{items.map(a=><a className="reading-card" key={a.id} href={'#'+base+'/read/'+a.id} onClick={e=>navigate(e,base+'/read/'+a.id)}><span className="micro red">{sample?'示例文章':a.category} / {a.number}</span><h3>{a.shortTitle}</h3><p>{a.subtitle}</p><div><small>{sample?'非正式刊发 · ':''}约 {a.minutes} 分钟</small><ArrowUpRight size={20}/></div></a>)}</div>;
+ return (
+  <div className="reading-card-grid">
+   {items.map(article => {
+    const titlePrefix = article.category + '｜';
+    const title = article.shortTitle.startsWith(titlePrefix)
+     ? article.shortTitle.slice(titlePrefix.length)
+     : article.shortTitle;
+    const year = article.publishedAt?.slice(0, 4) || '';
+    return (
+    <a
+     className="reading-card"
+     key={article.id}
+     href={'#' + base + '/read/' + article.id}
+     onClick={event => navigate(event, base + '/read/' + article.id)}
+    >
+     {article.cover && <img className="reading-card-cover" src={contentAsset(article.cover)} alt="" loading="lazy"/>}
+     <span className="micro red">{sample ? '示例文章' : article.category + year} / {article.number}</span>
+     <h3 className={title.startsWith('《') ? 'has-leading-bracket' : undefined}>{title}</h3>
+     <p>{article.subtitle}</p>
+    </a>
+    );
+   })}
+  </div>
+ );
 }
