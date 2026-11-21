@@ -12,7 +12,7 @@
     "content:publish": "node scripts/publish-content.mjs",
     "test:admin": "node --test tests/admin.test.mjs",
     "test:content": "node --test tests/content.test.mjs",
-    "check": "npm run content:publish && node --test tests/admin.test.mjs tests/content.test.mjs tests/sites-worker.test.mjs && npm run build",
+    "check": "npm run build && node --test tests/admin.test.mjs tests/content.test.mjs tests/sites-worker.test.mjs",
     "publish:github": "node scripts/publish-github.mjs"
   },
   "dependencies": {
