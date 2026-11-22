@@ -12,7 +12,7 @@ export function localizeRecord(record, locale) {
  if (!record || locale === 'zh-CN' || !record.translations?.[locale]) return record;
  const translated = record.translations[locale];
  const result = { ...record };
- for (const key of ['title', 'subtitle', 'author', 'category', 'blocks', 'name', 'description', 'english', 'duration', 'access']) {
+ for (const key of ['title', 'subtitle', 'author', 'category', 'preface', 'prefaceOffset', 'blocks', 'name', 'description', 'english', 'duration', 'access']) {
   if (translated[key] !== undefined) result[key] = translated[key];
  }
  if (typeof result.title === 'string') result.shortTitle = result.title.replaceAll('\n', '');
@@ -20,6 +20,8 @@ export function localizeRecord(record, locale) {
 }
 
 const simplified = {
+ columnTopics: '文章分类', festivalTopics: '更多影展专题', imageText: '图中文字', preface: '开腔',
+ loadingStory: '正在加载正文…', storyLoadError: '正文加载失败。', retry: '重新加载', emptyList: '暂无文章',
  language: '选择语言', skipContent: '跳至主要内容', returnStudio: '返回放映棚', sectionIndex: '栏目索引',
  author: '作者：', unsigned: '待署名（样稿）', unpublished: '未正式刊发', readMinutes: '约 {count} 分钟',
  backColumns: '返回专栏', backArticleList: '返回{name} · 文章列表', sampleNotice: '阅读排版示例 · 非{name}作品或报道',
@@ -38,6 +40,7 @@ const simplified = {
   { title: '播客', english: 'PODCAST', description: '散场以后，继续聊电影。让关于电影的对话留在耳边。' },
   { title: '深度访谈', english: 'CONVERSATIONS', description: '走近镜头背后的人，听他们讲述创作的来路。' },
   { title: '关于锵稿', english: 'PAPERBULLET', description: '锵稿，一个关于电影的独立内容空间。' },
+  { title: '商业合作', english: 'PARTNERSHIPS' },
  ],
  about: {
   lines: ['隐姓不埋名', '缴械不投降'], punctuation: ['，', '。'],
@@ -61,6 +64,8 @@ const simplified = {
 };
 const traditional = {
  ...simplified,
+ columnTopics: '文章分類', festivalTopics: '更多影展專題', imageText: '圖中文字', preface: '開腔',
+ loadingStory: '正在載入正文…', storyLoadError: '正文載入失敗。', retry: '重新載入', emptyList: '暫無文章',
  language: '選擇語言', skipContent: '跳至主要內容', returnStudio: '返回放映棚', sectionIndex: '欄目索引',
  unsigned: '待署名（樣稿）', unpublished: '未正式刊發', readMinutes: '約 {count} 分鐘', backColumns: '返回專欄',
  backArticleList: '返回{name} · 文章列表', sampleNotice: '閱讀排版示例 · 非{name}作品或報道', sampleArticle: '示例文章',
@@ -78,6 +83,7 @@ const traditional = {
   { title: '播客', english: 'PODCAST', description: '散場以後，繼續聊電影。讓關於電影的對話留在耳邊。' },
   { title: '深度訪談', english: 'CONVERSATIONS', description: '走近鏡頭背後的人，聽他們講述創作的來路。' },
   { title: '關於鏘稿', english: 'PAPERBULLET', description: '鏘稿，一個關於電影的獨立內容空間。' },
+  { title: '商業合作', english: 'PARTNERSHIPS' },
  ],
  about: {
   lines: ['隱姓不埋名', '繳械不投降'], punctuation: ['，', '。'],
@@ -101,6 +107,8 @@ const traditional = {
 };
 const english = {
  ...simplified,
+ columnTopics: 'Browse by topic', festivalTopics: 'More festivals', imageText: 'Image text', preface: 'Preface',
+ loadingStory: 'Loading article…', storyLoadError: 'The article could not load.', retry: 'Try again', emptyList: 'No articles yet',
  language: 'Choose language', skipContent: 'Skip to content', returnStudio: 'Return to the studio', sectionIndex: 'Sections',
  author: 'By ', unsigned: 'Uncredited (sample)', unpublished: 'Not published', readMinutes: '{count} min read',
  backColumns: 'Back to columns', backArticleList: 'Back to {name} · Articles', sampleNotice: 'Layout sample · Not a contribution to {name}',
@@ -119,6 +127,7 @@ const english = {
   { title: 'Podcasts', english: 'PODCAST', description: 'The film ends; the conversation continues.' },
   { title: 'Conversations', english: 'CONVERSATIONS', description: 'Meet the people behind the camera and follow their creative journeys.' },
   { title: 'About', english: 'PAPERBULLET', description: 'PAPERBULLET, an independent space for writing about cinema.' },
+  { title: 'Partnerships', english: 'PARTNERSHIPS' },
  ],
  about: {
   lines: ['Anonymous, not forgotten', 'Disarmed, never surrendered'], punctuation: ['.', '.'],
@@ -145,7 +154,7 @@ const collectionTranslations = {
  'zh-HK': {
   'columns/zige': { name:'子戈', description:'子戈的專欄文章，匯集於此。' },
   'columns/xuyuan': { name:'徐元', description:'徐元的專欄文章，匯集於此。' },
-  'columns/meixuefeng': { name:'梅雪峰', description:'梅雪峰的專欄文章，匯集於此。' },
+  'columns/meixuefeng': { name:'梅雪風', description:'梅雪風的專欄文章，匯集於此。' },
   'festivals/cannes': { name:'康城電影節', description:'在這裏，匯集康城電影節的觀影筆記、評論與訪談。' },
   'festivals/venice': { name:'威尼斯電影節', description:'在這裏，匯集威尼斯電影節的觀影筆記、評論與訪談。' },
   'festivals/berlin': { name:'柏林電影節', description:'在這裏，匯集柏林電影節的觀影筆記、評論與訪談。' },

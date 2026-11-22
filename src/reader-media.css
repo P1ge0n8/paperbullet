@@ -1,0 +1,74 @@
+/* Image percentages from the editor are relative to the reader's compact media column. */
+.reading-image {
+  width: min(100%, 460px);
+  margin-inline: auto;
+  --preview-height: min(34svh, 280px);
+}
+.reading-image--cover {
+  --preview-height: min(32svh, 248px);
+  margin-bottom: 20px;
+}
+.reading-image__link {
+  position: relative;
+  display: block;
+  width: fit-content;
+  max-width: var(--image-width, 100%);
+  margin-inline: auto;
+  line-height: 0;
+  cursor: zoom-in;
+}
+.reading-image__link:focus-visible { outline: 2px solid var(--red, #b80c23); outline-offset: 4px; }
+.reading-image[data-align="left"], .reading-image[data-align="left"] .reading-image__link { margin-left: 0; }
+.reading-image[data-align="right"], .reading-image[data-align="right"] .reading-image__link { margin-right: 0; }
+:is(.reader-page .article-body, .article-preview) .reading-image .reading-image__photo {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: var(--image-max-height, var(--preview-height));
+  object-fit: contain;
+  margin: 0;
+}
+.reading-image__zoom {
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  box-sizing: content-box;
+  padding: 4px;
+  border-radius: 3px;
+  background: #fffffff0;
+  color: #342e2b;
+  pointer-events: none;
+  opacity: 0;
+}
+.reading-image__link:hover .reading-image__zoom,
+.reading-image__link:focus-visible .reading-image__zoom { opacity: 1; }
+@media (hover: none) {
+  .reading-image__zoom { opacity: .88; }
+}
+.workspace .reader-page .reader-topline { margin: 10px 0 clamp(20px, 3.5vw, 34px); }
+.workspace .reader-page .article-heading {
+  max-width: 720px;
+  margin-bottom: clamp(20px, 3.2vw, 32px);
+}
+.workspace .reader-page .article-heading h1 {
+  margin: 12px 0;
+  font-size: clamp(27px, 4.2cqi, 42px);
+  line-height: 1.42;
+  overflow-wrap: anywhere;
+}
+.reader-page .article-heading > p { margin: 0 0 12px; font-size: 16px; line-height: 1.7; }
+.reader-page .article-byline { padding: 12px 0; }
+.reader-page .article-body { line-height: 1.85; letter-spacing: .025em; }
+.reader-page .article-body > p { margin: 0 0 1.05em; }
+.reader-page .article-body figure { margin: 18px 0; }
+.reader-page .article-body :is(h2, h3) { margin: 1.3em 0 .55em; line-height: 1.55; }
+.reader-page .article-body figcaption { margin-top: 6px; }
+.reader-page .article-body .figure-transcript { margin: 5px 0; font-size: 13px; }
+
+@media (max-width: 700px) {
+  .reading-image { width: 92%; --preview-height: min(31svh, 225px); }
+  .reading-image--cover { --preview-height: min(28svh, 200px); }
+  .workspace .reader-page .article-heading h1 { font-size: clamp(26px, 7cqi, 32px); }
+  .reader-page .article-body figure { margin: 15px 0; }
+}

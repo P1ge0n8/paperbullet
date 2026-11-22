@@ -1,5 +1,5 @@
 import published from './content/published.json' with { type: 'json' };
-import { collectionForRoute } from './collections.js';
+import { archiveListPath, collectionForRoute, formerFestivalTopicPaths, sectionArticles } from './collections.js';
 // Preview copy only. Replace these records with approved editorial content before publication.
 export const sampleArticles = [
   {
@@ -29,15 +29,32 @@ export const sampleArticles = [
     ],quote:'允许不同的感受，在同一个房间里存在。',
   },
 ];
-export const articles = [...published.articles.map((a,i)=>({...a, sample:false, number:a.number || String(i+1).padStart(3,'0'),shortTitle:a.title.replaceAll('\n',''),minutes:Math.max(1,Math.ceil(a.blocks.reduce((n,b)=>n+(b.text?.length||0),0)/450)),sections:[]})),...sampleArticles.map(a=>({...a,sample:true}))];
+export const articles = [
+ ...published.articles.map((article, i) => {
+  const characters = article.blockTextLength ?? [...(article.preface || []), ...(article.blocks || [])].reduce((total, block) => total + (block.text?.length || 0), 0);
+  return {
+   ...article, sample: false, number: article.number || String(i + 1).padStart(3, '0'),
+   shortTitle: article.title.replaceAll('\n', ''), minutes: Math.max(1, Math.ceil(characters / 450)), sections: [],
+  };
+ }),
+ ...sampleArticles.map(article => ({ ...article, sample: true })),
+];
 export function readRoute(hash) {
-  const value = hash.replace(/^#/, '') || '/';
-  if (value === '/' || value === '/screen' || value === '/columns' || value === '/about' || ['/festivals','/podcast','/interviews'].includes(value)) return value;
-  if (articles.some(a => value === '/read/' + a.id)) return value;
-  const collection=collectionForRoute(value);
-  if(collection){
-    const parts=value.split('/');
-    if(parts.length===3 || (parts.length===5 && parts[3]==='read' && articles.some(a=>a.id===parts[4]))) return value;
+ const value = hash.replace(/^#/, '') || '/';
+ if (['/', '/screen', '/columns', '/about', '/festivals', '/podcast', '/interviews', '/partnerships'].includes(value)) return value;
+ const [, section, id, action, articleId, extra] = value.split('/');
+ const formerTopicTarget = section === 'festivals' && formerFestivalTopicPaths.get(id);
+ if (formerTopicTarget) {
+  if (action === undefined) return formerTopicTarget;
+  if (action !== 'read' || extra !== undefined || !articleId) return '/';
+  if (formerTopicTarget === '/partnerships') {
+   return sectionArticles.partnerships.includes(articleId) ? '/partnerships/read/' + articleId : '/';
   }
-  return '/';
+  const articlePath = archiveListPath(articles.find(article => article.id === articleId));
+  return articlePath.startsWith('/columns/') ? articlePath + '/read/' + articleId : '/';
+ }
+ if (section === 'read' && action === undefined && articles.some(article => article.id === id)) return value;
+ if (['interviews', 'partnerships'].includes(section) && id === 'read' && articleId === undefined && sectionArticles[section].includes(action)) return value;
+ if (collectionForRoute(value) && (action === undefined || (action === 'read' && extra === undefined && articles.some(article => article.id === articleId)))) return value;
+ return '/';
 }

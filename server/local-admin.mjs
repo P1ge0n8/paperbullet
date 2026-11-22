@@ -1,24 +1,26 @@
 import http from 'node:http';
+import { watchFile, unwatchFile } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { mkdir, readFile, writeFile, readdir, stat } from 'node:fs/promises';
+import { mkdir, readFile, writeFile, readdir, stat, realpath } from 'node:fs/promises';
 import { randomBytes, scryptSync, timingSafeEqual } from 'node:crypto';
 import { createServer as createViteServer } from 'vite';
-import { readContent,saveContent,revision,validateContent,publishContent } from './content.mjs';
+import { importArchive } from './archive-import.mjs';
+import { readContent,saveContent,revision,safeImage,publishStoredContent } from './content.mjs';
 
 const root=process.env.PAPERBULLET_ROOT?path.resolve(process.env.PAPERBULLET_ROOT):path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const port=Number(process.env.ADMIN_PORT||4181);
-const privateDir=path.join(root,'.local-admin');
-await mkdir(privateDir,{recursive:true,mode:0o700});
+const privateDir=process.env.PAPERBULLET_ADMIN_DIR ? path.resolve(process.env.PAPERBULLET_ADMIN_DIR) : path.join(root,'.local-admin');
+if(!process.env.PAPERBULLET_ADMIN_DIR)await mkdir(privateDir,{recursive:true,mode:0o700});
 const credentialFile=path.join(privateDir,'account.json');
-let account;try{account=JSON.parse(await readFile(credentialFile,'utf8'));}catch(e){if(e.code!=='ENOENT')throw e;}
-await publishContent(root,validateContent(await readContent(root)));
-const sessions=new Map();let attempts=[];let saving=false;
+let account;try{account=JSON.parse(await readFile(credentialFile,'utf8'));}catch(e){if(e.code!=='ENOENT'||process.env.PAPERBULLET_ADMIN_DIR)throw e;}
+await publishStoredContent(root);
+const sessions=new Map();let attempts=[];
 let vite;
 const error=(message,status=400)=>Object.assign(new Error(message),{status});
 function send(res,status,data){res.writeHead(status,{'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store','X-Content-Type-Options':'nosniff'});res.end(JSON.stringify(data));}
 async function body(req,limit=2*1024*1024){let size=0;const chunks=[];for await(const chunk of req){size+=chunk.length;if(size>limit)throw error('文件过大。',413);chunks.push(chunk);}return Buffer.concat(chunks);}
-async function json(req){try{return JSON.parse((await body(req)).toString());}catch(e){if(e.status)throw e;throw error('请求格式不正确。');}}
+async function json(req,limit){try{return JSON.parse((await body(req,limit)).toString());}catch(e){if(e.status)throw e;throw error('请求格式不正确。');}}
 function session(req){const token=req.headers.cookie?.match(/(?:^|;\s*)pb_session=([a-f0-9]{64})(?:;|$)/)?.[1];const data=sessions.get(token);if(data&&data.until>Date.now())return {token,...data};if(token)sessions.delete(token);return null;}
 function login(res){const token=randomBytes(32).toString('hex'),csrf=randomBytes(24).toString('hex');sessions.set(token,{csrf,until:Date.now()+8*60*60*1000});res.setHeader('Set-Cookie',`pb_session=${token}; Path=/; HttpOnly; SameSite=Strict; Max-Age=28800`);return csrf;}
 function imageExtension(bytes){if(bytes.subarray(0,8).equals(Buffer.from([137,80,78,71,13,10,26,10])))return 'png';if(bytes[0]===255&&bytes[1]===216&&bytes[2]===255)return 'jpg';if(['GIF87a','GIF89a'].includes(bytes.subarray(0,6).toString()))return 'gif';if(bytes.subarray(0,4).toString()==='RIFF'&&bytes.subarray(8,12).toString()==='WEBP')return 'webp';throw error('仅支持 PNG、JPG、WebP、GIF 图片。');}
@@ -29,6 +31,18 @@ const server=http.createServer(async(req,res)=>{
  // Never serve credentials or editorial drafts through Vite's source endpoints.
  let decoded;try{decoded=decodeURIComponent(pathname);}catch{return send(res,400,{error:'路径不正确。'});}
  if(!pathname.startsWith('/api/admin/')&&/(?:^|[/\\])(?:\.local-admin|content|server)(?:[/\\]|$)/.test(decoded)&&!decoded.startsWith('/src/content/'))return send(res,404,{error:'不存在。'});
+ // Serve newly imported local assets immediately, including directories created after Vite startup.
+ if((req.method==='GET'||req.method==='HEAD')&&(/^\/archive-articles\/[a-z0-9][a-z0-9-]{0,79}\.json$/.test(pathname)||(pathname.startsWith('/uploads/')&&safeImage(pathname)))){
+  try{
+   const publicDir=await realpath(path.join(root,'public'));
+   const file=await realpath(path.join(publicDir,pathname));
+   if(!file.startsWith(publicDir+path.sep))return send(res,404,{error:'不存在。'});
+   const mime={'.json':'application/json; charset=utf-8','.jpg':'image/jpeg','.jpeg':'image/jpeg','.png':'image/png','.webp':'image/webp','.gif':'image/gif'};
+   const data=await readFile(file);
+   res.writeHead(200,{'Content-Type':mime[path.extname(file).toLowerCase()],'Content-Length':data.length,'Cache-Control':'no-cache','X-Content-Type-Options':'nosniff'});
+   return res.end(req.method==='HEAD'?undefined:data);
+  }catch{return send(res,404,{error:'不存在。'});}
+ }
  if(!pathname.startsWith('/api/admin/'))return vite.middlewares(req,res);
  try{
   if(req.method!=='GET'&&req.headers.origin!=='http://'+req.headers.host)throw error('请求来源不正确，请从本机后台页面操作。',403);
@@ -54,13 +68,30 @@ const server=http.createServer(async(req,res)=>{
   if(pathname==='/api/admin/logout'&&req.method==='POST'){sessions.delete(auth.token);res.setHeader('Set-Cookie','pb_session=; Path=/; HttpOnly; SameSite=Strict; Max-Age=0');return send(res,200,{ok:true});}
   if(pathname==='/api/admin/content'&&req.method==='GET'){const content=await readContent(root);return send(res,200,{content,revision:revision(content)});}
   if(pathname==='/api/admin/content'&&req.method==='PUT'){
-   if(saving)throw error('另一项保存正在进行，请稍后再试。',409);
-   const {content,revision:expected}=await json(req);saving=true;
-   try{return send(res,200,{revision:await saveContent(root,content,expected)});}finally{saving=false;}
+   const {content,revision:expected}=await json(req,128*1024*1024);
+   return send(res,200,{revision:await saveContent(root,content,expected)});
+  }
+  if(pathname==='/api/admin/import'&&req.method==='POST'){
+   const records=await json(req,128*1024*1024);
+   return send(res,200,await importArchive(root,records));
   }
   if(pathname==='/api/admin/media'&&req.method==='GET'){
    const images=[];
-   for(const folder of ['uploads','assets']){const dir=path.join(root,'public',folder);await mkdir(dir,{recursive:true});for(const name of await readdir(dir)){if(!/\.(png|jpe?g|webp|gif)$/i.test(name))continue;const info=await stat(path.join(dir,name));if(info.isFile())images.push({url:`/${folder}/${name}`,name,size:info.size});}}
+   async function collect(relative){
+    const dir=path.join(root,'public',relative);
+    let entries;
+    try {entries=await readdir(dir,{withFileTypes:true});} catch(err){if(err.code==='ENOENT')return;throw err;}
+    for(const entry of entries){
+     const item=relative+'/'+entry.name;
+     if(entry.isDirectory() && /^[a-z0-9_-][a-z0-9_.-]*$/i.test(entry.name))await collect(item);
+     else if(entry.isFile() && safeImage('/'+item)){
+      const info=await stat(path.join(dir,entry.name));
+      images.push({url:'/'+item,name:entry.name,size:info.size});
+     }
+    }
+   }
+   await collect('uploads');
+   await collect('assets');
    return send(res,200,{images});
   }
   if(pathname==='/api/admin/upload'&&req.method==='POST'){
@@ -72,6 +103,11 @@ const server=http.createServer(async(req,res)=>{
  }catch(e){send(res,e.status||500,{error:e.status?e.message:'保存失败，请查看本地后台终端。'});if(!e.status)console.error(e);}
 });
 vite=await createViteServer({root,server:{middlewareMode:true,host:'127.0.0.1',hmr:{server,clientPort:port}},appType:'spa'});
+// Imports and editor saves replace the index atomically. Native watchers can miss the rename.
+const publishedIndex=path.join(root,'src/content/published.json');
+watchFile(publishedIndex,{persistent:false,interval:500},(current,previous)=>{
+ if(current.ino!==previous.ino||current.mtimeMs!==previous.mtimeMs) vite.watcher.emit('change',publishedIndex);
+});
 server.listen(port,'127.0.0.1',()=>console.log(`本地后台：http://127.0.0.1:${port}/admin/\n前台预览：http://127.0.0.1:${port}/`));
 server.on('error',e=>{console.error(e.message);process.exit(1);});
-for(const signal of ['SIGINT','SIGTERM'])process.on(signal,()=>{server.close();vite.close().then(()=>process.exit(0));});
+for(const signal of ['SIGINT','SIGTERM'])process.on(signal,()=>{unwatchFile(publishedIndex);server.close();vite.close().then(()=>process.exit(0));});

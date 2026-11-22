@@ -14,7 +14,7 @@ No remaining P0/P1/P2 findings in the requested prototype scope.
 - Layout: collection directories lead into collection lists, then readers; stable card links and explicit parent navigation. Three author cards, two festival cards, and a three-column podcast grid collapse into a single column below 800px. At 390px the document width equals the viewport for the directory and author list.
 - Colors: existing ivory, purple-gray rules and red interaction accents remain. This is an intentional brand adaptation, not a pixel clone of Initium's white/blue system.
 - Assets: supplied logo and Xiaoyuzhou logo remain sharp. No ImageGen, invented portraits or copied Initium covers. Collection cards use their actual names as content; photography is intentionally omitted until owner-supplied imagery exists.
-- Content: owner-supplied names 子戈、徐元、梅雪峰 and FIRST/戛纳 are implemented. Formal article assignments are empty; generic existing samples are clearly separated and labeled as not by the named author / not festival reporting. Only the confirmed Xiaoyuzhou destination is enabled.
+- Content: owner-supplied names 子戈、徐元、梅雪风 and FIRST/戛纳 are implemented. Formal article assignments are empty; generic existing samples are clearly separated and labeled as not by the named author / not festival reporting. Only the confirmed Xiaoyuzhou destination is enabled.
 
 ## Comparison history
 Initial podcast implementation used a two-column grid, making the single card excessively wide and pushing its title below the 720px first viewport (P2). Changed to the reference's three-column desktop grid. Post-fix same-size comparison: work/qa-collections/podcast.png shows the title clearly in the viewport, with no fabricated extra cards. No further P0/P1/P2 changes required.

@@ -1,4 +1,5 @@
-import { ContentBlocks, contentAsset, textStyle, imageStyle } from './ContentBlocks';
+import { ReaderImage, contentAsset, textStyle } from './ContentBlocks';
+import { ArticleBodyBlocks, articleHeadings } from './ArticlePreface';
 import { useEffect, useRef, useState } from 'react';
 import { ArrowUpRight, ArrowLeft, Check, LinkSimple } from '@phosphor-icons/react';
 import { gsap } from 'gsap';
@@ -12,12 +13,12 @@ import { contacts } from './contacts';
 import { AboutContact } from './AboutContact';
 import { episodes } from './episodes';
 import { IndexCoin } from './IndexCoin';
-import { collectionForRoute } from './collections';
-import { Directory, CollectionList } from './CollectionPages';
+import { archiveListPath, collectionForRoute, sectionArticles } from './collections';
+import { Directory, CollectionList, SectionList } from './CollectionPages';
 import { LanguageSwitcher, localizeRecord, useI18n } from './i18n';
 const asset = name => import.meta.env.BASE_URL + 'assets/' + name;
-const routes = ['/columns','/festivals','/podcast','/interviews','/about'];
-const sectionOrder = [4, 0, 1, 2, 3];
+const routes = ['/columns','/festivals','/podcast','/interviews','/about','/partnerships'];
+const sectionOrder = [4, 0, 1, 2, 3, 5];
 // A small bitmap alphabet renders actual display pixels, rather than a smooth text overlay.
 const glyphs = {
  G:['01110','10001','10000','10111','10001','10001','01110'],
@@ -52,7 +53,9 @@ function PixelCode({ text, className = '' }) {
 }
 function ArticleMeta({ article }) {
  const { t } = useI18n();
- return <span className="publication-meta">{t('author')}{article.author || t('unsigned')}<span>·</span>{article.publishedAt?<time dateTime={article.publishedAt}>{article.publishedAt.replace('T',' ')}</time>:t('unpublished')}<span>·</span>{t('readMinutes',{count:article.minutes})}</span>;
+ const author=article.author || (article.sample && t('unsigned'));
+ const date=article.publishedAt ? <time dateTime={article.publishedAt}>{article.publishedAt.replace('T',' ')}</time> : article.sample && t('unpublished');
+ return <span className="publication-meta">{author&&<>{t('author')}{author}<span>·</span></>}{date&&<>{date}<span>·</span></>}{t('readMinutes',{count:article.minutes})}</span>;
 }
 function EditorialWorkspace({ route, navigate, children }) {
  const { t, sections } = useI18n();
@@ -82,26 +85,63 @@ function CollectionPage({ route, navigate }) {
  return <main className="content-page directory-page" id="content" tabIndex={-1}>{collection?<CollectionList collection={collection} kind={kind} navigate={navigate}/>:<Directory kind={kind} navigate={navigate}/>}</main>;
 }
 function Reader({ article:sourceArticle, route, navigate }) {
- const { t, locale, collectionText } = useI18n();
- const a = localizeRecord(sourceArticle,locale);
+ const { t, locale, sections, collectionText } = useI18n();
+ const [body,setBody]=useState(null);
+ const [failed,setFailed]=useState(false);
+ const [attempt,setAttempt]=useState(0);
+ useEffect(()=>{
+  if (!sourceArticle.archiveBody) return;
+  const controller=new AbortController();
+  setFailed(false);
+  async function loadBody(){
+   try {
+    const response=await fetch(contentAsset(sourceArticle.archiveBody),{signal:controller.signal});
+    if (!response.ok) throw Error('HTTP '+response.status);
+    const result=await response.json();
+    if (!Array.isArray(result.blocks)) throw Error('Missing article blocks');
+    if (!controller.signal.aborted) setBody(result);
+   } catch {
+    if (!controller.signal.aborted) setFailed(true);
+   }
+  }
+  loadBody();
+  return ()=>controller.abort();
+ },[sourceArticle.archiveBody,attempt]);
+ const a = localizeRecord(body?{...sourceArticle,...body}:sourceArticle,locale);
+ const loading=sourceArticle.archiveBody&&!body&&!failed;
  const collection=collectionForRoute(route);
- const collectionName=collection?collectionText(collection).name:'';
- const parentPath=collection?route.split('/').slice(0,3).join('/'):'/columns';
- const articlePath=id=>collection?parentPath+'/read/'+id:'/read/'+id;
+ const section=route.split('/')[1];
+ const sectionIds=sectionArticles[section];
+ const collectionName=collection?collectionText(collection).name:sectionIds?sections[routes.indexOf('/'+section)].title:'';
+ const parentPath=collection?route.split('/').slice(0,3).join('/'):sectionIds?'/'+section:'/columns';
+ const articlePath=id=>(collection||sectionIds?parentPath:'')+'/read/'+id;
  const [copied,setCopied]=useState(false),[copyError,setCopyError]=useState(false);
  const root=useRef(null), timer=useRef(null);
  useEffect(()=>()=>clearTimeout(timer.current),[]);
- useEffect(()=>{ScrollTrigger.refresh();},[locale]);
+ useEffect(()=>{ScrollTrigger.refresh();},[locale,body]);
  useGSAP(()=>{gsap.fromTo('.reading-progress',{scaleX:0},{scaleX:1,ease:'none',scrollTrigger:{trigger:'.article-body',scroller:root.current.closest('.studio-landing__screen'),start:'top 35%',end:'bottom bottom',scrub:true}});},{scope:root});
  async function copy(){try{await navigator.clipboard.writeText(location.href);setCopied(true);clearTimeout(timer.current);timer.current=setTimeout(()=>setCopied(false),2200);}catch{setCopyError(true);}}
- const readingPool=collection?articles.filter(item=>a.sample?item.sample:collection.articleIds.includes(item.id)):articles.filter(item=>item.sample===a.sample);
+ const poolIds=collection?.articleIds || sectionIds;
+ const readingPool=articles.filter(item=>poolIds&&!a.sample?poolIds.includes(item.id):item.sample===a.sample);
+ const headings = a.blocks ? articleHeadings(a, t('preface')) : a.sections.map((part,i)=>({title:part.title,anchor:'part-'+i}));
+ const headingsAreNumbered = a.archiveCategory && headings.some(heading => /^\d{1,2}$/.test(heading.title.trim()));
+ const isCover = block => block.type === 'image' && block.src === a.cover;
+ const showCover = a.cover && !loading && !failed && !a.preface?.some(isCover) && (!a.archiveCategory || !a.blocks?.some(isCover));
  const next=readingPool.length>1?localizeRecord(readingPool[(readingPool.findIndex(item=>item.id===a.id)+1)%readingPool.length],locale):null;
- return <main ref={root} className="reader-page" id="content" tabIndex={-1}>
+ return <main ref={root} className={'reader-page'+(a.archiveCategory?' archive-reader':'')} id="content" tabIndex={-1}>
   <div className="reading-progress" aria-hidden="true"/>
-  <div className="reader-topline"><a href={"#"+parentPath} onClick={e=>navigate(e,parentPath)}><ArrowLeft size={16}/> {collection?t('backArticleList',{name:collectionName}):t('backColumns')}</a><span className="micro">PB—{a.number} / {a.category}</span></div>
-  <header className="article-heading">{collection&&a.sample&&<p className="reader-demo-note">{t('sampleNotice',{name:collectionName})}</p>}<div className="story-meta"><span>{a.category}</span>{a.sample&&<span>{t('sampleArticle')}</span>}</div><h1 style={textStyle(a.titleStyle)}>{a.title.split('\n').map((x,i)=><span key={i}>{x}</span>)}</h1><p style={textStyle(a.subtitleStyle)}>{a.subtitle}</p><div className="article-byline"><ArticleMeta article={a}/><button onClick={copy}>{copied?<Check size={16}/>:<LinkSimple size={16}/>} {copied?t('copiedLink'):t('copyLink')}</button></div><span role="status" className="copy-status">{copyError?t('copyError'):''}</span></header>
-  <div className="article-layout"><aside className="reader-aside"><span className="micro">IN THIS ARTICLE</span><nav aria-label={t('articleContents')}>{(a.blocks?a.blocks.map((b,i)=>({...b,title:b.text,blockIndex:i})).filter(b=>['h2','h3'].includes(b.type)):a.sections).map((s,i)=><button key={s.title} onClick={()=>root.current.querySelector(a.blocks?'#block-'+s.blockIndex:'#part-'+i)?.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'start'})}><span>0{i+1}</span>{s.title}</button>)}</nav></aside>
-   <article className="article-body">{a.cover&&<img className="article-cover" style={imageStyle(a.coverStyle)} src={contentAsset(a.cover)} alt=""/>}{a.blocks?<ContentBlocks blocks={a.blocks}/>:<><p className="article-lede">{a.intro}</p>{a.sections.map((s,i)=><section key={s.title} id={'part-'+i}><h2>{s.title}</h2>{s.paragraphs.map(p=><p key={p}>{p}</p>)}{i===0&&<blockquote>{a.quote}</blockquote>}</section>)}</>}<p className="end-mark">PAPERBULLET</p>{a.sample&&<div className="sample-note">{t('sampleFooter')}</div>}</article>
+  <div className="reader-topline"><a href={"#"+parentPath} onClick={e=>navigate(e,parentPath)}><ArrowLeft size={16}/> {collectionName?t('backArticleList',{name:collectionName}):t('backColumns')}</a><span className="micro">PB—{a.number} / {a.category}</span></div>
+  <header className="article-heading">{collection&&a.sample&&<p className="reader-demo-note">{t('sampleNotice',{name:collectionName})}</p>}<div className="story-meta"><span>{a.category}</span>{a.sample&&<span>{t('sampleArticle')}</span>}</div><h1 style={textStyle(a.titleStyle)}>{a.title.split('\n').map((x,i)=><span key={i}>{x}</span>)}</h1>{a.subtitle&&<p style={textStyle(a.subtitleStyle)}>{a.subtitle}</p>}<div className="article-byline"><ArticleMeta article={a}/><button onClick={copy}>{copied?<Check size={16}/>:<LinkSimple size={16}/>} {copied?t('copiedLink'):t('copyLink')}</button></div><span role="status" className="copy-status">{copyError?t('copyError'):''}</span></header>
+  <div className={'article-layout'+(headings.length?'':' without-contents')}>
+   {headings.length>0&&<aside className="reader-aside"><span className="micro">{t('articleContents')}</span><nav aria-label={t('articleContents')}>{headings.map((heading,i)=><button key={heading.anchor} onClick={()=>root.current.querySelector('#'+heading.anchor)?.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'start'})}>{!headingsAreNumbered&&<span>{String(i+1).padStart(2,'0')}</span>}{heading.title}</button>)}</nav></aside>}
+   <article className="article-body" aria-busy={Boolean(loading)}>
+    {showCover&&<ReaderImage src={a.cover} alt={a.title} format={a.coverStyle} locale={locale} cover/>}
+    {loading?<p role="status">{t('loadingStory')}</p>:failed?<p role="alert">{t('storyLoadError')} <button type="button" onClick={()=>setAttempt(n=>n+1)}>{t('retry')}</button></p>:<>
+     {a.blocks?<ArticleBodyBlocks blocks={a.blocks} preface={a.preface} prefaceOffset={a.prefaceOffset} label={t('preface')} imageTextLabel={t('imageText')} locale={locale}/>:<><p className="article-lede">{a.intro}</p>{a.sections.map((s,i)=><section key={s.title} id={'part-'+i}><h2>{s.title}</h2>{s.paragraphs.map(p=><p key={p}>{p}</p>)}{i===0&&<blockquote>{a.quote}</blockquote>}</section>)}</>}
+     <p className="end-mark">PAPERBULLET</p>
+    </>}
+    {a.sample&&<div className="sample-note">{t('sampleFooter')}</div>}
+   </article>
   </div>
   {next&&<a className="next-story" href={'#'+articlePath(next.id)} onClick={e=>navigate(e,articlePath(next.id))}><span className="micro">{t('nextRead')}</span><h2>{next.shortTitle}</h2><ArrowUpRight size={30} weight="light"/></a>}
 
@@ -120,10 +160,14 @@ function About() {
    <div>{about.intro.map((paragraph,index)=><p key={index}>{paragraph}</p>)}</div>
   </div>
   <article className="about-preface" aria-labelledby="preface-title">
-   <h2 id="preface-title">{about.title}</h2>
-   <time className="about-preface__date" dateTime="2023-09-05">{about.date}</time>
-   <div className="about-preface__text">{about.paragraphs.map((paragraph,index)=><p key={index} className={index===5?'about-preface__motto':undefined}>{paragraph}</p>)}</div>
-   <footer className="about-preface__byline">{about.byline}</footer>
+   <header>
+    <h2 id="preface-title">{about.title}</h2>
+    <time className="about-preface__date" dateTime="2023-09-05">{about.date}</time>
+   </header>
+   <div>
+    <div className="about-preface__text">{about.paragraphs.map((paragraph,index)=><p key={index} className={index===5?'about-preface__motto':undefined}>{paragraph}</p>)}</div>
+    <footer className="about-preface__byline">{about.byline}</footer>
+   </div>
   </article>
  </main>;
 }
@@ -149,10 +193,6 @@ function Podcast({ navigate }) {
 
  </main>;
 }
-function Section({ index, navigate }) {
- const { sections, locale } = useI18n();
- const s=sections[index];return <main className="content-page pending-page" id="content" tabIndex={-1}><span className="micro red">{String(sectionOrder.indexOf(index)+1).padStart(2,'0')}{locale!=='en'&&' / '+s.english}</span><h1>{s.title}</h1><p className="pending-description">{s.description}</p><div className="stay-tuned">stay tuned</div></main>;
-}
 export function App(){
  const { locale, sections, about, collectionText } = useI18n();
  const [route,setRoute]=useState(()=>readRoute(location.hash));
@@ -160,10 +200,12 @@ export function App(){
  useEffect(()=>{
   const change=()=>{
    const next=readRoute(location.hash);
+   if(next!=='/' && location.hash!=='#'+next) history.replaceState(history.state,'','#'+next);
    if(next!=='/')setContentRoute(next==='/screen'?'/about':next);
    setRoute(next);
   };
   window.addEventListener('hashchange',change);
+  change();
   return()=>window.removeEventListener('hashchange',change);
  },[]);
  useEffect(()=>{
@@ -180,12 +222,13 @@ export function App(){
   e.preventDefault();location.hash=path;
  }
  const article=articles.find(a=>contentRoute.endsWith('/read/'+a.id));
+ const readerRoute=contentRoute.startsWith('/read/') ? archiveListPath(article)+contentRoute : contentRoute;
  return <StudioLanding view={route==='/'?'studio':'screen'} onEnter={()=>{location.hash=contentRoute;}}>
-  <EditorialWorkspace route={contentRoute} navigate={navigate}>
-   {article?<Reader key={contentRoute} article={article} route={contentRoute} navigate={navigate}/>:
+  <EditorialWorkspace route={readerRoute} navigate={navigate}>
+   {article?<Reader key={contentRoute} article={article} route={readerRoute} navigate={navigate}/>:
     contentRoute.startsWith('/columns')||contentRoute.startsWith('/festivals')?<CollectionPage route={contentRoute} navigate={navigate}/>:
     contentRoute==='/about'?<About/>:contentRoute==='/podcast'?<Podcast navigate={navigate}/>:
-    <Section index={routes.indexOf(contentRoute)} navigate={navigate}/>}
+    <SectionList section={contentRoute.slice(1)} index={routes.indexOf(contentRoute)} number={String(sectionOrder.indexOf(routes.indexOf(contentRoute))+1).padStart(2,'0')} navigate={navigate}/>}
   </EditorialWorkspace>
  </StudioLanding>;
 }

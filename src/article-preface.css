@@ -1,0 +1,15 @@
+.article-preface {
+  margin-block: 1.3rem 2.2rem;
+  padding-block: 1.05rem .95rem;
+  border-block: 1px solid #bdb4a9;
+}
+.article-preface .article-preface__heading,
+.reader-page .article-body .article-preface__heading {
+  margin: 0 0 .75rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--red, #b80c23);
+}
+.article-preface > p { margin: 0 0 .85em; line-height: 1.85; }
+.article-preface > :last-child { margin-bottom: 0; }

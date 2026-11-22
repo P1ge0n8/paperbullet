@@ -5,7 +5,7 @@ import {contacts} from '../src/contacts.js';
 import { mkdtemp, mkdir, readFile, writeFile, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
-import { defaultCollections } from '../shared/editorial-defaults.mjs';
+import { defaultCollections, festivalLogoOptions } from '../shared/editorial-defaults.mjs';
 import { validateContent, saveContent, publishContent, revision } from '../server/content.mjs';
 test('article URLs resolve; unknown content falls back safely',()=>{
  assert.equal(new Set(articles.map(a=>a.id)).size,articles.length);
@@ -14,6 +14,36 @@ test('article URLs resolve; unknown content falls back safely',()=>{
 });
 test('only verified podcast destination is enabled',()=>{
  assert.deepEqual(contacts.filter(c=>c.url).map(c=>c.url),['https://www.xiaoyuzhoufm.com/podcast/68c436b4de7cd32c37b1c4a8']);
+});
+
+test('former project bookmarks resolve to the partnerships section',async()=>{
+ const {formerFestivalTopicPaths,sectionArticles,collectionForRoute}=await import('../src/collections.js');
+ for (const [id, target] of formerFestivalTopicPaths) {
+  if (target !== '/partnerships') continue;
+  const base='/festivals/'+id;
+  assert.equal(collectionForRoute(base),undefined);
+  assert.equal(readRoute('#'+base),'/partnerships');
+  assert.equal(readRoute('#'+base+'/read/unpublished-or-missing'),'/');
+  assert.equal(readRoute('#'+base+'/extra'),'/');
+ }
+ const oldArticle='#/festivals/topic-ssx-v8h-jez-ke2-n5h-iup-rkx-g7m/read/img-9222';
+ assert.equal(readRoute(oldArticle),sectionArticles.partnerships.includes('img-9222')?'/partnerships/read/img-9222':'/');
+});
+
+test('old Oscar bookmarks resolve to Film Culture and the current column of each article',async()=>{
+ const {collectionForRoute,columnTopics}=await import('../src/collections.js');
+ const oldPath='/festivals/topic-hnp-k33-ggx-ssx-fyn-hna';
+ const newPath='/columns/topic-culture';
+ assert.equal(collectionForRoute(oldPath),undefined);
+ assert.equal(readRoute('#'+oldPath),newPath);
+ assert.equal(readRoute('#'+oldPath+'/extra'),'/');
+ assert.equal(readRoute('#'+oldPath+'/read/missing'),'/');
+ assert.equal(readRoute('#'+oldPath+'/read/img-9190/extra'),'/');
+ for (const id of ['img-9190','img-9137','img-9050','img-9048','img-9033']) {
+  const column=columnTopics.find(item=>item.articleIds.includes(id));
+  const expected=column ? '/columns/'+column.id+'/read/'+id : '/';
+  assert.equal(readRoute('#'+oldPath+'/read/'+id),expected);
+ }
 });
 
 test('collection deep links resolve and malformed paths do not',async()=>{
@@ -32,6 +62,33 @@ test('collection deep links resolve and malformed paths do not',async()=>{
  }
  assert.equal(readRoute('#/columns/unknown'),'/');
  assert.equal(readRoute('#/festivals/unknown'),'/');
+});
+
+test('archive festival marks have matching artwork and can be saved in the studio', async () => {
+ const { festivals } = await import('../src/collections.js');
+ const expectedMarks = new Map([
+  ['北京国际电影节', 'beijing'], ['NOWNESS天才计划', 'nowness'],
+  ['金鸡国际影展', 'goldenrooster'], ['海南岛国际电影节', 'hainan'],
+  ['观潮', 'guanchao'], ['香港国际电影节', 'hongkong'],
+  ['平遥国际电影展', 'pingyao'], ['HiShorts!厦门短片周', 'hishorts'],
+ ]);
+ const textTopics = ['年度影展回顾', '国际影展观察'];
+ const optionsByName = new Map(festivalLogoOptions.map(option => [option.name, option.logo]));
+ for (const [name, logo] of expectedMarks) assert.equal(optionsByName.get(name), logo, name);
+ for (const name of textTopics) assert.equal(optionsByName.has(name), false, name);
+ for (const item of festivals.filter(festival => festival.id.startsWith('topic-'))) {
+  if (expectedMarks.has(item.name)) assert.equal(item.logo, expectedMarks.get(item.name), item.name);
+  if (textTopics.includes(item.name)) assert.ok(!item.logo, item.name);
+ }
+
+ const collections = festivalLogoOptions.map(({name, logo}) => ({
+  id: logo, kind: 'festivals', name, logo, english: '', description: '',
+ }));
+ assert.doesNotThrow(() => validateContent({version: 1, articles: [], episodes: [], collections}));
+ for (const {logo} of collections) {
+  const image = await readFile(new URL('../public/assets/festival-' + logo + '.png', import.meta.url));
+  assert.equal(image.subarray(0, 8).toString('hex'), '89504e470d0a1a0a', logo);
+ }
 });
 
 const block = { type:'paragraph', text:'正文内容', fontSize:18, align:'left', bold:false, italic:false };
@@ -107,7 +164,7 @@ test('podcast program and publishing state are constrained to supported choices'
 });
 
 test('translated records preserve identity and validate translated body content', async () => {
- const translated={...article,translations:{en:{title:'A title',subtitle:'A subtitle',blocks:[{...block,text:'Translated text',italic:true}]},'zh-HK':{title:'正標題',subtitle:'副標題'}}};
+ const translated={...article,preface:[{...block,text:'开篇文字'}],translations:{en:{title:'A title',subtitle:'A subtitle',preface:[{...block,text:'Opening remarks'}],blocks:[{...block,text:'Translated text',italic:true}]},'zh-HK':{title:'正標題',subtitle:'副標題'}}};
  const source=documentWith({articles:[translated],episodes:[{...episode,translations:{en:{title:'Episode',duration:'57 minutes'}}}]});
  assert.equal(validateContent(source),source);
  for(const translations of [
@@ -116,12 +173,85 @@ test('translated records preserve identity and validate translated body content'
   {en:{blocks:[{...block,type:'link',href:'javascript:alert(1)'}]}},
   {en:{blocks:[{...block,type:'image',src:'/private/photo.png',alt:'',caption:''}]}},
   {en:{blocks:[{...block,fontSize:999}]}},
+  {en:{preface:[{...block,type:'link',href:'javascript:alert(1)'}]}},
+  {en:{preface:null}},
  ]) assert.throws(()=>validateContent(documentWith({articles:[{...article,translations}]})),error=>error.status===400);
+ for(const preface of ['序言',{},[{...block,fontSize:999}],Array(500).fill(block)])
+  assert.throws(()=>validateContent(documentWith({articles:[{...article,preface}]})),error=>error.status===400);
+ for(const prefaceOffset of [-1,1.5,'1',null,2]){
+  assert.throws(()=>validateContent(documentWith({articles:[{...translated,prefaceOffset}]})),/序言位置/);
+  assert.throws(()=>validateContent(documentWith({articles:[{...translated,translations:{en:{prefaceOffset}}}]})),/序言位置/);
+ }
+ const shorterTranslation={...translated,prefaceOffset:1,translations:{en:{blocks:[],preface:[block]}}};
+ assert.doesNotThrow(()=>validateContent(documentWith({articles:[shorterTranslation]})));
+ assert.equal(shorterTranslation.translations.en.prefaceOffset,undefined);
+ assert.doesNotThrow(()=>validateContent(documentWith({articles:[{...translated,blocks:[]}]})));
+ assert.throws(()=>validateContent(documentWith({articles:[{...article,preface:[],blocks:[]}]})),error=>error.status===400);
  const root=await mkdtemp(path.join(tmpdir(),'pb-translations-'));
  try {
   await publishContent(root,source);
   const published=JSON.parse(await readFile(path.join(root,'src/content/published.json'),'utf8'));
+  assert.deepEqual(published.articles[0].preface,translated.preface);
   assert.deepEqual(published.articles[0].translations,translated.translations);
   assert.equal(published.episodes[0].translations.en.title,'Episode');
+ } finally { await rm(root,{recursive:true,force:true}); }
+});
+
+test('archive import is atomic, preserves edited and deleted stories, and publishes only reader content', async () => {
+ const {importArchive}=await import('../server/archive-import.mjs');
+ const root=await mkdtemp(path.join(tmpdir(),'pb-archive-'));
+ const load=async relative=>JSON.parse(await readFile(path.join(root,relative),'utf8'));
+ const source={...documentWith(),articles:[article,{...article,id:'private-draft',status:'draft'}]};
+ const image='/uploads/archive/img-1234/part-001.jpg';
+ const record={id:'img-1234',title:'导入标题',archiveCategory:'interview',status:'published',sourceTranscript:'PRIVATE-TRANSCRIPT',cover:image,prefaceOffset:1,preface:[{type:'paragraph',text:'序言'},{type:'image',src:image,imageText:'图注'}],blocks:[{type:'paragraph',text:'正文'},{type:'image',src:image,imageText:'图内文字',caption:'图片说明'}],translations:{en:{title:'Interview',prefaceOffset:0,preface:[{type:'quote',text:'Introduction'}],blocks:[{type:'paragraph',text:'English body'}]}}};
+ try {
+  await mkdir(path.join(root,'content'));
+  await writeFile(path.join(root,'content/editorial.json'),JSON.stringify(source));
+  await mkdir(path.join(root,'public/uploads/archive/img-1234'),{recursive:true});
+  await writeFile(path.join(root,'public',image),Buffer.from([255,216,255]));
+  for(const invalid of [{...record,id:article.id},{...record,archiveCategory:'unknown'},{...record,sourceImage:'/assets/raw.jpg'},{...record,cover:'/uploads/archive/../hidden.jpg'},{...record,cover:'/uploads/missing.jpg'}]){
+   await assert.rejects(importArchive(root,[invalid]),error=>error.status===400);
+   assert.deepEqual(await load('content/editorial.json'),source);
+  }
+  const missingImage={type:'image',src:'/uploads/unavailable.jpg'};
+  for(const invalid of [{...record,preface:[missingImage]},{...record,translations:{en:{preface:[missingImage]}}}]){
+   await assert.rejects(importArchive(root,[invalid]),/找不到对应的本地图片/);
+   assert.deepEqual(await load('content/editorial.json'),source);
+  }
+  await assert.rejects(importArchive(root,[record,record]),error=>error.status===400);
+  assert.deepEqual(await importArchive(root,[record]),{added:1,skipped:0});
+  const saved=await load('content/editorial.json');
+  assert.deepEqual(saved.episodes,source.episodes);
+  assert.deepEqual(saved.articles.slice(0,2),source.articles);
+  assert.equal(saved.articles[2].sourceTranscript,'PRIVATE-TRANSCRIPT');
+  const index=await load('src/content/published.json');
+  assert.equal(index.articles.length,2);
+  const summary=index.articles[1];
+  assert.deepEqual(summary.blocks,[]);
+  assert.equal(summary.preface,undefined);
+  assert.equal(summary.prefaceOffset,undefined);
+  assert.equal(summary.archiveBody,'/archive-articles/img-1234.json');
+  assert.equal(summary.sourceTranscript,undefined);
+  assert.deepEqual(summary.translations.en,{title:'Interview'});
+  const body=await load('public'+summary.archiveBody);
+  assert.equal(body.sourceTranscript,undefined);
+  assert.equal(body.blocks[1].imageText,'图内文字');
+  assert.equal(body.translations.en.blocks[0].text,'English body');
+  assert.equal(body.preface[0].text,'序言');
+  assert.equal(body.prefaceOffset,1);
+  assert.equal(body.translations.en.prefaceOffset,0);
+  assert.equal(body.preface[1].align,'center');
+  assert.equal(body.translations.en.preface[0].text,'Introduction');
+  assert.equal(summary.blockTextLength,10);
+  const edited=structuredClone(saved);
+  edited.articles[2].title='整理过的标题';
+  await saveContent(root,edited,revision(saved));
+  assert.deepEqual(await importArchive(root,[record]),{added:0,skipped:1});
+  assert.deepEqual(await load('content/editorial.json'),edited);
+  const deleted={...edited,articles:source.articles};
+  await saveContent(root,deleted,revision(edited));
+  await importArchive(root,[record]);
+  assert.deepEqual(await load('content/editorial.json'),deleted);
+  await assert.rejects(load('public'+summary.archiveBody),error=>error.code==='ENOENT');
  } finally { await rm(root,{recursive:true,force:true}); }
 });

@@ -172,15 +172,34 @@
 .workspace .content-page, .workspace .reader-page { width: 100%; max-width: 1040px; margin: 0; }
 .workspace .directory-heading { text-align: center; padding: 8px 0 36px; }
 .workspace .directory-heading h1 { font-size: clamp(36px, 3.5vw, 52px); margin: 18px 0; }
-.workspace .collection-heading { text-align: center; padding: 20px 0 36px; }
-.workspace .collection-heading h1 { font-size: clamp(36px, 3.5vw, 52px); }
-.workspace .collection-breadcrumb { margin-top: 12px; }
+.workspace .collection-heading { text-align: center; padding: 6px 0 24px; }
+.workspace .collection-heading h1 { font-size: clamp(30px, 3vw, 40px); margin: 10px 0; }
+.workspace .collection-heading p { font-size: 14px; line-height: 1.65; }
+.workspace .collection-breadcrumb { margin: 8px 0 18px; }
 .workspace .collection-grid { gap: 24px; }
 .workspace .collection-card { min-height: 300px; padding: 24px 20px; }
 .workspace .article-layout { grid-template-columns: 150px minmax(0, 680px); gap: 32px; }
 .workspace .reader-topline { margin-top: 12px; }
 .workspace .about-page, .workspace .pending-page { padding-top: 8px; }
-.workspace .about-intro { grid-template-columns: 1fr; gap: 24px; max-width: 760px; }
+.workspace .about-page { max-width: none; }
+.workspace .about-intro, .workspace .about-preface {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 20px;
+  max-width: 760px;
+  margin-inline: auto;
+}
+.workspace .about-intro { margin-block: clamp(28px, 4cqi, 44px) 0; }
+.workspace .about-intro > div > p:last-child, .workspace .about-preface__date { margin-bottom: 0; }
+.workspace .about-preface { margin-top: clamp(32px, 5cqi, 52px); }
+@container (min-width: 740px) {
+  .workspace .about-intro, .workspace .about-preface {
+    grid-template-columns: clamp(166px, 20cqi, 210px) minmax(0, 1fr);
+    column-gap: clamp(28px, 4cqi, 52px);
+    max-width: 1020px;
+    align-items: start;
+  }
+}
 .workspace .about-page > .micro, .workspace .pending-page > .micro { display: block; text-align: center; }
 .workspace .about-page > h1, .workspace .pending-page > h1 { font-size: clamp(36px, 3.5vw, 52px); text-align: center; }
 /* Hang the punctuation's empty trailing space so the visible slogan centers. */
@@ -195,12 +214,11 @@
   .workspace .article-layout { display: block; }
   .workspace .reader-aside { display: none; }
   .workspace .author-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .workspace .reading-card-grid, .workspace .episode-grid:not(.episode-grid-wide) { grid-template-columns: repeat(3, minmax(0, 224px)); }
+  .workspace .episode-grid:not(.episode-grid-wide) { grid-template-columns: repeat(3, minmax(0, 224px)); }
 }
 @container (max-width: 550px) {
   .workspace .author-grid { grid-template-columns: 1fr; }
-  .workspace .reading-card-grid, .workspace .episode-grid:not(.episode-grid-wide) { grid-template-columns: repeat(2, minmax(0, 224px)); }
-  .workspace .about-intro { grid-template-columns: 1fr; gap: 24px; }
+  .workspace .episode-grid:not(.episode-grid-wide) { grid-template-columns: repeat(2, minmax(0, 224px)); }
 }
 @media (max-width: 800px) {
   .workspace { --workspace-inset: max(20px, env(safe-area-inset-left)); }
@@ -218,9 +236,10 @@
   :lang(en) .bounce-sidebar a { font-size: 16px; white-space: nowrap; }
   .bounce-sidebar .index-coin { width: 18px; height: 18px; }
   .workspace .directory-heading { padding-top: 4px; }
-  .workspace .directory-heading h1, .workspace .collection-heading h1 { font-size: 36px; }
+  .workspace .directory-heading h1 { font-size: 36px; }
+  .workspace .collection-heading h1 { font-size: 30px; }
   .workspace .article-heading h1 { font-size: 32px; }
-  .workspace .collection-heading { padding-top: 16px; }
+  .workspace .collection-heading { padding: 4px 0 20px; }
   .workspace .about-page, .workspace .pending-page { padding-top: 4px; }
 }
 @media (max-height: 520px) and (min-aspect-ratio: 1/1) {
