@@ -20,6 +20,7 @@ export function localizeRecord(record, locale) {
 }
 
 const simplified = {
+ exportPdf: '导出长图 PDF', preparingPdf: '正在生成 PDF…', pdfExportError: 'PDF 未生成，请检查网络后重试。',
  columnTopics: '文章分类', festivalTopics: '更多影展专题', imageText: '图中文字', preface: '开腔',
  loadingStory: '正在加载正文…', storyLoadError: '正文加载失败。', retry: '重新加载', emptyList: '暂无文章',
  language: '选择语言', skipContent: '跳至主要内容', returnStudio: '返回放映棚', sectionIndex: '栏目索引',
@@ -64,6 +65,7 @@ const simplified = {
 };
 const traditional = {
  ...simplified,
+ exportPdf: '匯出長圖 PDF', preparingPdf: '正在產生 PDF…', pdfExportError: 'PDF 未能產生，請檢查網絡後重試。',
  columnTopics: '文章分類', festivalTopics: '更多影展專題', imageText: '圖中文字', preface: '開腔',
  loadingStory: '正在載入正文…', storyLoadError: '正文載入失敗。', retry: '重新載入', emptyList: '暫無文章',
  language: '選擇語言', skipContent: '跳至主要內容', returnStudio: '返回放映棚', sectionIndex: '欄目索引',
@@ -107,6 +109,7 @@ const traditional = {
 };
 const english = {
  ...simplified,
+ exportPdf: 'Export full-page PDF', preparingPdf: 'Preparing PDF…', pdfExportError: 'Could not create the PDF. Check your connection and try again.',
  columnTopics: 'Browse by topic', festivalTopics: 'More festivals', imageText: 'Image text', preface: 'Preface',
  loadingStory: 'Loading article…', storyLoadError: 'The article could not load.', retry: 'Try again', emptyList: 'No articles yet',
  language: 'Choose language', skipContent: 'Skip to content', returnStudio: 'Return to the studio', sectionIndex: 'Sections',

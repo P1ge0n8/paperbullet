@@ -2,6 +2,9 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {articles,readRoute} from '../src/articles.js';
 import {contacts} from '../src/contacts.js';
+import { PDFDocument, PDFName } from 'pdf-lib';
+import { inflateSync } from 'node:zlib';
+import { createPageImagePdf } from '../src/article-pdf-document.js';
 import { mkdtemp, mkdir, readFile, writeFile, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
@@ -14,6 +17,36 @@ test('article URLs resolve; unknown content falls back safely',()=>{
 });
 test('only verified podcast destination is enabled',()=>{
  assert.deepEqual(contacts.filter(c=>c.url).map(c=>c.url),['https://www.xiaoyuzhoufm.com/podcast/68c436b4de7cd32c37b1c4a8']);
+});
+
+test('long-image PDF preserves the full page ratio and places consecutive JPEG tiles edge to edge', async () => {
+ const jpeg = await readFile(new URL('../public/assets/logo.jpg', import.meta.url));
+ const capture = await createPageImagePdf({
+  width: 1000, height: 32000, title: '影展長文', author: '子戈', locale: 'zh-HK',
+ });
+ await capture.addTile(jpeg, 0, 12000);
+ await capture.addTile(jpeg, 12000, 20000);
+ const blob = await capture.finish();
+ assert.equal(blob.type, 'application/pdf');
+
+ const pdf = await PDFDocument.load(await blob.arrayBuffer());
+ assert.equal(pdf.getPageCount(), 1);
+ assert.equal(pdf.getTitle(), '影展長文');
+ assert.equal(pdf.getAuthor(), '子戈');
+ assert.equal(pdf.catalog.get(PDFName.of('Lang')).decodeText(), 'zh-HK');
+ const [page] = pdf.getPages();
+ assert.deepEqual(page.getSize(), { width: 450, height: 14400 });
+
+ const images = page.node.Resources().lookup(PDFName.of('XObject')).values();
+ assert.equal(images.length, 2);
+ for (const ref of images) assert.deepEqual(Buffer.from(pdf.context.lookup(ref).getContents()), jpeg);
+ const commands = page.node.Contents().asArray().map(ref =>
+  inflateSync(pdf.context.lookup(ref).getContents()).toString('ascii')
+ ).join('\n');
+ const matrices = [...commands.matchAll(/(-?[\d.]+) (-?[\d.]+) (-?[\d.]+) (-?[\d.]+) (-?[\d.]+) (-?[\d.]+) cm/g)]
+  .map(match => match.slice(1).map(Number));
+ assert.ok(matrices.some(([a,b,c,d,x,y]) => a===1 && b===0 && c===0 && d===1 && x===0 && y===9000));
+ assert.deepEqual(matrices.filter(([a]) => a===450), [[450,0,0,5400,0,0], [450,0,0,9000,0,0]]);
 });
 
 test('former project bookmarks resolve to the partnerships section',async()=>{

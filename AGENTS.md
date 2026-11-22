@@ -134,3 +134,5 @@ Give each article an optional, separately editable 序言（开腔） with origi
 Article lists fill their available width with five compact columns on wide screens. On the About page, align the contact details and founding editorial header in the left column with their corresponding text to the right; stack the columns on small screens.
 
 In 影展专题, show the eight archived festival marks alongside Cannes, Venice and Berlin using the same clickable logo cards and red pixel interaction. Keep 年度影展回顾 and 国际影展观察 as text links below the grid. Preserve the existing festival and article URLs.
+
+Article readers export the entire visible webpage layout as one continuous image-based PDF page for submissions. Preserve the current language, responsive layout, navigation, article details, photographs, captions, disclosure states, next-article link and footer. Name the file after the article.

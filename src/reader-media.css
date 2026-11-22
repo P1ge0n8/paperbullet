@@ -58,7 +58,12 @@
   overflow-wrap: anywhere;
 }
 .reader-page .article-heading > p { margin: 0 0 12px; font-size: 16px; line-height: 1.7; }
-.reader-page .article-byline { padding: 12px 0; }
+.reader-page .article-byline { padding: 12px 0; flex-wrap: wrap; gap: 4px 16px; }
+.reader-actions { display: flex; align-items: baseline; flex-wrap: wrap; gap: 0 18px; }
+.article-pdf-export { display: inline-flex; flex-direction: column; align-items: flex-start; }
+.reader-actions :is(a, button):is(:hover, :focus-visible) { color: var(--red); }
+.reader-actions button:disabled { opacity: .6; cursor: default; }
+.pdf-export-error { color: var(--red); max-width: 26em; }
 .reader-page .article-body { line-height: 1.85; letter-spacing: .025em; }
 .reader-page .article-body > p { margin: 0 0 1.05em; }
 .reader-page .article-body figure { margin: 18px 0; }

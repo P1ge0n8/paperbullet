@@ -1,5 +1,6 @@
 import { ReaderImage, contentAsset, textStyle } from './ContentBlocks';
 import { ArticleBodyBlocks, articleHeadings } from './ArticlePreface';
+import { ArticlePdfExport } from './ArticlePdfExport';
 import { useEffect, useRef, useState } from 'react';
 import { ArrowUpRight, ArrowLeft, Check, LinkSimple } from '@phosphor-icons/react';
 import { gsap } from 'gsap';
@@ -55,7 +56,11 @@ function ArticleMeta({ article }) {
  const { t } = useI18n();
  const author=article.author || (article.sample && t('unsigned'));
  const date=article.publishedAt ? <time dateTime={article.publishedAt}>{article.publishedAt.replace('T',' ')}</time> : article.sample && t('unpublished');
- return <span className="publication-meta">{author&&<>{t('author')}{author}<span>·</span></>}{date&&<>{date}<span>·</span></>}{t('readMinutes',{count:article.minutes})}</span>;
+ return <span className="publication-meta">
+  {author&&<><span>{t('author')}{author}</span><span aria-hidden="true">·</span></>}
+  {date&&<><span>{date}</span><span aria-hidden="true">·</span></>}
+  <span>{t('readMinutes',{count:article.minutes})}</span>
+ </span>;
 }
 function EditorialWorkspace({ route, navigate, children }) {
  const { t, sections } = useI18n();
@@ -131,7 +136,16 @@ function Reader({ article:sourceArticle, route, navigate }) {
  return <main ref={root} className={'reader-page'+(a.archiveCategory?' archive-reader':'')} id="content" tabIndex={-1}>
   <div className="reading-progress" aria-hidden="true"/>
   <div className="reader-topline"><a href={"#"+parentPath} onClick={e=>navigate(e,parentPath)}><ArrowLeft size={16}/> {collectionName?t('backArticleList',{name:collectionName}):t('backColumns')}</a><span className="micro">PB—{a.number} / {a.category}</span></div>
-  <header className="article-heading">{collection&&a.sample&&<p className="reader-demo-note">{t('sampleNotice',{name:collectionName})}</p>}<div className="story-meta"><span>{a.category}</span>{a.sample&&<span>{t('sampleArticle')}</span>}</div><h1 style={textStyle(a.titleStyle)}>{a.title.split('\n').map((x,i)=><span key={i}>{x}</span>)}</h1>{a.subtitle&&<p style={textStyle(a.subtitleStyle)}>{a.subtitle}</p>}<div className="article-byline"><ArticleMeta article={a}/><button onClick={copy}>{copied?<Check size={16}/>:<LinkSimple size={16}/>} {copied?t('copiedLink'):t('copyLink')}</button></div><span role="status" className="copy-status">{copyError?t('copyError'):''}</span></header>
+  <header className="article-heading">{collection&&a.sample&&<p className="reader-demo-note">{t('sampleNotice',{name:collectionName})}</p>}<div className="story-meta"><span>{a.category}</span>{a.sample&&<span>{t('sampleArticle')}</span>}</div><h1 style={textStyle(a.titleStyle)}>{a.title.split('\n').map((x,i)=><span key={i}>{x}</span>)}</h1>{a.subtitle&&<p style={textStyle(a.subtitleStyle)}>{a.subtitle}</p>}
+   <div className="article-byline">
+    <ArticleMeta article={a}/>
+    <div className="reader-actions">
+     <button type="button" onClick={copy}>{copied?<Check size={16}/>:<LinkSimple size={16}/>} {copied?t('copiedLink'):t('copyLink')}</button>
+     <ArticlePdfExport key={locale} article={a} disabled={Boolean(loading || failed)}/>
+    </div>
+   </div>
+   <span role="status" className="copy-status">{copyError?t('copyError'):''}</span>
+  </header>
   <div className={'article-layout'+(headings.length?'':' without-contents')}>
    {headings.length>0&&<aside className="reader-aside"><span className="micro">{t('articleContents')}</span><nav aria-label={t('articleContents')}>{headings.map((heading,i)=><button key={heading.anchor} onClick={()=>root.current.querySelector('#'+heading.anchor)?.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'start'})}>{!headingsAreNumbered&&<span>{String(i+1).padStart(2,'0')}</span>}{heading.title}</button>)}</nav></aside>}
    <article className="article-body" aria-busy={Boolean(loading)}>
