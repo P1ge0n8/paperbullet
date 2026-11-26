@@ -3,6 +3,7 @@ import { createHash, randomUUID } from 'node:crypto';
 import path from 'node:path';
 import { archiveCategories, classifyArchiveProject } from '../shared/archive.mjs';
 import { defaultCollections, festivalLogoOptions } from '../shared/editorial-defaults.mjs';
+import { safeRichTextHref } from '../shared/rich-text.mjs';
 
 export const revision = value => createHash('sha256').update(JSON.stringify(value)).digest('hex');
 export const validId = value => typeof value==='string' && /^[a-z0-9][a-z0-9-]{0,79}$/.test(value);
@@ -33,6 +34,17 @@ function validCoverStyle(style) {
  if(style===undefined)return true;
  return object(style)&&!Object.keys(style).some(key=>!['width','maxHeight','align'].includes(key))
   &&validImageSize(style)&&(style.align===undefined||alignment(style.align));
+}
+function validRuns(block) {
+ if(block.runs===undefined)return true;
+ if(block.type==='image'||!Array.isArray(block.runs)||!block.runs.length||block.runs.length>20000)return false;
+ for(const run of block.runs){
+  if(!object(run)||Object.keys(run).some(key=>!['text','bold','italic','fontSize','href'].includes(key))||!text(run.text)||!run.text.length)return false;
+  if(run.bold!==undefined&&typeof run.bold!=='boolean'||run.italic!==undefined&&typeof run.italic!=='boolean')return false;
+  if(run.fontSize!==undefined&&!integerBetween(run.fontSize,14,48))return false;
+  if(run.href!==undefined&&(!text(run.href,2000)||!safeRichTextHref(run.href)))return false;
+ }
+ return block.runs.map(run=>run.text).join('')===block.text;
 }
 function validateTranslations(record,fields,validate) {
  if(record.translations===undefined)return;
@@ -86,6 +98,7 @@ export function validateContent(value) {
   if(allBlocks.length>(archived?3000:500))fail('文章段落数量超出上限。');
   for(const b of allBlocks){
    if(!object(b)||!['paragraph','h2','h3','quote','image','link'].includes(b.type)||!text(b.text)||!Number.isInteger(b.fontSize)||b.fontSize<14||b.fontSize>48||!alignment(b.align)||typeof b.bold!=='boolean'||typeof b.italic!=='boolean')fail('正文格式不正确。');
+   if(!validRuns(b))fail('选中文字的格式不正确，请检查文字、字号与链接。');
    if(b.type==='image'&&(!safeImage(b.src)||!text(b.alt,400)||!text(b.caption,1000)))fail('请选择正文图片并检查说明。');
    if(b.imageText!==undefined&&(b.type!=='image'||!text(b.imageText,100000)))fail('图内文字格式不正确或长度超过 10 万字。');
    if(b.type==='image'&&!validImageSize(b))fail('正文图片宽度应为 20–100%，高度应为 120–1200px。');

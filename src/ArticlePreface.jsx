@@ -1,5 +1,5 @@
 import React from 'react';
-import { ContentBlocks, textStyle } from './ContentBlocks';
+import { ContentBlocks, InlineContent, textStyle } from './ContentBlocks';
 import './article-preface.css';
 
 const isHeading = block => block.type === 'h2' || block.type === 'h3';
@@ -26,7 +26,7 @@ export default function ArticlePreface({blocks, label = '开腔', imageTextLabel
  if (!hasContent(blocks)) return null;
  const heading = isHeading(blocks[0]) ? blocks[0] : null;
  return <section className="article-preface" aria-labelledby="article-preface">
-  <h2 className="article-preface__heading" id="article-preface" style={heading ? textStyle(heading) : undefined}>{heading?.text || label}</h2>
+  <h2 className="article-preface__heading" id="article-preface" style={heading ? textStyle(heading) : undefined}>{heading?.text ? <InlineContent block={heading}/> : label}</h2>
   <ContentBlocks blocks={heading ? blocks.slice(1) : blocks} idPrefix="preface-block-" startIndex={heading ? 1 : 0}
    imageTextLabel={imageTextLabel} locale={locale}/>
  </section>;

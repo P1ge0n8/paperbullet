@@ -33,12 +33,13 @@
           "type": "image",
           "text": "",
           "fontSize": 18,
-          "align": "center",
           "bold": false,
           "italic": false,
-          "src": "/uploads/cannes-2026-gradiva-poster.webp",
+          "align": "center",
           "alt": "《行走之人》｜海报",
-          "caption": "《行走之人》｜海报"
+          "caption": "《行走之人》｜海报",
+          "src": "/uploads/cannes-2026-gradiva-poster.webp",
+          "width": 29
         },
         {
           "type": "paragraph",
@@ -68,12 +69,12 @@
           "type": "image",
           "text": "",
           "fontSize": 18,
-          "align": "center",
           "bold": false,
           "italic": false,
-          "src": "/uploads/cannes-2026-gradiva-still.webp",
+          "align": "center",
           "alt": "《行走之人》｜剧照",
-          "caption": "《行走之人》｜剧照"
+          "caption": "《行走之人》｜剧照",
+          "src": "/uploads/cannes-2026-gradiva-still.webp"
         },
         {
           "type": "paragraph",
@@ -111,12 +112,12 @@
           "type": "image",
           "text": "",
           "fontSize": 18,
-          "align": "center",
           "bold": false,
           "italic": false,
-          "src": "/uploads/cannes-2026-moulin-poster.webp",
+          "align": "center",
           "alt": "《穆兰》｜海报",
-          "caption": "《穆兰》｜海报"
+          "caption": "《穆兰》｜海报",
+          "src": "/uploads/cannes-2026-moulin-poster.webp"
         },
         {
           "type": "paragraph",
@@ -146,12 +147,12 @@
           "type": "image",
           "text": "",
           "fontSize": 18,
-          "align": "center",
           "bold": false,
           "italic": false,
-          "src": "/uploads/cannes-2026-moulin-still.webp",
+          "align": "center",
           "alt": "《穆兰》｜剧照",
-          "caption": "《穆兰》｜剧照"
+          "caption": "《穆兰》｜剧照",
+          "src": "/uploads/cannes-2026-moulin-still.webp"
         },
         {
           "type": "paragraph",
@@ -173,12 +174,12 @@
           "type": "image",
           "text": "",
           "fontSize": 18,
-          "align": "center",
           "bold": false,
           "italic": false,
-          "src": "/uploads/cannes-2026-garance-poster.webp",
+          "align": "center",
           "alt": "《嘉朗斯》｜海报",
-          "caption": "《嘉朗斯》｜海报"
+          "caption": "《嘉朗斯》｜海报",
+          "src": "/uploads/cannes-2026-garance-poster.webp"
         },
         {
           "type": "paragraph",
@@ -208,12 +209,12 @@
           "type": "image",
           "text": "",
           "fontSize": 18,
-          "align": "center",
           "bold": false,
           "italic": false,
-          "src": "/uploads/cannes-2026-hope-poster.webp",
+          "align": "center",
           "alt": "《希望》｜海报",
-          "caption": "《希望》｜海报"
+          "caption": "《希望》｜海报",
+          "src": "/uploads/cannes-2026-hope-poster.webp"
         },
         {
           "type": "paragraph",
@@ -235,12 +236,12 @@
           "type": "image",
           "text": "",
           "fontSize": 18,
-          "align": "center",
           "bold": false,
           "italic": false,
-          "src": "/uploads/cannes-2026-hope-still.webp",
+          "align": "center",
           "alt": "《希望》｜剧照",
-          "caption": "《希望》｜剧照"
+          "caption": "《希望》｜剧照",
+          "src": "/uploads/cannes-2026-hope-still.webp"
         },
         {
           "type": "h2",
@@ -511,7 +512,8 @@
               "bold": false,
               "italic": false
             }
-          ]
+          ],
+          "prefaceOffset": 0
         },
         "zh-HK": {
           "title": "康城專欄｜《希望》的另一面",
@@ -764,9 +766,11 @@
               "bold": false,
               "italic": false
             }
-          ]
+          ],
+          "prefaceOffset": 0
         }
-      }
+      },
+      "prefaceOffset": 0
     },
     {
       "subtitle": "",
@@ -792,15 +796,15 @@
           "type": "paragraph"
         },
         {
+          "type": "image",
           "text": "",
           "fontSize": 18,
-          "align": "center",
           "bold": false,
           "italic": false,
+          "align": "center",
           "alt": "荣誉揭晓！第七届金鸡手机电影计划13部作品脱颖而出 · 配图 1",
           "caption": "",
           "width": 100,
-          "type": "image",
           "src": "/uploads/archive/img-9222/fig-001.jpg",
           "imageText": "中国电影 2026年第 为睿影XMAGE·金 金鸡手机\n华为睿影XMAGE：从看见世界到被世界看见\n2026年中国金鸡花电影介\nCHINAGOLDENROO\n39"
         },
@@ -821,15 +825,15 @@
           "type": "paragraph"
         },
         {
+          "type": "image",
           "text": "",
           "fontSize": 18,
-          "align": "center",
           "bold": false,
           "italic": false,
+          "align": "center",
           "alt": "荣誉揭晓！第七届金鸡手机电影计划13部作品脱颖而出 · 配图 2",
           "caption": "",
           "width": 100,
-          "type": "image",
           "src": "/uploads/archive/img-9222/fig-002.jpg",
           "imageText": "《华为睿影荣誉》\n《住手！》 《东渡港》 《好好活着Ⅱ》\n2026年中国金鸡百花电影行\nOOHIA GOLDENROST品"
         },
@@ -842,15 +846,15 @@
           "type": "paragraph"
         },
         {
+          "type": "image",
           "text": "",
           "fontSize": 18,
-          "align": "center",
           "bold": false,
           "italic": false,
+          "align": "center",
           "alt": "荣誉揭晓！第七届金鸡手机电影计划13部作品脱颖而出 · 配图 3",
           "caption": "",
           "width": 100,
-          "type": "image",
           "src": "/uploads/archive/img-9222/fig-003.jpg",
           "imageText": ""
         },
@@ -871,15 +875,15 @@
           "type": "paragraph"
         },
         {
+          "type": "image",
           "text": "",
           "fontSize": 18,
-          "align": "center",
           "bold": false,
           "italic": false,
+          "align": "center",
           "alt": "荣誉揭晓！第七届金鸡手机电影计划13部作品脱颖而出 · 配图 4",
           "caption": "",
           "width": 100,
-          "type": "image",
           "src": "/uploads/archive/img-9222/fig-004.jpg",
           "imageText": "手机电影计动\n《最佳纪录影片荣誉）\n《风吹麦浪》\nWIND RIDES THE WHEAT\n导演\n时长\n139"
         },
@@ -892,15 +896,15 @@
           "type": "paragraph"
         },
         {
+          "type": "image",
           "text": "",
           "fontSize": 18,
-          "align": "center",
           "bold": false,
           "italic": false,
+          "align": "center",
           "alt": "荣誉揭晓！第七届金鸡手机电影计划13部作品脱颖而出 · 配图 5",
           "caption": "",
           "width": 100,
-          "type": "image",
           "src": "/uploads/archive/img-9222/fig-005.jpg",
           "imageText": "《最具潜力导演荣誉》\n《过了黄河就是家》\n7分28秒\n2026年中国金鸡百花丰集技\n2020CHINA GOLDENFO"
         },
@@ -913,15 +917,15 @@
           "type": "paragraph"
         },
         {
+          "type": "image",
           "text": "",
           "fontSize": 18,
-          "align": "center",
           "bold": false,
           "italic": false,
+          "align": "center",
           "alt": "荣誉揭晓！第七届金鸡手机电影计划13部作品脱颖而出 · 配图 6",
           "caption": "",
           "width": 100,
-          "type": "image",
           "src": "/uploads/archive/img-9222/fig-006.jpg",
           "imageText": "《最佳摄影技术荣誉》\n《听见香云纱》\n2026年中国金鸡百花来彩苑\nOCHNAGOLDENOOSTE\n&H JNDRE"
         },
@@ -934,15 +938,15 @@
           "type": "paragraph"
         },
         {
+          "type": "image",
           "text": "",
           "fontSize": 18,
-          "align": "center",
           "bold": false,
           "italic": false,
+          "align": "center",
           "alt": "荣誉揭晓！第七届金鸡手机电影计划13部作品脱颖而出 · 配图 7",
           "caption": "",
           "width": 100,
-          "type": "image",
           "src": "/uploads/archive/img-9222/fig-007.jpg",
           "imageText": "【高校特别关注荣誉》\n《你AI我吗？》 《乡音》 厨房 《厨房圆舞曲》\nWWALTZ\n2026年中国金鸡百花电739\nLOWERSFLMIESTNAL\nEL"
         },
@@ -955,15 +959,15 @@
           "type": "paragraph"
         },
         {
+          "type": "image",
           "text": "",
           "fontSize": 18,
-          "align": "center",
           "bold": false,
           "italic": false,
+          "align": "center",
           "alt": "荣誉揭晓！第七届金鸡手机电影计划13部作品脱颖而出 · 配图 8",
           "caption": "",
           "width": 100,
-          "type": "image",
           "src": "/uploads/archive/img-9222/fig-008.jpg",
           "imageText": "最佳艺术探索荣誉\n《终面》 《对白之间》 《完美女儿》\nCTDAUGHTER\n完美女儿\n2026年中国金鸡百花电影行"
         },
@@ -984,54 +988,54 @@
           "type": "paragraph"
         },
         {
+          "type": "image",
           "text": "",
           "fontSize": 18,
-          "align": "center",
           "bold": false,
           "italic": false,
+          "align": "center",
           "alt": "荣誉揭晓！第七届金鸡手机电影计划13部作品脱颖而出 · 配图 9",
           "caption": "",
           "width": 100,
-          "type": "image",
           "src": "/uploads/archive/img-9222/fig-009.jpg",
           "imageText": "第七届华为睿影XMAGE·\n金鸡手机电影计划荣誉片单\n2026年 华为睿影\n中国金鸡百花 手机电影计划\n电影节\n2026 CHINA\nGOLDEN ROOSTER&\nHUNDRED FLOWERS\nFILM FESTIVAL\n第39届\n中国电影\n金鸡奖\nTHE39TH\nCHINA FILM\nGOLDEN ROOSTER\nAWARDS\n2026年\n第七届\n华为睿影XMAGE\n金鸡手机电影计划\n荣誉片单\n华为睿影荣誉\n《住手！》\nSTOP!\n导演丨莫理斯\n当保护者与杀手在狭小空间相遇，小男孩"
         },
         {
+          "type": "image",
           "text": "",
           "fontSize": 18,
-          "align": "center",
           "bold": false,
           "italic": false,
+          "align": "center",
           "alt": "荣誉揭晓！第七届金鸡手机电影计划13部作品脱颖而出 · 配图 10",
           "caption": "",
           "width": 100,
-          "type": "image",
           "src": "/uploads/archive/img-9222/fig-010.jpg",
           "imageText": "该如何使用手里的画板定格罪证。\n《东渡港》\nEAST FERRY HARBOR\n导演｜王麒竣、张清辉\n海南黎族渔村少年阿诚探寻父亲出海离世\n的真相，揭开父辈因贪念酿成的海上劫案\n秘辛，最终焚毁不义之财，完成亲情和解\n与自我成长。\n《好好活着Ⅱ》\n好好活者！\nSTRIVE TO LIVE II\n导演丨耿海洋\n一次偶然机会，我跟随爱心人士程先生及\n其公益团队，走进三座与世隔绝的麻风康\n复村。我看见病痛留下的终身身体残疾、\n长期隔离造成的孤僻内敛，以及这群老人\n朴素、隐忍又渴望被看见的真实生活状态。\n最佳艺术探索荣誉\n《终面》\nFINAL INTERVIEW\n导演丨唐仕瑞\n在面试场上，人类真的胜过了AI还是这是\n一场测试？\n《对白之间》\nTHE SPACE BETWEEN\n对的\n之间 导演｜刘雪涛、孙鲁笑\n一对以不同方式感知世界的夫妻，在日常\n生活中磨合彼此的节奏，也在电影对白的\n间隙里寻找恰到好处的语言，为更多人打\n开通往银幕的入口。\n《完美女儿》"
         },
         {
+          "type": "image",
           "text": "",
           "fontSize": 18,
-          "align": "center",
           "bold": false,
           "italic": false,
+          "align": "center",
           "alt": "荣誉揭晓！第七届金鸡手机电影计划13部作品脱颖而出 · 配图 11",
           "caption": "",
           "width": 100,
-          "type": "image",
           "src": "/uploads/archive/img-9222/fig-011.jpg",
           "imageText": "THE PERFECT DAUGHTER\n导演丨全承贤\n完美儿\n当家长的“为你好”变成全方位监控，当行\n为被算法量化规训，一个听话的孩子，或\n许成了我们亲手制造的异化产物。\n最佳纪录影片荣誉\n《风吹麦浪》\nWIND RIDES THE WHEAT\n导演丨乔乔\n在当下这个流量盛行的时代，还有人像麦\n子一样，黄了又青，青了又黄。\n最佳超短片荣誉\n《木马》\nTHE WOODEN HORSE\n导演丨张大鹏\n开游乐场的父亲“老马”，过年回家兑现对\n儿子的承诺，亲手造了一座旋转木马的故\n事。\n302629\n最具潜力导演荣誉\n《过了黄河就是家》\n过了黄可就是家\nHOME LIES BEYOND THE YELLOW RIVER\n导演丨郭宇峰\n在大城市打拼的陈晓年，收到老家“寄来”\n的一缸小米，直到米缸见底，她才发现，\n父母早把盼她回家的日子一天一勺装进了\n缸里，而这份所谓的快递，是父亲跨过黄\n河悄悄送来的。\n最佳摄影技术荣誉\n《听见香云纱》\nHEARING GAMBIERED CANTON GAUZE\n乐见香云纱 导演｜韩京儒\n本片循着香云纱制作的声声回响，记录从\n河泥浸染、日光晾晒到裁制成衣的完整工\n序，在布料的龟裂纹理与岁月声响里，诉\n说非遗工艺沉淀下来的时间故事。\n高校特别关注荣誉\n《你AI我吗？》\nDO YOU AI ME?\n导演丨苗诗函\n我被AI养大，它是我妈？\n乡音\n《乡音》\nMURMUR\n导演丨宋博\n主人公周明带着幼子回乡祭奠双亲，通过\n父亲留下的复读机录音，在现实与回忆的\n交织中理解母亲、与故乡重逢，最终将乡\n音传承给下一代。\n《厨房圆舞曲》\nKITCHEN WALTZ\n导演丨黄妍妮\n锅碗、水槽、蒸汽与雨夜，在歌舞的调度\n中生出轻盈的幻觉：一个受母职围困的年\n轻女性，终于在日常器物之间听见了自己。\n主办单位\n中国金鸡百花电影节组委会\n全程战略合作伙伴\n华为睿影XMAGE"
         },
         {
+          "type": "image",
           "text": "",
           "fontSize": 18,
-          "align": "center",
           "bold": false,
           "italic": false,
+          "align": "center",
           "alt": "荣誉揭晓！第七届金鸡手机电影计划13部作品脱颖而出 · 配图 12",
           "caption": "",
           "width": 100,
-          "type": "image",
           "src": "/uploads/archive/img-9222/fig-012.jpg",
           "imageText": "华为睿影c\n手机电影计划"
         },
@@ -1068,15 +1072,15 @@
           "type": "paragraph"
         },
         {
+          "type": "image",
           "text": "",
           "fontSize": 18,
-          "align": "center",
           "bold": false,
           "italic": false,
+          "align": "center",
           "alt": "荣誉揭晓！第七届金鸡手机电影计划13部作品脱颖而出 · 配图 13",
           "caption": "",
           "width": 100,
-          "type": "image",
           "src": "/uploads/archive/img-9222/fig-013.jpg",
           "imageText": "0\n深焦"
         },
@@ -1136,7 +1140,8 @@
           "italic": false,
           "type": "paragraph"
         }
-      ]
+      ],
+      "prefaceOffset": 0
     },
     {
       "subtitle": "",
@@ -1677,25 +1682,17 @@
           "type": "paragraph"
         },
         {
+          "type": "image",
           "text": "",
           "fontSize": 18,
-          "align": "center",
           "bold": false,
           "italic": false,
+          "align": "center",
           "alt": "影迷，真不是随便谁都能当的 · 配图 1",
-          "caption": "",
+          "caption": "@ Ale Giorgini",
           "width": 100,
-          "type": "image",
           "src": "/uploads/archive/img-9220/fig-001.jpg",
           "imageText": ""
-        },
-        {
-          "text": "@ Ale Giorgini",
-          "fontSize": 18,
-          "align": "left",
-          "bold": false,
-          "italic": false,
-          "type": "paragraph"
         },
         {
           "text": "01",
@@ -1738,20 +1735,20 @@
           "type": "paragraph"
         },
         {
+          "type": "image",
           "text": "",
           "fontSize": 18,
-          "align": "center",
           "bold": false,
           "italic": false,
+          "align": "center",
           "alt": "影迷，真不是随便谁都能当的 · 配图 2",
-          "caption": "",
+          "caption": "@ Ale Giorgini",
           "width": 100,
-          "type": "image",
           "src": "/uploads/archive/img-9220/fig-002.jpg",
           "imageText": ""
         },
         {
-          "text": "@ Ale Giorgini",
+          "text": "",
           "fontSize": 18,
           "align": "left",
           "bold": false,
@@ -1855,15 +1852,15 @@
           "type": "paragraph"
         },
         {
+          "type": "image",
           "text": "",
           "fontSize": 18,
-          "align": "center",
           "bold": false,
           "italic": false,
+          "align": "center",
           "alt": "影迷，真不是随便谁都能当的 · 配图 3",
           "caption": "",
           "width": 100,
-          "type": "image",
           "src": "/uploads/archive/img-9220/fig-003.jpg",
           "imageText": ""
         },
@@ -1924,15 +1921,15 @@
           "type": "paragraph"
         },
         {
+          "type": "image",
           "text": "",
           "fontSize": 18,
-          "align": "center",
           "bold": false,
           "italic": false,
+          "align": "center",
           "alt": "影迷，真不是随便谁都能当的 · 配图 4",
           "caption": "",
           "width": 100,
-          "type": "image",
           "src": "/uploads/archive/img-9220/fig-004.jpg",
           "imageText": ""
         },
@@ -1985,15 +1982,15 @@
           "type": "paragraph"
         },
         {
+          "type": "image",
           "text": "",
           "fontSize": 18,
-          "align": "center",
           "bold": false,
           "italic": false,
+          "align": "center",
           "alt": "影迷，真不是随便谁都能当的 · 配图 5",
           "caption": "",
           "width": 100,
-          "type": "image",
           "src": "/uploads/archive/img-9220/fig-005.jpg",
           "imageText": ""
         },
@@ -2094,15 +2091,15 @@
           "type": "paragraph"
         },
         {
+          "type": "image",
           "text": "",
           "fontSize": 18,
-          "align": "center",
           "bold": false,
           "italic": false,
+          "align": "center",
           "alt": "影迷，真不是随便谁都能当的 · 配图 6",
           "caption": "",
           "width": 100,
-          "type": "image",
           "src": "/uploads/archive/img-9220/fig-006.jpg",
           "imageText": ""
         },
@@ -2155,15 +2152,15 @@
           "type": "paragraph"
         },
         {
+          "type": "image",
           "text": "",
           "fontSize": 18,
-          "align": "center",
           "bold": false,
           "italic": false,
+          "align": "center",
           "alt": "影迷，真不是随便谁都能当的 · 配图 7",
           "caption": "",
           "width": 100,
-          "type": "image",
           "src": "/uploads/archive/img-9220/fig-007.jpg",
           "imageText": ""
         },
@@ -2232,15 +2229,15 @@
           "type": "paragraph"
         },
         {
+          "type": "image",
           "text": "",
           "fontSize": 18,
-          "align": "center",
           "bold": false,
           "italic": false,
+          "align": "center",
           "alt": "影迷，真不是随便谁都能当的 · 配图 8",
           "caption": "",
           "width": 100,
-          "type": "image",
           "src": "/uploads/archive/img-9220/fig-008.jpg",
           "imageText": ""
         },
@@ -2261,54 +2258,54 @@
           "type": "paragraph"
         },
         {
+          "type": "image",
           "text": "",
           "fontSize": 18,
-          "align": "center",
           "bold": false,
           "italic": false,
+          "align": "center",
           "alt": "影迷，真不是随便谁都能当的 · 配图 9",
           "caption": "",
           "width": 100,
-          "type": "image",
           "src": "/uploads/archive/img-9220/fig-009.jpg",
           "imageText": "找\nSR\n《你得耐心地寻找同类》\n中国最优秀影评人之\n经典影片评论集\nPRODUCTION\nDIRECTOR 梅雪风\n针见血的犀利|敏感细腻的共情\n一种独具个性的\n电影评论方式\n01\n梅雪风\n看电影\n01 01\n地\n雪\n上海文艺康服\n伯格曼丨哈内克丨贾樟柯丨杨德昌\n侯孝贤丨是枝裕和丨李沧东\n59元\n透过 9部影视作品\n看清人性与世情\n思索你想活出怎样的人生"
         },
         {
+          "type": "image",
           "text": "",
           "fontSize": 18,
-          "align": "center",
           "bold": false,
           "italic": false,
+          "align": "center",
           "alt": "影迷，真不是随便谁都能当的 · 配图 10",
           "caption": "",
           "width": 100,
-          "type": "image",
           "src": "/uploads/archive/img-9220/fig-010.jpg",
           "imageText": "诚实、开放而又谦逊地\n面对我们的感受\n用清醒去抚平\n这个世界和人性的博大与混沌"
         },
         {
+          "type": "image",
           "text": "",
           "fontSize": 18,
-          "align": "center",
           "bold": false,
           "italic": false,
+          "align": "center",
           "alt": "影迷，真不是随便谁都能当的 · 配图 11",
           "caption": "",
           "width": 100,
-          "type": "image",
           "src": "/uploads/archive/img-9220/fig-011.jpg",
           "imageText": ""
         },
         {
+          "type": "image",
           "text": "",
           "fontSize": 18,
-          "align": "center",
           "bold": false,
           "italic": false,
+          "align": "center",
           "alt": "影迷，真不是随便谁都能当的 · 配图 12",
           "caption": "",
           "width": 100,
-          "type": "image",
           "src": "/uploads/archive/img-9220/fig-012.jpg",
           "imageText": "本书开本装顿简约清爽，定价亲民\n稿得到了作者和出版社授权\n在此以专属价格代销\n分有作者亲签版和普通版两款\n欢迎点击选购\n梅雪风看电影\n焦雄屏 焦雄屏\n作序 作序\nSir电影 Sir电影\n推荐 推荐\n透过电影 透过电影\n看清人性与世情 看清人性与世情"
         },
@@ -2329,15 +2326,15 @@
           "type": "paragraph"
         },
         {
+          "type": "image",
           "text": "",
           "fontSize": 18,
-          "align": "center",
           "bold": false,
           "italic": false,
+          "align": "center",
           "alt": "影迷，真不是随便谁都能当的 · 配图 13",
           "caption": "",
           "width": 100,
-          "type": "image",
           "src": "/uploads/archive/img-9220/fig-013.jpg",
           "imageText": "焦雄屏 先用后付7天无理由\n作序 已售1043\nSir电影\n￥39新客价\n推荐\n透过电影 送朋友 购买\n看清人性与世情"
         },
@@ -2358,15 +2355,15 @@
           "type": "paragraph"
         },
         {
+          "type": "image",
           "text": "",
           "fontSize": 18,
-          "align": "center",
           "bold": false,
           "italic": false,
+          "align": "center",
           "alt": "影迷，真不是随便谁都能当的 · 配图 14",
           "caption": "",
           "width": 100,
-          "type": "image",
           "src": "/uploads/archive/img-9220/fig-014.jpg",
           "imageText": "梅雪风看电影 先用后付7天无理由\n焦雄屏 已售641\n作序\nSir电影 ￥29新客价\n推荐\n透过电影 送朋友 购买\n看清人性与世情"
         },
@@ -2379,15 +2376,15 @@
           "type": "paragraph"
         },
         {
+          "type": "image",
           "text": "",
           "fontSize": 18,
-          "align": "center",
           "bold": false,
           "italic": false,
+          "align": "center",
           "alt": "影迷，真不是随便谁都能当的 · 配图 15",
           "caption": "",
           "width": 100,
-          "type": "image",
           "src": "/uploads/archive/img-9220/fig-015.jpg",
           "imageText": "216克米白色幼纹纸封面\n平装单封，简洁设计\n地\n顺纹80克原白色胶版纸内页\n翻页顺滑，不易受潮变形"
         },
@@ -2407,7 +2404,8 @@
           "italic": false,
           "type": "paragraph"
         }
-      ]
+      ],
+      "prefaceOffset": 0
     },
     {
       "subtitle": "",

@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowsOutSimple } from '@phosphor-icons/react';
+import { safeRichTextHref } from '../shared/rich-text.mjs';
 import './reader-media.css';
 export const contentAsset = url => url?.startsWith('/') ? import.meta.env.BASE_URL+url.slice(1) : url;
 export function textStyle(format={}) {
@@ -45,12 +46,22 @@ export function ReaderImage({src, alt='', format={}, locale='zh-CN', cover=false
  </div>;
 }
 
+export function InlineContent({block, allowLinks=true}) {
+ if (!Array.isArray(block.runs)) return block.text;
+ return block.runs.map((run,index)=>{
+  const content=<span style={textStyle(run)}>{run.text}</span>;
+  return allowLinks && safeRichTextHref(run.href)
+   ? <a key={index} href={run.href} target="_blank" rel="noopener noreferrer">{content}</a>
+   : <React.Fragment key={index}>{content}</React.Fragment>;
+ });
+}
+
 export function ContentBlocks({blocks=[], imageTextLabel="图中文字", locale='zh-CN', idPrefix='block-', startIndex=0}){
  return blocks.map((block,i)=>{
   const style={...textStyle(block),whiteSpace:'pre-wrap'};
   if(block.type==='image')return <figure key={i}><ReaderImage src={block.src} alt={block.alt || block.caption || ''} format={block} locale={locale}/>{block.caption&&<figcaption>{block.caption}</figcaption>}{block.imageText&&<details className="figure-transcript"><summary>{imageTextLabel}</summary><p>{block.imageText}</p></details>}</figure>;
-  if(block.type==='link')return <p key={i} style={style}><a href={block.href} target="_blank" rel="noopener noreferrer">{block.text||block.href}</a></p>;
+  if(block.type==='link')return <p key={i} style={style}><a href={block.href} target="_blank" rel="noopener noreferrer">{block.text ? <InlineContent block={block} allowLinks={false}/> : block.href}</a></p>;
   const Tag=({h2:'h2',h3:'h3',quote:'blockquote'})[block.type]||'p';
-  return <Tag key={i} id={block.type==='h2'||block.type==='h3'?idPrefix+(startIndex+i):undefined} style={style}>{block.text}</Tag>;
+  return <Tag key={i} id={block.type==='h2'||block.type==='h3'?idPrefix+(startIndex+i):undefined} style={style}><InlineContent block={block}/></Tag>;
  });
 }

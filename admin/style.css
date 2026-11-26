@@ -9,3 +9,5 @@
 .archive-filter{margin-top:8px}
 
 .preface-position{display:flex;flex-direction:row;align-items:center;flex-wrap:wrap;gap:10px}.preface-position input{width:6em}
+
+.title-format-settings{margin-top:-14px}.title-format-settings summary,.article-settings summary,.preface-editor>summary{cursor:pointer;line-height:1.6;font-weight:550;color:#60544e;min-height:36px;padding-block:8px}.title-format-settings .format-controls{margin:10px 0 0}.article-settings,.preface-editor{border-top:1px solid #d7d0c8;padding-top:10px}.article-settings summary small,.preface-editor>summary small{margin-left:14px;color:#70645c}.article-settings-fields{display:flex;flex-direction:column;gap:22px;padding:18px 0 12px}.writing-section h2{font-size:20px;font-weight:550;margin:12px 0}.writing-section>.hint{color:#70645c}.preface-editor .preface-position{margin-bottom:20px}.preface-editor>.hint{color:#70645c}.editor-fields:disabled .tiptap{opacity:.65}.writing-section{min-width:0}.article-settings[open] summary{color:#302c30}

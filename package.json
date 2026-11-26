@@ -12,12 +12,20 @@
     "content:publish": "node scripts/publish-content.mjs",
     "test:admin": "node --test tests/admin.test.mjs",
     "test:content": "node --test tests/content.test.mjs",
-    "check": "npm run build && node --test tests/admin.test.mjs tests/content.test.mjs tests/sites-worker.test.mjs",
-    "publish:github": "node scripts/publish-github.mjs"
+    "check": "npm run build && npm run check:admin && node --test tests/admin.test.mjs tests/content.test.mjs tests/sites-worker.test.mjs tests/rich-text.test.mjs tests/article-editing.test.mjs",
+    "publish:github": "node scripts/publish-github.mjs",
+    "test:editor": "node --test tests/rich-text.test.mjs tests/article-editing.test.mjs",
+    "check:admin": "node scripts/check-admin.mjs"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
     "@phosphor-icons/react": "^2.1.10",
+    "@tiptap/core": "3.35.0",
+    "@tiptap/extension-text-align": "3.35.0",
+    "@tiptap/extension-text-style": "3.35.0",
+    "@tiptap/pm": "3.35.0",
+    "@tiptap/react": "3.35.0",
+    "@tiptap/starter-kit": "3.35.0",
     "@vitejs/plugin-react": "5.0.4",
     "gsap": "^3.15.0",
     "modern-screenshot": "4.7.0",

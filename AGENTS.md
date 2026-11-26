@@ -136,3 +136,8 @@ Article lists fill their available width with five compact columns on wide scree
 In 影展专题, show the eight archived festival marks alongside Cannes, Venice and Berlin using the same clickable logo cards and red pixel interaction. Keep 年度影展回顾 and 国际影展观察 as text links below the grid. Preserve the existing festival and article URLs.
 
 Article readers export the entire visible webpage layout as one continuous image-based PDF page for submissions. Preserve the current language, responsive layout, navigation, article details, photographs, captions, disclosure states, next-article link and footer. Name the file after the article.
+
+
+## Continuous local article editing — 2026-11-26
+
+The article body is one continuous rich-text document. Support whole-article paste, Enter paragraphs, selection-based bold/italic/font size/links, undo/redo, inline image insertion, and contextual image dimensions/captions/transcripts. Keep title/subtitle and collapsible article settings separate. Optional preface and pre-preface material retain their original reader order. Preserve validated block storage and its plain-text mirror; render inline runs through React, never arbitrary HTML. Each language now owns its body, preface, images and inline formatting independently; do not synchronize structure or character formatting by paragraph index. Keep existing archive content and local account unchanged. The user authorized publishing this upgrade to GitHub, with the editor and login/save service still running locally through VS Code. GitHub Pages publishes the reader website. Keep the local guide and repository quick starts consistent with this workflow.

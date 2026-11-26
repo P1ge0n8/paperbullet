@@ -152,12 +152,13 @@
           "type": "image",
           "text": "",
           "fontSize": 18,
-          "align": "center",
           "bold": false,
           "italic": false,
-          "src": "/uploads/cannes-2026-gradiva-poster.webp",
+          "align": "center",
           "alt": "《行走之人》｜海报",
-          "caption": "《行走之人》｜海报"
+          "caption": "《行走之人》｜海报",
+          "src": "/uploads/cannes-2026-gradiva-poster.webp",
+          "width": 29
         },
         {
           "type": "paragraph",
@@ -187,12 +188,12 @@
           "type": "image",
           "text": "",
           "fontSize": 18,
-          "align": "center",
           "bold": false,
           "italic": false,
-          "src": "/uploads/cannes-2026-gradiva-still.webp",
+          "align": "center",
           "alt": "《行走之人》｜剧照",
-          "caption": "《行走之人》｜剧照"
+          "caption": "《行走之人》｜剧照",
+          "src": "/uploads/cannes-2026-gradiva-still.webp"
         },
         {
           "type": "paragraph",
@@ -230,12 +231,12 @@
           "type": "image",
           "text": "",
           "fontSize": 18,
-          "align": "center",
           "bold": false,
           "italic": false,
-          "src": "/uploads/cannes-2026-moulin-poster.webp",
+          "align": "center",
           "alt": "《穆兰》｜海报",
-          "caption": "《穆兰》｜海报"
+          "caption": "《穆兰》｜海报",
+          "src": "/uploads/cannes-2026-moulin-poster.webp"
         },
         {
           "type": "paragraph",
@@ -265,12 +266,12 @@
           "type": "image",
           "text": "",
           "fontSize": 18,
-          "align": "center",
           "bold": false,
           "italic": false,
-          "src": "/uploads/cannes-2026-moulin-still.webp",
+          "align": "center",
           "alt": "《穆兰》｜剧照",
-          "caption": "《穆兰》｜剧照"
+          "caption": "《穆兰》｜剧照",
+          "src": "/uploads/cannes-2026-moulin-still.webp"
         },
         {
           "type": "paragraph",
@@ -292,12 +293,12 @@
           "type": "image",
           "text": "",
           "fontSize": 18,
-          "align": "center",
           "bold": false,
           "italic": false,
-          "src": "/uploads/cannes-2026-garance-poster.webp",
+          "align": "center",
           "alt": "《嘉朗斯》｜海报",
-          "caption": "《嘉朗斯》｜海报"
+          "caption": "《嘉朗斯》｜海报",
+          "src": "/uploads/cannes-2026-garance-poster.webp"
         },
         {
           "type": "paragraph",
@@ -327,12 +328,12 @@
           "type": "image",
           "text": "",
           "fontSize": 18,
-          "align": "center",
           "bold": false,
           "italic": false,
-          "src": "/uploads/cannes-2026-hope-poster.webp",
+          "align": "center",
           "alt": "《希望》｜海报",
-          "caption": "《希望》｜海报"
+          "caption": "《希望》｜海报",
+          "src": "/uploads/cannes-2026-hope-poster.webp"
         },
         {
           "type": "paragraph",
@@ -354,12 +355,12 @@
           "type": "image",
           "text": "",
           "fontSize": 18,
-          "align": "center",
           "bold": false,
           "italic": false,
-          "src": "/uploads/cannes-2026-hope-still.webp",
+          "align": "center",
           "alt": "《希望》｜剧照",
-          "caption": "《希望》｜剧照"
+          "caption": "《希望》｜剧照",
+          "src": "/uploads/cannes-2026-hope-still.webp"
         },
         {
           "type": "h2",
@@ -630,7 +631,8 @@
               "bold": false,
               "italic": false
             }
-          ]
+          ],
+          "prefaceOffset": 0
         },
         "zh-HK": {
           "title": "康城專欄｜《希望》的另一面",
@@ -883,9 +885,11 @@
               "bold": false,
               "italic": false
             }
-          ]
+          ],
+          "prefaceOffset": 0
         }
-      }
+      },
+      "prefaceOffset": 0
     },
     {
       "subtitle": "",
@@ -936,7 +940,7 @@
       "archiveCategory": "culture",
       "blocks": [],
       "archiveBody": "/archive-articles/img-9220.json",
-      "blockTextLength": 3874
+      "blockTextLength": 3846
     },
     {
       "subtitle": "",
